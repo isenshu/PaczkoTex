@@ -1,0 +1,369 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "ul. Konstytucji 3 Maja 23": "ZGO02L"
+      },
+      "geometry": {
+        "coordinates": [
+          15.509339165298144,
+          51.93729200533127
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ul.Dworcowa 27": "ZGO19M"
+      },
+      "geometry": {
+        "coordinates": [
+          15.510602545358267,
+          51.946496596825284
+        ],
+        "type": "Point"
+      },
+      "id": 2
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ul.Staszica 5": "ZGO09M"
+      },
+      "geometry": {
+        "coordinates": [
+          15.521352616326851,
+          51.946777586954255
+        ],
+        "type": "Point"
+      },
+      "id": 3
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ul. Łużycka 18": "ZGO36M"
+      },
+      "geometry": {
+        "coordinates": [
+          15.490292558620325,
+          51.93439446390633
+        ],
+        "type": "Point"
+      },
+      "id": 4
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ul. Wyszyńskiego 22A": "ZGO03N"
+      },
+      "geometry": {
+        "coordinates": [
+          15.485256808349845,
+          51.93052699244916
+        ],
+        "type": "Point"
+      },
+      "id": 5
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ul. Zawadzkiego \"Zośki\" 14": "ZGO01APP"
+      },
+      "geometry": {
+        "coordinates": [
+          15.484948468051982,
+          51.9257207460694
+        ],
+        "type": "Point"
+      },
+      "id": 6
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ul. Kożuchowska 10": "ZGO08A"
+      },
+      "geometry": {
+        "coordinates": [
+          15.50833723657064,
+          51.92542697046636
+        ],
+        "type": "Point"
+      },
+      "id": 7
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ul. Harcerska 9": "ZGO77M"
+      },
+      "geometry": {
+        "coordinates": [
+          15.50309713203373,
+          51.95076645646887
+        ],
+        "type": "Point"
+      },
+      "id": 10
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ul.Urszuli": "ZGO04M"
+      },
+      "geometry": {
+        "coordinates": [
+          15.521489462390775,
+          51.95304170361584
+        ],
+        "type": "Point"
+      },
+      "id": 11
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ul.Truskawkowa 18": "ZGO11N"
+      },
+      "geometry": {
+        "coordinates": [
+          15.52990934221549,
+          51.963979141734086
+        ],
+        "type": "Point"
+      },
+      "id": 12
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ul. osiedle kaszubskie 3": "ZGO67M"
+      },
+      "geometry": {
+        "coordinates": [
+          15.56002926130273,
+          51.93755319024322
+        ],
+        "type": "Point"
+      },
+      "id": 15
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ul. Pionierów Lubuskich 72": "ZGO07A"
+      },
+      "geometry": {
+        "coordinates": [
+          15.58566630191558,
+          51.93342770032285
+        ],
+        "type": "Point"
+      },
+      "id": 16
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ul. Nowy Kisielin - Odrzańska 51a": "ZGO15M"
+      },
+      "geometry": {
+        "coordinates": [
+          15.608535265224276,
+          51.93283971477223
+        ],
+        "type": "Point"
+      },
+      "id": 17
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ul. Jędrzychowska 46": "ZGO52M"
+      },
+      "geometry": {
+        "coordinates": [
+          15.511282276723506,
+          51.90791073847214
+        ],
+        "type": "Point"
+      },
+      "id": 19
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ul. Kożuchowska 30": "ZGO13N"
+      },
+      "geometry": {
+        "coordinates": [
+          15.508873202024972,
+          51.919992177608236
+        ],
+        "type": "Point"
+      },
+      "id": 20
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ul. Turystyczna 1 A": "ZGO24M"
+      },
+      "geometry": {
+        "coordinates": [
+          15.455120745289804,
+          51.964195403072495
+        ],
+        "type": "Point"
+      },
+      "id": 23
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ul. Geologów 2": "ZGO82M"
+      },
+      "geometry": {
+        "coordinates": [
+          15.48738530808734,
+          51.97635965298238
+        ],
+        "type": "Point"
+      },
+      "id": 24
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ul. Batorego 118 C": "ZGO07BAPP"
+      },
+      "geometry": {
+        "coordinates": [
+          15.496407287455355,
+          51.956203768295694
+        ],
+        "type": "Point"
+      },
+      "id": 26
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ul. Aleja Zjednoczenia 118": "ZGO07M"
+      },
+      "geometry": {
+        "coordinates": [
+          15.478755419766145,
+          51.95444770661592
+        ],
+        "type": "Point"
+      },
+      "id": 27
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ul. Stefana Batorego 81": "ZGO04N"
+      },
+      "geometry": {
+        "coordinates": [
+          15.496958761536575,
+          51.960465727568334
+        ],
+        "type": "Point"
+      },
+      "id": 26
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ul. Lwowska 2": "ZGO41M"
+      },
+      "geometry": {
+        "coordinates": [
+          15.51686087846943,
+          51.93622998942587
+        ],
+        "type": "Point"
+      },
+      "id": 21
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ul. Lisia 63": "ZGO40M"
+      },
+      "geometry": {
+        "coordinates": [
+          15.495459045163585,
+          51.94130590163434
+        ],
+        "type": "Point"
+      },
+      "id": 33
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ul. Wojska Polskiego 106": "ZGO04L"
+      },
+      "geometry": {
+        "coordinates": [
+          15.476049661951407,
+          51.93893599100127
+        ],
+        "type": "Point"
+      },
+      "id": 35
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ul. Agrestowa 5A/11": "ZGO01H"
+      },
+      "geometry": {
+        "coordinates": [
+          15.472467717229904,
+          51.943732293212975
+        ],
+        "type": "Point"
+      },
+      "id": 36
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ul. Konicza 34": "ZGO66M"
+      },
+      "geometry": {
+        "coordinates": [
+          15.525946022661003,
+          51.940724650242146
+        ],
+        "type": "Point"
+      },
+      "id": 25
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ul.Głogowska 55": "RCL01N"
+      },
+      "geometry": {
+        "coordinates": [
+          15.570593725628186,
+          51.910852082555834
+        ],
+        "type": "Point"
+      },
+      "id": 26
+    }
+  ]
+}
