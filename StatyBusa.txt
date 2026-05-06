@@ -1,5 +1,7 @@
 Maksymalna długość części ładunkowej - 3225 mm
 Wysokość części ładunkowej - 1885 mm
+Szerokość maksymalna: 1765 mm
+Szerokość między nadkolami: ok. 1380 mm
 Ładowność - 1069kg
 Objętość ładunkowa w m3/dm3 - 10,8 
 
