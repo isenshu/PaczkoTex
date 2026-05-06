@@ -55,8 +55,10 @@ def generuj_paczki_na_dzien(data_dostawy_str, liczba_paczek):
         miasto = wylosowane_miasta[i]
         dane_miasta = MIASTA[miasto]
         pref = dane_miasta['prefix']
-        
-        id_paczki = f"{pref}-{random.randint(0, 0xFFFFFFFF):08X}"
+
+        krotka_data = data_dostawy_str[5:].replace('-', '')
+        id_paczki = f"{pref}-{krotka_data}{i:05d}"
+
         nr_paczkomatu = random.randint(1, dane_miasta['paczkomaty'])
         
         g_info = GABARYTY_INFO[gabaryt]
