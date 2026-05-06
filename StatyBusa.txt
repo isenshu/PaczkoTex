@@ -1,0 +1,36 @@
+Maksymalna długość części ładunkowej - 3225 mm
+Wysokość części ładunkowej - 1885 mm
+Ładowność - 1069kg
+Objętość ładunkowa w m3/dm3 - 10,8 
+
+Silnik
+
+    Moc maksymalna kW (KM)
+    096 (130)
+
+    Maksymalny moment obrotowy Nm
+    350 - 1500
+
+    Pojemność skokowa (cm3)
+    1997
+
+    Liczba cylindrów
+    4
+
+Zużycie i emisja spalin WLTP
+
+    Emisja CO2 g/km WLTP
+    196
+
+    Zużycie paliwa cykl mieszany WLTP (l/100 km)
+    7.5
+
+Osiągi
+
+    Prędkość maksymalna (km/h)
+    162
+
+
+Cena 136,300 ZŁ
+albo
+1824 ZŁ netto/ miesięcznie
