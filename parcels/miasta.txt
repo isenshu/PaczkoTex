@@ -1,7 +1,1 @@
-nowa sol - 0,9
-kozuchow - 0,8
-zielona gora - 0,6
-zary - 0,6
-szprotawa - 0,6
-zagan - 0,4
-nowogrod - 0,2
+
