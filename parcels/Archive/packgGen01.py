@@ -11,9 +11,9 @@ BAZOWA_LICZBA_PACZEK = 300
 
 # Konfiguracja gabarytów InPost
 GABARYTY = {
-    'A': {'wymiary': '8x38x64', 'max_waga': 25, 'prawdopodobienstwo': 0.50, 'zakres_wagi_realnej': (0.1, 5.0)},
-    'B': {'wymiary': '19x38x64', 'max_waga': 25, 'prawdopodobienstwo': 0.35, 'zakres_wagi_realnej': (1.0, 10.0)},
-    'C': {'wymiary': '41x38x64', 'max_waga': 25, 'prawdopodobienstwo': 0.15, 'zakres_wagi_realnej': (5.0, 25.0)}
+    'A': {'wymiary': '8x38x64', 'max_waga': 25, 'prawdopodobienstwo': 0.50, 'zakres_wagi_realnej': (1, 25)},
+    'B': {'wymiary': '19x38x64', 'max_waga': 25, 'prawdopodobienstwo': 0.35, 'zakres_wagi_realnej': (1, 25)},
+    'C': {'wymiary': '41x38x64', 'max_waga': 25, 'prawdopodobienstwo': 0.15, 'zakres_wagi_realnej': (1, 25)}
 }
 
 def generuj_paczke():
