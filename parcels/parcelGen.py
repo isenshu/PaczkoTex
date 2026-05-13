@@ -32,7 +32,7 @@ def generuj_rozklad_wagi(alpha, beta, max_waga=25):
     return [p / suma for p in wagi_prawdopodobienstwa]
 
 # Generowanie wag dla poszczególnych gabarytów przed pętlą
-ROZKLAD_A = generuj_rozklad_wagi(alpha=2.0, beta=1.2)
+ROZKLAD_A = generuj_rozklad_wagi(alpha=1.5, beta=1.2)
 ROZKLAD_B = generuj_rozklad_wagi(alpha=3.0, beta=0.6)
 ROZKLAD_C = generuj_rozklad_wagi(alpha=5.0, beta=0.4)
 
