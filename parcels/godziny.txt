@@ -1,1 +1,49 @@
+Godziny :
+0:00 - 5:00 - bardzo mały ruch
+7:00 - 9:00 - szczyt poranny
+10:00 - 14:00 - ruch ustabilizowany
+15:00 - 18:00 - szczyt popołudniowy
+20:00 - 23:00 - płynny spadek 
+
+rozkład wizualny :
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+# 1. Konfiguracja osi czasu (24 godziny)
+x = np.linspace(0, 24, 1000)
+
+# 2. Definicja modelu ruchu (suma dwóch rozkładów normalnych + tło)
+# Szczyt poranny (mu=8, sigma=1.2)
+morning_peak = 100 * np.exp(-(x - 8)**2 / (2 * 1.2**2))
+# Szczyt popołudniowy (mu=16.5, sigma=1.8)
+afternoon_peak = 120 * np.exp(-(x - 16.5)**2 / (2 * 1.8**2))
+# Ruch bazowy (nocny i międzyszczytowy)
+base_traffic = 15 + 5 * np.sin(x * np.pi / 12)
+
+# Sumaryczne natężenie
+y = morning_peak + afternoon_peak + base_traffic
+
+# 3. Tworzenie wykresu
+plt.figure(figsize=(12, 6))
+plt.plot(x, y, color='red', linewidth=2, label='Natężenie ruchu')
+
+# Stylizacja wykresu
+plt.title('Typowy dobowy rozkład natężenia ruchu drogowego', fontsize=14)
+plt.xlabel('Godzina doby', fontsize=12)
+plt.ylabel('Liczba pojazdów na godzinę', fontsize=12)
+plt.xticks(np.arange(0, 25, 1))
+plt.grid(True, linestyle='--', alpha=0.6)
+plt.fill_between(x, y, color='red', alpha=0.1)
+
+# Dodanie opisów szczytów
+# plt.annotate('Szczyt poranny', xy=(8, 110), xytext=(5, 130),
+#              arrowprops=dict(facecolor='black', shrink=0.05))
+# plt.annotate('Szczyt popołudniowy', xy=(16.5, 130), xytext=(18, 140),
+#              arrowprops=dict(facecolor='black', shrink=0.05))
+
+plt.xlim(0, 24)
+plt.ylim(0, max(y) + 20)
+plt.legend()
+plt.show()
 
