@@ -191,26 +191,6 @@ edges = [
     },
     {
         "from": "NB",
-        "to": "SZP",
-        "czas": 50,
-        "km": 50.2,
-        "droga": "DK27 + DK12",
-        "predkoscMax": 90,
-        "natezenieRuchu": 3,
-        "jakoscDrogi": 4
-    },
-    {
-        "from": "NB",
-        "to": "SZP",
-        "czas": 53,
-        "km": 53.4,
-        "droga": "DW290 + DW297",
-        "predkoscMax": 90,
-        "natezenieRuchu": 2,
-        "jakoscDrogi": 3
-    },
-    {
-        "from": "NB",
         "to": "ZR",
         "czas": 20,
         "km": 19.9,

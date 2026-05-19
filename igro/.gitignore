@@ -2,3 +2,5 @@ __pycache__
 *.ipynb
 .DS_Store
 *.html
+paczki.py 
+paczki_tydzien_04.05-08.05.2026.csv
