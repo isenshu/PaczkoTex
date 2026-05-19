@@ -3,15 +3,19 @@
 
 ## Co dokładnie robi obecna wersja kodu?
 
-Obecny skrypt to wysoce zoptymalizowany generator wsadowy (batch generator), który symuluje popyt na usługi kurierskie w regionie Zielonej Góry i okolicznych miast. Na podstawie wpisanej daty, automatycznie generuje bazę przesyłek na cały tydzień roboczy (od poniedziałku do piątku).
+Obecny skrypt to zaawansowany generator wsadowy (batch generator), który symuluje popyt na usługi kurierskie w regionie Zielonej Góry i okolicznych miast. Na podstawie wpisanej daty, automatycznie generuje bazę przesyłek na cały tydzień roboczy (od poniedziałku do piątku), zapisując wszystko do jednego pliku CSV.
 
 **Kluczowe funkcjonalności:**
-*   **Modelowanie Popytu (Top-Down):** Generator nie opiera się na "sztywnych" liczbach, lecz wylicza ilość paczek na podstawie populacji regionu (ok. 263 000 osób). Zakłada, że dziennie obsługujemy średnio 5% populacji.
-*   **Realistyczny rozkład tygodniowy:** Implementuje logikę e-commerce, gdzie wtorki są dniami szczytowymi (6% populacji), a piątki najsłabszymi (4% populacji).
-*   **Zoptymalizowane wymiary InPost:** Generuje paczki w 3 gabarytach (A, B, C). Kod uwzględnia nie tylko maksymalne, ale i minimalne wymiary dla wysokości (np. paczka B musi mieć minimum 9 cm wysokości, by nie wpaść do skrytki A). Waga każdej paczki jest losowana z przedziału od 1 do 25 kg.
-*   **Trasowanie pod Paczkomaty:** Każda paczka otrzymuje unikalny identyfikator przesyłki (np. `ZG-A1B2C3D4`) oraz jest przypisywana do konkretnego miasta i **konkretnego paczkomatu** (np. `ZG-05` dla 5. maszyny w Zielonej Górze). Ułatwia to późniejsze grupowanie danych.
-*   **Wysoka wydajność:** Dzięki zastosowaniu pre-alokacji i losowania na listach, skrypt generuje około 70 000 paczek w ułamek sekundy.
-*   **Pojedynczy plik wyjściowy:** Cały tydzień pracy zapisywany jest do jednego, łatwego w obróbce pliku CSV z czytelną datą w nazwie (np. `paczki_tydzien_04.05-08.05.2026.csv`), co jest idealne dla biblioteki Pandas.
+*   **Modelowanie Popytu (Top-Down):** Generator bazuje na populacji regionu (ok. 258 000 osób) do wyliczenia liczby paczek. Zakłada, że dziennie obsługujemy od 2% do 3% populacji, co daje łącznie ok. 32 000 paczek tygodniowo.
+*   **Realistyczny rozkład tygodniowy:** Implementuje logikę e-commerce, gdzie wtorki są dniami szczytowymi (ok. 3.0% populacji), a piątki najsłabszymi (ok. 2.0% populacji).
+*   **Zaawansowane generowanie paczek:**
+    *   **Wymiary:** Zamiast sztywnych wymiarów, każda paczka ma losowane trzy osobne wartości: `wysokosc_cm`, `szerokosc_cm` i `dlugosc_cm`, mieszczące się w dopuszczalnych normach dla gabarytów A, B i C. Uwzględniono minimalną wysokość, aby paczki pasowały do odpowiednich skrytek.
+    *   **Waga (Rozkład Gamma):** Waga nie jest już losowana jednostajnie. Skrypt wykorzystuje **rozkład prawdopodobieństwa Gamma**, aby realistycznie modelować wagę paczek. Każdy gabaryt (A, B, C) ma własny, odrębny rozkład – małe paczki są statystycznie lżejsze, a duże cięższe. Waga jest liczbą całkowitą z przedziału 1-25 kg.
+*   **Strukturalne ID i trasowanie:**
+    *   Każda paczka otrzymuje unikalny, strukturalny identyfikator (np. `ZG-050600001`), który zawiera prefix miasta, datę i numer porządkowy.
+    *   Każda paczka jest przypisywana do konkretnego miasta i **konkretnego paczkomatu** (np. `ZG-05`), co jest kluczowe dla dalszych etapów projektu.
+*   **Wysoka wydajność:** Dzięki zastosowaniu wektoryzacji (pre-alokacja list z miastami i gabarytami za pomocą `random.choices`), skrypt generuje dane dla całego dnia w jednej, szybkiej operacji, a nie paczka po paczce.
+*   **Pojedynczy, szczegółowy plik wyjściowy:** Cały tydzień pracy zapisywany jest do jednego pliku CSV (np. `paczki_tydzien_04.05-08.05.2026.csv`). Plik zawiera szczegółowe kolumny (`id_paczki`, `data_dostawy`, `gabaryt`, `wysokosc_cm`, `szerokosc_cm`, `dlugosc_cm`, `waga_kg`, `miasto_docelowe`, `id_paczkomatu`), gotowe do analizy w bibliotece Pandas.
 
 ---
 
@@ -28,5 +32,3 @@ Dane mamy już wygenerowane, teraz projekt musi przejść w fazę układania tra
 *   **[Macierz Odległości i Czasów (Distance Matrix)]**
     *   Stworzenie w kodzie (np. w formie słownika lub wczytywanej z zewnętrznego pliku) prostej macierzy odległości pomiędzy miastami z projektu (np. czas przejazdu Zielona Góra <-> Nowa Sól).
     *   Bez tego algorytm może wysłać kuriera w nieopłacalną trasę, skacząc między najdalszymi punktami (np. Żagań -> Nowogród Bobrzański -> Szprotawa).
-*   **[Kalkulacja czasu obsługi punktu (Drop-off time)]**
-    *   Wykorzystanie parametru `pokrycie_km` (który zostawiliśmy w słowniku `MIASTA`) do obliczenia, ile czasu kurier spędza na dojazd i wypakowanie paczek pod konkretną maszyną.
