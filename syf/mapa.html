@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_6e665903021c86f4469632b84cc98b5b {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_6e665903021c86f4469632b84cc98b5b" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_6e665903021c86f4469632b84cc98b5b = L.map(
+                "map_6e665903021c86f4469632b84cc98b5b",
+                {
+                    center: [51.728502428571424, 15.434104285714286],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 9,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_73dc074f2efa7b04c9bebcc37eb40c18 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_73dc074f2efa7b04c9bebcc37eb40c18.addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            var marker_e240fac7643967d6a359dd4654d4f3d6 = L.marker(
+                [51.93548, 15.50643],
+                {
+}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            marker_e240fac7643967d6a359dd4654d4f3d6.bindTooltip(
+                `<div>
+                     ZG - Zielona Góra
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_cb11f8288e1d3914e04d979341db6c2d = L.marker(
+                [51.798346, 15.23614],
+                {
+}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            marker_cb11f8288e1d3914e04d979341db6c2d.bindTooltip(
+                `<div>
+                     NB - Nowogród Bobrzański
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_27cf6add5be2d44f247e7ec9ce573598 = L.marker(
+                [51.636, 15.138],
+                {
+}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            marker_27cf6add5be2d44f247e7ec9ce573598.bindTooltip(
+                `<div>
+                     ZR - Żary
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_97af1fb7b7152c1ff3e2b27731d719cc = L.marker(
+                [51.616591, 15.31766],
+                {
+}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            marker_97af1fb7b7152c1ff3e2b27731d719cc.bindTooltip(
+                `<div>
+                     ZA - Żagań
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_f5e68a682d04d4a55a1b079debed29aa = L.marker(
+                [51.567, 15.538],
+                {
+}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            marker_f5e68a682d04d4a55a1b079debed29aa.bindTooltip(
+                `<div>
+                     SZP - Szprotawa
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_b7cad077401d3eb97f42a39143209989 = L.marker(
+                [51.745, 15.595],
+                {
+}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            marker_b7cad077401d3eb97f42a39143209989.bindTooltip(
+                `<div>
+                     KOZ - Kożuchów
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_2132030d5217771ed99ee39558c6bb8b = L.marker(
+                [51.8011, 15.7075],
+                {
+}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            marker_2132030d5217771ed99ee39558c6bb8b.bindTooltip(
+                `<div>
+                     NS - Nowa Sól
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_465635403fbfed17ed86e9413ec79043 = L.polyline(
+                [[51.93548, 15.50643], [51.75574, 15.352215], [51.636, 15.138]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_465635403fbfed17ed86e9413ec79043.bindTooltip(
+                `<div>
+                     ZG ↔ ZR<br>droga = DK27<br>predkosc max = 90 km/h<br>natężenie ruchu = 3/5<br>jakość drogi = 4/5<br>km = 44.9<br>czas = 43 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_e982560f6ce3a4a103f9cd37d3418ec3 = L.polyline(
+                [[51.93548, 15.50643], [51.785740000000004, 15.322215], [51.636, 15.138]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_e982560f6ce3a4a103f9cd37d3418ec3.bindTooltip(
+                `<div>
+                     ZG ↔ ZR<br>droga = DK32 + DK27<br>predkosc max = 90 km/h<br>natężenie ruchu = 3/5<br>jakość drogi = 4/5<br>km = 48.7<br>czas = 49 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_90319d051edf19d24c13046228fefeb6 = L.polyline(
+                [[51.93548, 15.50643], [51.7460355, 15.442044999999998], [51.616591, 15.31766]],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_90319d051edf19d24c13046228fefeb6.bindTooltip(
+                `<div>
+                     ZG ↔ ZA<br>droga = DK27 + DW295<br>predkosc max = 90 km/h<br>natężenie ruchu = 3/5<br>jakość drogi = 3/5<br>km = 46.2<br>czas = 46 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_3761f349491342b230d5e9e8f4040d40 = L.polyline(
+                [[51.93548, 15.50643], [51.7760355, 15.412044999999999], [51.616591, 15.31766]],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_3761f349491342b230d5e9e8f4040d40.bindTooltip(
+                `<div>
+                     ZG ↔ ZA<br>droga = S3 + DW296<br>predkosc max = 120 km/h<br>natężenie ruchu = 4/5<br>jakość drogi = 4/5<br>km = 58.2<br>czas = 56 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_3869bb4324ed652596f9aaf8a36c6a67 = L.polyline(
+                [[51.93548, 15.50643], [51.721239999999995, 15.552214999999999], [51.567, 15.538]],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_3869bb4324ed652596f9aaf8a36c6a67.bindTooltip(
+                `<div>
+                     ZG ↔ SZP<br>droga = S3 + DW297<br>predkosc max = 120 km/h<br>natężenie ruchu = 4/5<br>jakość drogi = 4/5<br>km = 53.6<br>czas = 52 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_a2826b63267fdab74a1e2adfff094c0b = L.polyline(
+                [[51.93548, 15.50643], [51.751239999999996, 15.522215], [51.567, 15.538]],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_a2826b63267fdab74a1e2adfff094c0b.bindTooltip(
+                `<div>
+                     ZG ↔ SZP<br>droga = S3<br>predkosc max = 120 km/h<br>natężenie ruchu = 4/5<br>jakość drogi = 5/5<br>km = 58.1<br>czas = 54 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_09cba465f23d46c22b3ac8dfae142042 = L.polyline(
+                [[51.93548, 15.50643], [51.78124, 15.492215], [51.567, 15.538]],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_09cba465f23d46c22b3ac8dfae142042.bindTooltip(
+                `<div>
+                     ZG ↔ SZP<br>droga = DW283 + DW297<br>predkosc max = 90 km/h<br>natężenie ruchu = 2/5<br>jakość drogi = 3/5<br>km = 51.6<br>czas = 51 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_e06dbd4c5cae06725e061166acf70116 = L.polyline(
+                [[51.93548, 15.50643], [51.81023999999999, 15.580715], [51.745, 15.595]],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_e06dbd4c5cae06725e061166acf70116.bindTooltip(
+                `<div>
+                     ZG ↔ KOZ<br>droga = S3 + DW297<br>predkosc max = 120 km/h<br>natężenie ruchu = 4/5<br>jakość drogi = 4/5<br>km = 32<br>czas = 30 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_bae97fcdaa9098a14950e76efa3556c2 = L.polyline(
+                [[51.93548, 15.50643], [51.840239999999994, 15.550715], [51.745, 15.595]],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_bae97fcdaa9098a14950e76efa3556c2.bindTooltip(
+                `<div>
+                     ZG ↔ KOZ<br>droga = S3<br>predkosc max = 120 km/h<br>natężenie ruchu = 4/5<br>jakość drogi = 5/5<br>km = 36.1<br>czas = 31 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_098af313d03b35297b2cb036f287f26c = L.polyline(
+                [[51.93548, 15.50643], [51.870239999999995, 15.520715000000001], [51.745, 15.595]],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_098af313d03b35297b2cb036f287f26c.bindTooltip(
+                `<div>
+                     ZG ↔ KOZ<br>droga = DW283<br>predkosc max = 90 km/h<br>natężenie ruchu = 2/5<br>jakość drogi = 3/5<br>km = 28.2<br>czas = 35 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_accb868db801cd7689ca8ff47c229ed0 = L.polyline(
+                [[51.93548, 15.50643], [51.836912999999996, 15.401285], [51.798346, 15.23614]],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_accb868db801cd7689ca8ff47c229ed0.bindTooltip(
+                `<div>
+                     ZG ↔ NB<br>droga = DW282 + DK27<br>predkosc max = 90 km/h<br>natężenie ruchu = 3/5<br>jakość drogi = 3/5<br>km = 25.5<br>czas = 25 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_f14a28bf23f5f6dc8c4dbd297f747b0e = L.polyline(
+                [[51.93548, 15.50643], [51.83829, 15.636964999999998], [51.8011, 15.7075]],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_f14a28bf23f5f6dc8c4dbd297f747b0e.bindTooltip(
+                `<div>
+                     ZG ↔ NS<br>droga = S3<br>predkosc max = 120 km/h<br>natężenie ruchu = 5/5<br>jakość drogi = 5/5<br>km = 26.6<br>czas = 22 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_3a1810f37c09797ac43c482894bb74b3 = L.polyline(
+                [[51.93548, 15.50643], [51.86829, 15.606964999999999], [51.8011, 15.7075]],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_3a1810f37c09797ac43c482894bb74b3.bindTooltip(
+                `<div>
+                     ZG ↔ NS<br>droga = S3 + Zielonogórska<br>predkosc max = 120 km/h<br>natężenie ruchu = 5/5<br>jakość drogi = 4/5<br>km = 23.2<br>czas = 22 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_5a85f1acdfc6f84c57ee46387d73c622 = L.circle(
+                [51.93548, 15.50643],
+                {"bubblingMouseEvents": true, "color": "brown", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "brown", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1080, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            circle_5a85f1acdfc6f84c57ee46387d73c622.bindTooltip(
+                `<div>
+                     ZG ↔ ZG<br>droga = Lokalne rozwożenie paczek - Zielona Góra<br>predkosc max = 50 km/h<br>natężenie ruchu = 4/5<br>jakość drogi = 4/5<br>km lokalnie = 18<br>czas = 35 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_bcdbc126ed5de11f5cc70bf4b1cac9e5 = L.polyline(
+                [[51.798346, 15.23614], [51.652673, 15.41707], [51.567, 15.538]],
+                {"bubblingMouseEvents": true, "color": "pink", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "pink", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_bcdbc126ed5de11f5cc70bf4b1cac9e5.bindTooltip(
+                `<div>
+                     NB ↔ SZP<br>droga = DW295 + DK12<br>predkosc max = 90 km/h<br>natężenie ruchu = 3/5<br>jakość drogi = 3/5<br>km = 40.1<br>czas = 41 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_17e20e4c6ebb7cb050606f8e7c1c3aeb = L.polyline(
+                [[51.798346, 15.23614], [51.687173, 15.21707], [51.636, 15.138]],
+                {"bubblingMouseEvents": true, "color": "cadetblue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "cadetblue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_17e20e4c6ebb7cb050606f8e7c1c3aeb.bindTooltip(
+                `<div>
+                     NB ↔ ZR<br>droga = DK27<br>predkosc max = 90 km/h<br>natężenie ruchu = 3/5<br>jakość drogi = 4/5<br>km = 19.9<br>czas = 20 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_28ae3894e600667da3b60621933d3b91 = L.polyline(
+                [[51.798346, 15.23614], [51.717173, 15.18707], [51.636, 15.138]],
+                {"bubblingMouseEvents": true, "color": "cadetblue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "cadetblue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_28ae3894e600667da3b60621933d3b91.bindTooltip(
+                `<div>
+                     NB ↔ ZR<br>droga = DK27 + Obwodnica<br>predkosc max = 90 km/h<br>natężenie ruchu = 3/5<br>jakość drogi = 4/5<br>km = 21.6<br>czas = 23 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_20be68e7c6b8273f86af34b0dd4ef890 = L.polyline(
+                [[51.798346, 15.23614], [51.6774685, 15.3069], [51.616591, 15.31766]],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "darkred", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_20be68e7c6b8273f86af34b0dd4ef890.bindTooltip(
+                `<div>
+                     NB ↔ ZA<br>droga = DW295<br>predkosc max = 90 km/h<br>natężenie ruchu = 2/5<br>jakość drogi = 3/5<br>km = 23.1<br>czas = 24 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_616fd108516d9b0a188cc0af28bc5b57 = L.polyline(
+                [[51.798346, 15.23614], [51.707468500000004, 15.276900000000001], [51.616591, 15.31766]],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "darkred", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_616fd108516d9b0a188cc0af28bc5b57.bindTooltip(
+                `<div>
+                     NB ↔ ZA<br>droga = DK27 + DK12<br>predkosc max = 90 km/h<br>natężenie ruchu = 3/5<br>jakość drogi = 4/5<br>km = 33.1<br>czas = 31 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_7d9e1cb9eeeade108904969a9f688e70 = L.polyline(
+                [[51.798346, 15.23614], [51.741673, 15.44557], [51.745, 15.595]],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_7d9e1cb9eeeade108904969a9f688e70.bindTooltip(
+                `<div>
+                     NB ↔ KOZ<br>droga = DW290<br>predkosc max = 90 km/h<br>natężenie ruchu = 2/5<br>jakość drogi = 3/5<br>km = 31.4<br>czas = 32 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_078a9fcc238473babd63ca5cd502cd51 = L.polyline(
+                [[51.798346, 15.23614], [51.769723, 15.50182], [51.8011, 15.7075]],
+                {"bubblingMouseEvents": true, "color": "darkblue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "darkblue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_078a9fcc238473babd63ca5cd502cd51.bindTooltip(
+                `<div>
+                     NB ↔ NS<br>droga = DW290<br>predkosc max = 90 km/h<br>natężenie ruchu = 2/5<br>jakość drogi = 3/5<br>km = 39.9<br>czas = 44 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_7fafb5073195d913e9b2be6d824da6a9 = L.polyline(
+                [[51.798346, 15.23614], [51.799723, 15.471820000000001], [51.8011, 15.7075]],
+                {"bubblingMouseEvents": true, "color": "darkblue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "darkblue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_7fafb5073195d913e9b2be6d824da6a9.bindTooltip(
+                `<div>
+                     NB ↔ NS<br>droga = DK27 + S3<br>predkosc max = 120 km/h<br>natężenie ruchu = 4/5<br>jakość drogi = 4/5<br>km = 54.4<br>czas = 41 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_ecf0af4c75891b4ed19a0c896b6ab349 = L.circle(
+                [51.798346, 15.23614],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 480, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            circle_ecf0af4c75891b4ed19a0c896b6ab349.bindTooltip(
+                `<div>
+                     NB ↔ NB<br>droga = Lokalne rozwożenie paczek - Nowogród Bobrzański<br>predkosc max = 50 km/h<br>natężenie ruchu = 2/5<br>jakość drogi = 3/5<br>km lokalnie = 8<br>czas = 18 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_d5dd71612dc1757ea9c7a2e15b249668 = L.polyline(
+                [[51.636, 15.138], [51.5962955, 15.25783], [51.616591, 15.31766]],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_d5dd71612dc1757ea9c7a2e15b249668.bindTooltip(
+                `<div>
+                     ZR ↔ ZA<br>droga = DK12<br>predkosc max = 90 km/h<br>natężenie ruchu = 4/5<br>jakość drogi = 4/5<br>km = 15.1<br>czas = 16 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_752c85dc6da28c90b126b61aba988674 = L.polyline(
+                [[51.636, 15.138], [51.6262955, 15.22783], [51.616591, 15.31766]],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_752c85dc6da28c90b126b61aba988674.bindTooltip(
+                `<div>
+                     ZR ↔ ZA<br>droga = Obwodnica + DK12<br>predkosc max = 90 km/h<br>natężenie ruchu = 4/5<br>jakość drogi = 4/5<br>km = 18.3<br>czas = 20 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_538bcef3256b2692f8d939832b62535f = L.polyline(
+                [[51.636, 15.138], [51.5715, 15.368], [51.567, 15.538]],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_538bcef3256b2692f8d939832b62535f.bindTooltip(
+                `<div>
+                     ZR ↔ SZP<br>droga = DK12<br>predkosc max = 90 km/h<br>natężenie ruchu = 3/5<br>jakość drogi = 4/5<br>km = 32.2<br>czas = 32 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_83efea2a7afd94f6cf46d9fd1e3f2b4a = L.polyline(
+                [[51.636, 15.138], [51.6605, 15.3965], [51.745, 15.595]],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_83efea2a7afd94f6cf46d9fd1e3f2b4a.bindTooltip(
+                `<div>
+                     ZR ↔ KOZ<br>droga = DK12 + DW296<br>predkosc max = 90 km/h<br>natężenie ruchu = 3/5<br>jakość drogi = 3/5<br>km = 40.7<br>czas = 40 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_e6b50d0e4c8dfd54500327e0f98a8754 = L.polyline(
+                [[51.636, 15.138], [51.68855, 15.45275], [51.8011, 15.7075]],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_e6b50d0e4c8dfd54500327e0f98a8754.bindTooltip(
+                `<div>
+                     ZR ↔ NS<br>droga = DW296<br>predkosc max = 90 km/h<br>natężenie ruchu = 2/5<br>jakość drogi = 3/5<br>km = 52.4<br>czas = 55 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_a6ea621dbcba2a3714299243d2852bcb = L.circle(
+                [51.636, 15.138],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 780, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            circle_a6ea621dbcba2a3714299243d2852bcb.bindTooltip(
+                `<div>
+                     ZR ↔ ZR<br>droga = Lokalne rozwożenie paczek - Żary<br>predkosc max = 50 km/h<br>natężenie ruchu = 3/5<br>jakość drogi = 4/5<br>km lokalnie = 13<br>czas = 28 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_cc0f6cb8bb98e40d56bb534260d13257 = L.polyline(
+                [[51.616591, 15.31766], [51.5617955, 15.45783], [51.567, 15.538]],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_cc0f6cb8bb98e40d56bb534260d13257.bindTooltip(
+                `<div>
+                     ZA ↔ SZP<br>droga = DK12<br>predkosc max = 90 km/h<br>natężenie ruchu = 3/5<br>jakość drogi = 4/5<br>km = 17.6<br>czas = 17 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_4fa8b5b0c6cd87ac53b5779586da6e21 = L.polyline(
+                [[51.616591, 15.31766], [51.6507955, 15.48633], [51.745, 15.595]],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_4fa8b5b0c6cd87ac53b5779586da6e21.bindTooltip(
+                `<div>
+                     ZA ↔ KOZ<br>droga = DW296<br>predkosc max = 90 km/h<br>natężenie ruchu = 2/5<br>jakość drogi = 3/5<br>km = 26.1<br>czas = 25 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_ef5319f266bf36634f266740f6c6f7aa = L.polyline(
+                [[51.616591, 15.31766], [51.678845499999994, 15.54258], [51.8011, 15.7075]],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_ef5319f266bf36634f266740f6c6f7aa.bindTooltip(
+                `<div>
+                     ZA ↔ NS<br>droga = DW296<br>predkosc max = 90 km/h<br>natężenie ruchu = 2/5<br>jakość drogi = 3/5<br>km = 37.9<br>czas = 39 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_4362f690e2f809054cc13aa47a86cfbf = L.circle(
+                [51.616591, 15.31766],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 660, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            circle_4362f690e2f809054cc13aa47a86cfbf.bindTooltip(
+                `<div>
+                     ZA ↔ ZA<br>droga = Lokalne rozwożenie paczek - Żagań<br>predkosc max = 50 km/h<br>natężenie ruchu = 3/5<br>jakość drogi = 4/5<br>km lokalnie = 11<br>czas = 24 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_299540a85691b40ec6c6d8aa2197ada7 = L.polyline(
+                [[51.567, 15.538], [51.626, 15.5965], [51.745, 15.595]],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_299540a85691b40ec6c6d8aa2197ada7.bindTooltip(
+                `<div>
+                     SZP ↔ KOZ<br>droga = DW297<br>predkosc max = 90 km/h<br>natężenie ruchu = 2/5<br>jakość drogi = 3/5<br>km = 22.6<br>czas = 22 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_6f45e85bd93fb61ae4cf7f333e4cddd2 = L.polyline(
+                [[51.567, 15.538], [51.65405, 15.65275], [51.8011, 15.7075]],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_6f45e85bd93fb61ae4cf7f333e4cddd2.bindTooltip(
+                `<div>
+                     SZP ↔ NS<br>droga = DW297<br>predkosc max = 90 km/h<br>natężenie ruchu = 2/5<br>jakość drogi = 3/5<br>km = 34.3<br>czas = 36 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_3aa5328ae45e0ede4c9ba7c18497dd6c = L.circle(
+                [51.567, 15.538],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 540, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            circle_3aa5328ae45e0ede4c9ba7c18497dd6c.bindTooltip(
+                `<div>
+                     SZP ↔ SZP<br>droga = Lokalne rozwożenie paczek - Szprotawa<br>predkosc max = 50 km/h<br>natężenie ruchu = 2/5<br>jakość drogi = 3/5<br>km lokalnie = 9<br>czas = 20 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_6fb34caa9b6664940192c4a65b6bdb80 = L.polyline(
+                [[51.745, 15.595], [51.74305, 15.68125], [51.8011, 15.7075]],
+                {"bubblingMouseEvents": true, "color": "navy", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "navy", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            poly_line_6fb34caa9b6664940192c4a65b6bdb80.bindTooltip(
+                `<div>
+                     KOZ ↔ NS<br>droga = DW297<br>predkosc max = 90 km/h<br>natężenie ruchu = 3/5<br>jakość drogi = 3/5<br>km = 11.7<br>czas = 14 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_a2beb81e788fc2e0d413b1d5eae7f142 = L.circle(
+                [51.745, 15.595],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 420, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            circle_a2beb81e788fc2e0d413b1d5eae7f142.bindTooltip(
+                `<div>
+                     KOZ ↔ KOZ<br>droga = Lokalne rozwożenie paczek - Kożuchów<br>predkosc max = 50 km/h<br>natężenie ruchu = 2/5<br>jakość drogi = 3/5<br>km lokalnie = 7<br>czas = 17 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_a7884c253b7962a45aadc59d98657cae = L.circle(
+                [51.8011, 15.7075],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 840, "stroke": true, "weight": 4}
+            ).addTo(map_6e665903021c86f4469632b84cc98b5b);
+        
+    
+            circle_a7884c253b7962a45aadc59d98657cae.bindTooltip(
+                `<div>
+                     NS ↔ NS<br>droga = Lokalne rozwożenie paczek - Nowa Sól<br>predkosc max = 50 km/h<br>natężenie ruchu = 4/5<br>jakość drogi = 4/5<br>km lokalnie = 14<br>czas = 30 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>

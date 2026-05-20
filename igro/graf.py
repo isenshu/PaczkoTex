@@ -21,6 +21,7 @@ def buildGraph():
             km=edge["km"],
             droga=edge["droga"],
             predkoscMax=edge["predkoscMax"],
+            predkoscSrednia=edge["predkoscSrednia"],
             natezenieRuchu=edge["natezenieRuchu"],
             jakoscDrogi=edge["jakoscDrogi"]
         )
