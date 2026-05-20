@@ -21,22 +21,25 @@ LISTA_MIAST = list(MIASTA.keys())
 WAGI_MIAST = [MIASTA[m]['populacja'] for m in LISTA_MIAST]
 CALKOWITA_POPULACJA = sum(WAGI_MIAST)
 
-# --- LOGIKA ROZKŁADU WAGI (GAMMA) ---
-def generuj_rozklad_wagi(alpha, beta, max_waga=25):
+# --- LOGIKA ROZKŁADU WAGI (GAMMA DLA FLOAT) ---
+# Tworzymy listę możliwych wag: od 0.1 do 15.0 z krokiem 0.1
+MOZLIWE_WAGI_KG = [round(x * 0.1, 1) for x in range(1, 101)]
+
+def generuj_rozklad_wagi(alpha, beta, mozliwe_wagi):
     wagi_prawdopodobienstwa = []
-    for x in range(1, max_waga + 1):
+    for x in mozliwe_wagi:
+        # Obliczanie gęstości prawdopodobieństwa dla konkretnej wagi (x)
         prawdopodobienstwo = (x ** (alpha - 1)) * math.exp(-beta * x)
         wagi_prawdopodobienstwa.append(prawdopodobienstwo)
     
     suma = sum(wagi_prawdopodobienstwa)
+    # Normalizacja, aby suma prawdopodobieństw wynosiła 1.0
     return [p / suma for p in wagi_prawdopodobienstwa]
 
 # Generowanie wag dla poszczególnych gabarytów przed pętlą
-ROZKLAD_A = generuj_rozklad_wagi(alpha=1.5, beta=1.2)
-ROZKLAD_B = generuj_rozklad_wagi(alpha=3.0, beta=0.6)
-ROZKLAD_C = generuj_rozklad_wagi(alpha=5.0, beta=0.4)
-
-MOZLIWE_WAGI_KG = list(range(1, 26))
+ROZKLAD_A = generuj_rozklad_wagi(alpha=1.5, beta=1.2, mozliwe_wagi=MOZLIWE_WAGI_KG)
+ROZKLAD_B = generuj_rozklad_wagi(alpha=3.0, beta=0.6, mozliwe_wagi=MOZLIWE_WAGI_KG)
+ROZKLAD_C = generuj_rozklad_wagi(alpha=5.0, beta=0.4, mozliwe_wagi=MOZLIWE_WAGI_KG)
 
 # Zaktualizowane gabaryty: uwzględnione min/max wymiary oraz wagi Gamma
 GABARYTY_INFO = {
@@ -81,7 +84,7 @@ def generuj_paczki_na_dzien(data_dostawy_str, liczba_paczek):
         
         g_info = GABARYTY_INFO[gabaryt]
         
-        # Losowanie wagi z uwzględnieniem rozkładu przypisanego do danego gabarytu
+        # Losowanie wagi z nowej, bardziej precyzyjnej listy floatów
         wylosowana_waga = random.choices(MOZLIWE_WAGI_KG, weights=g_info['wagi_kg'], k=1)[0]
         
         paczki_dnia.append({
