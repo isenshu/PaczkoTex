@@ -1,0 +1,350 @@
+import math
+import random
+import numpy as np
+
+
+# =====================================================================
+# 1. FUNKCJE I MODELE FIZYCZNE / RUCHU / ŁADUNKU
+# =====================================================================
+
+def generuj_wage_ladunku_probabilistycznie(ilosc_paczek):
+    """
+    Generuje wagę całkowitą na podstawie struktury prawdopodobieństwa użytkownika:
+    - 50% lekkie (0.1 - 3.0 kg)
+    - 35% średnie (3.01 - 8.0 kg)
+    - 15% ciężkie (8.01 - 15.0 kg)
+    """
+    waga_suma = 0.0
+    for _ in range(ilosc_paczek):
+        los = random.random()
+        if los <= 0.50:
+            # Lekka
+            waga_suma += random.uniform(0.1, 3.0)
+        elif los <= 0.85:
+            # Średnia
+            waga_suma += random.uniform(3.01, 8.0)
+        else:
+            # Ciężka
+            waga_suma += random.uniform(8.01, 15.0)
+    return round(waga_suma, 2)
+
+
+def oblicz_parametry_odcinka_głównego(dystans_km, predkosc_max_kmh, natezenie_ruchu_1_5, jakosc_drogi_1_5,
+                                      waga_calkowita_kg):
+    """Fizyczny model spalania i czasu dla tras między miastami."""
+    natezenie_norm = (natezenie_ruchu_1_5 - 1) / 4.0
+    jakosc_norm = (jakosc_drogi_1_5 - 1) / 4.0
+
+    if predkosc_max_kmh >= 120:
+        v_pusta = 95.0
+    elif predkosc_max_kmh >= 90:
+        v_pusta = 65.0
+    else:
+        v_pusta = 35.0
+
+    predkosc_realna_kmh = v_pusta * (1.0 - 0.6 * natezenie_norm)
+    if predkosc_realna_kmh < 5.0:
+        predkosc_realna_kmh = 5.0
+
+    czas_minuty = (dystans_km / predkosc_realna_kmh) * 60.0
+
+    G = 9.81
+    FR = 0.015
+    RHO = 1.2
+    CD = 0.33
+    A = 3.65
+
+    SPRAWNOSC_SILNIKA = 0.31
+    ENERGETYCZNOSC_ON = 36.9
+
+    v = predkosc_realna_kmh / 3.6
+    t = czas_minuty * 60.0
+
+    f_toczenia = waga_calkowita_kg * G * FR
+    f_powietrza = 0.5 * RHO * CD * A * (v ** 2)
+    f_total = f_toczenia + f_powietrza
+
+    moc_wat = f_total * v
+    energia_dzule = moc_wat * t
+    energia_mj = energia_dzule / 1_000_000.0
+
+    spalanie_bazowe = energia_mj / (SPRAWNOSC_SILNIKA * ENERGETYCZNOSC_ON)
+
+    k_ruchu = 1.0 + 1.4 * (natezenie_norm ** 2)
+    k_drogi = 1.0 + 0.25 * jakosc_norm
+
+    spalanie_koncowe = spalanie_bazowe * k_ruchu * k_drogi
+    spalanie_100km = (spalanie_koncowe / dystans_km) * 100.0 if dystans_km > 0 else 0.0
+
+    return {
+        'spalanie_litry': round(spalanie_koncowe, 3),
+        'spalanie_na_100km': round(spalanie_100km, 2),
+        'czas_minuty': round(czas_minuty, 2),
+        'predkosc_srednia_kmh': round(predkosc_realna_kmh, 1)
+    }
+
+
+def oblicz_natezenie_gaussa_8_16():
+    """Próbkowanie dobowego wykresu ruchu dla godzin pracy kuriera 8-16."""
+    x = np.linspace(8, 16, 1000)
+    morning_peak = 100 * np.exp(-(x - 8) ** 2 / (2 * 1.2 ** 2))
+    afternoon_peak = 120 * np.exp(-(x - 16.5) ** 2 / (2 * 1.8 ** 2))
+    base_traffic = 15 + 5 * np.sin(x * np.pi / 12)
+    y = morning_peak + afternoon_peak + base_traffic
+    srednia = np.mean(y)
+    return 3 if srednia > 60 else 2
+
+
+# =====================================================================
+# 2. GŁÓWNY MENEDŻER SYSTEMU LOGISTYCZNEGO
+# =====================================================================
+
+class PelnySystemLogistyczny:
+    def __init__(self, points, edges, dane_miast_miejskie):
+        self.points = points
+        self.edges = edges
+        self.dane_miast_miejskie = dane_miast_miejskie
+
+        # Parametry stałe pojazdu Renault Master L2H2
+        self.WAGA_PUSTEGO_KG = 2431.0
+        self.MAX_LADOWNOSC_KG = 1069.0
+        self.SPALANIE_WLTP_MIX = 7.5
+        self.CZAS_ROZLADUNKU_1_PACZKI_SEC = 15
+
+    def _pobierz_warianty_drog(self, punkt_a, punkt_b, waga_calkowita_kg):
+        warianty = []
+        for edge in self.edges:
+            if edge['from'] == edge['to']:
+                continue
+            if (edge['from'] == punkt_a and edge['to'] == punkt_b) or (
+                    edge['from'] == punkt_b and edge['to'] == punkt_a):
+                res = oblicz_parametry_odcinka_głównego(
+                    dystans_km=edge['km'],
+                    predkosc_max_kmh=edge['predkoscMax'],
+                    natezenie_ruchu_1_5=edge['natezenieRuchu'],
+                    jakosc_drogi_1_5=edge['jakoscDrogi'],
+                    waga_calkowita_kg=waga_calkowita_kg
+                )
+                warianty.append({
+                    'droga': edge['droga'],
+                    'dystans_km': edge['km'],
+                    'czas_minuty': res['czas_minuty'],
+                    'spalanie_litry': res['spalanie_litry'],
+                    'spalanie_na_100km': res['spalanie_na_100km'],
+                    'predkosc_realna': res['predkosc_srednia_kmh']
+                })
+        return warianty
+
+    def symuluj_pelna_trase_kuriera(self, cel_kod, ilosc_paczek, kryterium_drogi='czas'):
+        if cel_kod not in self.dane_miast_miejskie:
+            return {"error": f"Lokalizacja docelowa '{cel_kod}' nie istnieje w bazie miejskiej."}
+
+        miasto_miejskie = self.dane_miast_miejskie[cel_kod]
+        przeładowanie = False
+
+        # 1. Losowanie wagi na podstawie profilu probabilistycznego
+        waga_paczek_wylosowana = generuj_wage_ladunku_probabilistycznie(ilosc_paczek)
+
+        # 2. Bezpiecznik ładowności (max 1069 kg)
+        realna_waga_paczek_kg = waga_paczek_wylosowana
+        if waga_paczek_wylosowana > self.MAX_LADOWNOSC_KG:
+            realna_waga_paczek_kg = self.MAX_LADOWNOSC_KG
+            przeładowanie = True
+
+        waga_calkowita_tam_kg = self.WAGA_PUSTEGO_KG + realna_waga_paczek_kg
+        waga_calkowita_powrot_kg = self.WAGA_PUSTEGO_KG
+
+        # -----------------------------------------------------------------
+        # FAZA I: TRASA MIĘDZYMIASTOWA (DO MIASTA DOCELOWEGO)
+        # -----------------------------------------------------------------
+        opcje_tam = self._pobierz_warianty_drog('ZG', cel_kod, waga_calkowita_tam_kg)
+        if not opcje_tam:
+            return {"error": f"Brak bezpośredniego połączenia drogowego z {cel_kod}"}
+
+        if kryterium_drogi == 'czas':
+            droga_tam = min(opcje_tam, key=lambda x: x['czas_minuty']).copy()
+        else:
+            droga_tam = min(opcje_tam, key=lambda x: x['spalanie_litry']).copy()
+
+        odchylenie_tam = round(random.uniform(-5.0, 5.0), 2)
+        droga_tam['czas_minuty'] = max(1.0, round(droga_tam['czas_minuty'] + odchylenie_tam, 2))
+
+        # -----------------------------------------------------------------
+        # FAZA II: OPERACJE W MIEŚCIE DOCELOWYM (ROZWOŻENIE)
+        # -----------------------------------------------------------------
+        paczkomaty_miejskie_ilosc = miasto_miejskie['paczkomaty']
+        odleglosc_miedzy_paczkomatami = miasto_miejskie['odleglosc_kod_km']
+
+        dystans_miejski_km = paczkomaty_miejskie_ilosc * odleglosc_miedzy_paczkomatami
+        paczek_na_paczkomat = round(ilosc_paczek / paczkomaty_miejskie_ilosc, 1)
+
+        natezenie_miejskie_skala = oblicz_natezenie_gaussa_8_16()
+        v_miejska_realna = 40.0 * (1.0 - 0.05 * (natezenie_miejskie_skala - 2))
+
+        # Czas jazdy miejskiej: błąd +- 2 minuty
+        czas_jazdy_miejskiej_bazowy = (dystans_miejski_km / v_miejska_realna) * 60.0
+        odchylenie_jazdy_miejskiej = round(random.uniform(-2.0, 2.0), 2)
+        finalny_czas_jazdy_miejskiej = max(2.0, round(czas_jazdy_miejskiej_bazowy + odchylenie_jazdy_miejskiej, 2))
+
+        # Czas rozładunku paczek: błąd +- 3 minuty
+        czas_rozladunku_bazowy = (ilosc_paczek * self.CZAS_ROZLADUNKU_1_PACZKI_SEC) / 60.0
+        odchylenie_rozladunku = round(random.uniform(-3.0, 3.0), 2)
+        finalny_czas_rozladunku = max(0.0, round(czas_rozladunku_bazowy + odchylenie_rozladunku, 2))
+
+        calosc_w_miescie_min = finalny_czas_jazdy_miejskiej + finalny_czas_rozladunku
+
+        # Spalanie w mieście
+        modyfikator_miejski = 1.30 + (0.05 * natezenie_miejskie_skala)
+        modyfikator_masy = 1.0 + (realna_waga_paczek_kg / 500.0) * 0.05
+        spalanie_miejskie_100km = self.SPALANIE_WLTP_MIX * modyfikator_miejski * modyfikator_masy
+        paliwo_miejskie_litry = (spalanie_miejskie_100km / 100.0) * dystans_miejski_km
+
+        # -----------------------------------------------------------------
+        # FAZA III: TRASA POWROTNA (DO BAZY W ZIELONEJ GÓRZE)
+        # -----------------------------------------------------------------
+        opcje_powrot = self._pobierz_warianty_drog(cel_kod, 'ZG', waga_calkowita_powrot_kg)
+        if kryterium_drogi == 'czas':
+            droga_powrot = min(opcje_powrot, key=lambda x: x['czas_minuty']).copy()
+        else:
+            droga_powrot = min(opcje_powrot, key=lambda x: x['spalanie_litry']).copy()
+
+        odchylenie_powrot = round(random.uniform(-5.0, 5.0), 2)
+        droga_powrot['czas_minuty'] = max(1.0, round(droga_powrot['czas_minuty'] + odchylenie_powrot, 2))
+
+        # -----------------------------------------------------------------
+        # PODSUMOWANIE
+        # -----------------------------------------------------------------
+        laczny_dystans_cala_trasa = droga_tam['dystans_km'] + dystans_miejski_km + droga_powrot['dystans_km']
+        laczny_czas_cala_trasa = droga_tam['czas_minuty'] + calosc_w_miescie_min + droga_powrot['czas_minuty']
+        laczne_paliwo_cala_trasa = droga_tam['spalanie_litry'] + paliwo_miejskie_litry + droga_powrot['spalanie_litry']
+
+        return {
+            'meta': miasto_miejskie['name'],
+            'przeladowanie_alert': przeładowanie,
+            'waga_wygenerowana_kg': waga_paczek_wylosowana,
+            'waga_ladunku_kg': realna_waga_paczek_kg,
+            'ilosc_paczek_suma': ilosc_paczek,
+            'rozmieszczenie': {
+                'paczkomaty_odwiedzone': paczkomaty_miejskie_ilosc,
+                'srednio_paczek_na_pkt': paczek_na_paczkomat
+            },
+            'odcinek_tam': {
+                'droga': droga_tam['droga'],
+                'dystans_km': droga_tam['dystans_km'],
+                'czas_min': droga_tam['czas_minuty'],
+                'odchył_min': odchylenie_tam,
+                'paliwo_l': droga_tam['spalanie_litry']
+            },
+            'odcinek_miejski': {
+                'dystans_w_miescie_km': round(dystans_miejski_km, 2),
+                'czysta_jazda_min': finalny_czas_jazdy_miejskiej,
+                'odchył_jazdy_min': odchylenie_jazdy_miejskiej,
+                'rozladunek_stop_min': finalny_czas_rozladunku,
+                'odchył_rozladunku_min': odchylenie_rozladunku,
+                'razem_w_miescie_min': round(calosc_w_miescie_min, 2),
+                'paliwo_miejskie_l': round(paliwo_miejskie_litry, 3)
+            },
+            'odcinek_powrot': {
+                'droga': droga_powrot['droga'],
+                'dystans_km': droga_powrot['dystans_km'],
+                'czas_min': droga_powrot['czas_minuty'],
+                'odchył_min': odchylenie_powrot,
+                'paliwo_l': droga_powrot['spalanie_litry']
+            },
+            'globalne_podsumowanie': {
+                'suma_dystans_km': round(laczny_dystans_cala_trasa, 2),
+                'suma_czas_wszystko_min': round(laczny_czas_praca := laczny_czas_cala_trasa, 2),
+                'suma_czas_wszystko_h': round(laczny_czas_praca / 60.0, 2),
+                'suma_paliwo_litry': round(laczne_paliwo_cala_trasa, 3),
+                'srednie_spalanie_globalne_100km': round((laczne_paliwo_cala_trasa / laczny_dystans_cala_trasa) * 100,
+                                                         2)
+            }
+        }
+
+
+# =====================================================================
+# 3. STATYCZNE BAZY DANYCH WEJŚCIOWYCH
+# =====================================================================
+
+points = [
+    {"id": "ZG", "name": "Zielona Góra", "lat": 51.9354800, "lon": 15.5064300},
+    {"id": "ZR", "name": "Żary", "lat": 51.636, "lon": 15.138},
+    {"id": "ZA", "name": "Żagań", "lat": 51.616591, "lon": 15.317660},
+    {"id": "NS", "name": "Nowa Sól", "lat": 51.8011, "lon": 15.7075}
+]
+
+edges = [
+    {"from": "ZG", "to": "ZR", "km": 44.9, "droga": "DK27", "predkoscMax": 90, "natezenieRuchu": 3, "jakoscDrogi": 4},
+    {"from": "ZG", "to": "ZA", "km": 46.2, "droga": "DK27 + DW295", "predkoscMax": 90, "natezenieRuchu": 3,
+     "jakoscDrogi": 3},
+    {"from": "ZG", "to": "NS", "km": 26.6, "droga": "S3", "predkoscMax": 120, "natezenieRuchu": 5, "jakoscDrogi": 5}
+]
+
+dane_miast_miejskie = {
+    "ZR": {"name": "Żary", "paczkomaty": 15, "odleglosc_kod_km": 2.5},
+    "ZA": {"name": "Żagań", "paczkomaty": 10, "odleglosc_kod_km": 4.0},
+    "NS": {"name": "Nowa Sól", "paczkomaty": 20, "odleglosc_kod_km": 1.0}
+}
+
+# =====================================================================
+# 4. URUCHOMIENIE JEDNEJ SYMULACJI (Z DUŻĄ LICZBĄ PACZEK)
+# =====================================================================
+
+system = PelnySystemLogistyczny(points, edges, dane_miast_miejskie)
+
+DOCELOWE_MIASTO = "ZR"  # Żary
+ILOSC_PACZEK = 300  # Duża partia kurierska rozdzielana wagowo
+
+r = system.symuluj_pelna_trase_kuriera(cel_kod=DOCELOWE_MIASTO, ilosc_paczek=ILOSC_PACZEK)
+
+# =====================================================================
+# 5. WYDRUK PRECYZYJNEGO RAPORTU Z DYNAMICZNĄ STRUKTURĄ WAGOWĄ
+# =====================================================================
+if "error" in r:
+    print(r["error"])
+else:
+    print(f"==========================================================================")
+    print(f"      ZINTEGROWANY SYSTEM LOGISTYCZNY - PROFIL WAGOWY (0.5 / 0.35 / 0.15)")
+    print(f"      Baza startowa: ZIELONA GÓRA | Cel dystrybucji: {r['meta'].upper()}")
+    print(f"==========================================================================")
+    print(f" DYNAMICZNY PROFIL ŁADUNKU:")
+    print(f"  * Łączna ilość zamówionych paczek : {r['ilosc_paczek_suma']} szt.")
+    print(f"  * Wyliczona waga na bazie profilu : {r['waga_wygenerowana_kg']} kg")
+    print(f"  * Realna waga zabrana na pakę     : {r['waga_ladunku_kg']} kg")
+    if r['przeladowanie_alert']:
+        print(f"  [ALARM] Wygenerowana waga przekracza ładowność! Ścięto do twardego limitu 1069 kg.")
+
+    print(f"--------------------------------------------------------------------------")
+    print(f" ETAP 1: TRASA DO MIASTA DOCELOWEGO (ZG -> {DOCELOWE_MIASTO}):")
+    print(f"  * Droga dojazdowa   : {r['odcinek_tam']['droga']} | Dystans: {r['odcinek_tam']['dystans_km']} km")
+    print(
+        f"  * Czas przejazdu    : {r['odcinek_tam']['czas_min']} min (odchył drogowy: {r['odcinek_tam']['odchył_min']} min)")
+    print(f"  * Zużyte paliwo     : {r['odcinek_tam']['paliwo_l']} L")
+
+    print(f"--------------------------------------------------------------------------")
+    print(f" ETAP 2: CAŁOŚĆ W MIEŚCIE (Z ROZDZIELENIEM BŁĘDÓW LOSOWYCH):")
+    print(
+        f"  * Czysty dystans miejski ({r['rozmieszczenie']['paczkomaty_odwiedzone']} pkt.) : {r['odcinek_miejski']['dystans_w_miescie_km']} km")
+    print(
+        f"  * Czas jazdy samochodowej (loose +-2m)   : {r['odcinek_miejski']['czysta_jazda_min']} min (w tym odchył: {r['odcinek_miejski']['odchył_jazdy_min']} min)")
+    print(
+        f"  * Czas stania pod maszyną (loose +-3m)   : {r['odcinek_miejski']['rozladunek_stop_min']} min (w tym odchył: {r['odcinek_miejski']['odchył_rozladunku_min']} min)")
+    print(f"  > ŁĄCZNY CZAS SPĘDZONY W MIEŚCIE         : {r['odcinek_miejski']['razem_w_miescie_min']} min")
+    print(f"  * Zużyte paliwo w cyklu miejskim         : {r['odcinek_miejski']['paliwo_miejskie_l']} L")
+
+    print(f"--------------------------------------------------------------------------")
+    print(f" ETAP 3: POWRÓT DO BAZY ({DOCELOWE_MIASTO} -> ZG):")
+    print(f"  * Droga powrotna    : {r['odcinek_powrot']['droga']} | Dystans: {r['odcinek_powrot']['dystans_km']} km")
+    print(
+        f"  * Czas przejazdu    : {r['odcinek_powrot']['czas_min']} min (odchył drogowy: {r['odcinek_powrot']['odchył_min']} min)")
+    print(f"  * Zużyte paliwo     : {r['odcinek_powrot']['paliwo_l']} L")
+
+    print(f"--------------------------------------------------------------------------")
+    print(f" GLOBALNE PODSUMOWANIE CAŁKOWITEJ TRASY KIEROWCY:")
+    p = r['globalne_podsumowanie']
+    print(f"  >> POKONANY DYSTANS CAŁKOWITY     : {p['suma_dystans_km']} km")
+    print(f"  >> ZSUMOWANY CZAS PRACY (ŁĄCZNIE) : {p['suma_czas_wszystko_min']} min ({p['suma_czas_wszystko_h']} h)")
+    print(f"  >> CAŁKOWITE ZUŻYCIE PALIWA       : {p['suma_paliwo_litry']} L")
+    print(
+        f"  >> Średnie spalanie na całej trasie: {p['sredmie_spalanie_globalne_100km'] if 'sredmie_spalanie_globalne_100km' in p else p['srednie_spalanie_globalne_100km']} l/100km")
+    print(f"==========================================================================")
