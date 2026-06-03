@@ -1,0 +1,433 @@
+import csv
+import math
+import os
+import random
+from collections import defaultdict
+import tkinter as tk
+from tkinter import filedialog
+
+# --- KONFIGURACJA LIMITÓW POJAZDU & OPERACJI ---
+LIMIT_WAGI_KG = 1069.0
+LIMIT_OBJETOSCI_CM3 = 8_100_000.0  # 75% z 10.8 m^3
+WAGA_PUSTEGO_KG = 2431.0
+
+MAKS_CZAS_ZMIANY_MIN = 480.0  # Sztywne 8 godzin pracy kuriera
+CZAS_PRZERWY_MIN = 20.0
+CZAS_ZJAZDU_MID_MIN = 10.0  # Zjazd na rampę TYLKO w trakcie dnia
+CZAS_ZALADUNKU_MID_MIN = 20.0  # Załadunek TYLKO w trakcie dnia
+CZAS_ZDANIA_PAPIEROW_MIN = 5.0  # Końcowe zdanie auta i dokumentów na koniec zmiany
+CENA_PALIWA_PLN_L = 6.50
+
+MAPOWANIE_MIAST = {
+    "Zielona Góra": "ZG", "Zielona Gora": "ZG",
+    "Nowogród Bobrzański": "NB", "Nowogrod Bobrzanski": "NB",
+    "Żary": "ZR", "Zary": "ZR",
+    "Żagań": "ZA", "Zagan": "ZA",
+    "Szprotawa": "SZP", "Kożuchów": "KOZ", "Kozuchow": "KOZ", "Nowa Sól": "NS", "Nowa Sol": "NS"
+}
+
+dane_miast_miejskie = {
+    "ZG": {"name": "Zielona Gora", "paczkomaty_w_nawiasie": 40, "odleglosc_kod_km": 3.5},
+    "NB": {"name": "Nowogrod Bobrzanski", "paczkomaty_w_nawiasie": 5, "odleglosc_kod_km": 3.0},
+    "ZR": {"name": "Zary", "paczkomaty_w_nawiasie": 15, "odleglosc_kod_km": 2.5},
+    "ZA": {"name": "Zagan", "paczkomaty_w_nawiasie": 10, "odleglosc_kod_km": 4.0},
+    "SZP": {"name": "Szprotawa", "paczkomaty_w_nawiasie": 4, "odleglosc_kod_km": 2.5},
+    "KOZ": {"name": "Kozuchow", "paczkomaty_w_nawiasie": 2, "odleglosc_kod_km": 3.0},
+    "NS": {"name": "Nowa Sol", "paczkomaty_w_nawiasie": 20, "odleglosc_kod_km": 1.0}
+}
+
+edges = [
+    {"from": "ZG", "to": "ZR", "km": 44.90, "droga": "DK27", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.70},
+    {"from": "ZG", "to": "ZR", "km": 48.70, "droga": "DK32 + DK27", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.70},
+    {"from": "ZG", "to": "ZA", "km": 46.20, "droga": "DK27 + DW295", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.70},
+    {"from": "ZG", "to": "ZA", "km": 58.20, "droga": "S3 + DW296", "predkoscMax": 120, "predkoscSrednia": 87,
+     "natezenieRuchu": 0.80},
+    {"from": "ZG", "to": "SZP", "km": 53.60, "droga": "S3 + DW297", "predkoscMax": 120, "predkoscSrednia": 87,
+     "natezenieRuchu": 0.80},
+    {"from": "ZG", "to": "SZP", "km": 58.10, "droga": "S3", "predkoscMax": 120, "predkoscSrednia": 87,
+     "natezenieRuchu": 0.80},
+    {"from": "ZG", "to": "SZP", "km": 51.60, "droga": "DW283 + DW297", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.60},
+    {"from": "ZG", "to": "KOZ", "km": 32.00, "droga": "S3 + DW297", "predkoscMax": 120, "predkoscSrednia": 87,
+     "natezenieRuchu": 0.80},
+    {"from": "ZG", "to": "KOZ", "km": 36.10, "droga": "S3", "predkoscMax": 120, "predkoscSrednia": 87,
+     "natezenieRuchu": 0.80},
+    {"from": "ZG", "to": "KOZ", "km": 28.20, "droga": "DW283", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.60},
+    {"from": "ZG", "to": "NB", "km": 25.50, "droga": "DW282 + DK27", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.70},
+    {"from": "ZG", "to": "NS", "km": 26.60, "droga": "S3", "predkoscMax": 120, "predkoscSrednia": 87,
+     "natezenieRuchu": 0.90},
+    {"from": "ZG", "to": "NS", "km": 23.20, "droga": "S3 + Zielonogorska", "predkoscMax": 120, "predkoscSrednia": 87,
+     "natezenieRuchu": 0.90},
+    {"from": "NB", "to": "SZP", "km": 40.10, "droga": "DW295 + DK12", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.70},
+    {"from": "NB", "to": "ZR", "km": 19.90, "droga": "DK27", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.70},
+    {"from": "NB", "to": "ZR", "km": 21.60, "droga": "DK27 + Obwodnica", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.70},
+    {"from": "NB", "to": "ZA", "km": 23.10, "droga": "DW295", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.60},
+    {"from": "NB", "to": "ZA", "km": 33.10, "droga": "DK27 + DK12", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.70},
+    {"from": "NB", "to": "KOZ", "km": 31.40, "droga": "DW290", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.60},
+    {"from": "NB", "to": "NS", "km": 39.90, "droga": "DW290", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.60},
+    {"from": "NB", "to": "NS", "km": 54.40, "droga": "DK27 + S3", "predkoscMax": 120, "predkoscSrednia": 87,
+     "natezenieRuchu": 0.80},
+    {"from": "ZR", "to": "ZA", "km": 15.10, "droga": "DK12", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.80},
+    {"from": "ZR", "to": "ZA", "km": 18.30, "droga": "Obwodnica + DK12", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.80},
+    {"from": "ZR", "to": "SZP", "km": 32.20, "droga": "DK12", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.70},
+    {"from": "ZR", "to": "KOZ", "km": 40.70, "droga": "DK12 + DW296", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.70},
+    {"from": "ZR", "to": "NS", "km": 52.40, "droga": "DW296", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.60},
+    {"from": "ZA", "to": "SZP", "km": 17.60, "droga": "DK12", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.70},
+    {"from": "ZA", "to": "KOZ", "km": 26.10, "droga": "DW296", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.60},
+    {"from": "ZA", "to": "NS", "km": 37.90, "droga": "DW296", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.60},
+    {"from": "SZP", "to": "KOZ", "km": 22.60, "droga": "DW297", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.60},
+    {"from": "SZP", "to": "NS", "km": 34.30, "droga": "DW297", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.60},
+    {"from": "KOZ", "to": "NS", "km": 11.70, "droga": "DW297", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.70}
+]
+
+
+# =====================================================================
+# FUNKCJE METRYCZNE I POMOCNICZE
+# =====================================================================
+
+def pobierz_krawedz(punkt_a, punkt_b):
+    dopasowania = []
+    for e in edges:
+        if (e["from"] == punkt_a and e["to"] == punkt_b) or (e["from"] == punkt_b and e["to"] == punkt_a):
+            dopasowania.append(e)
+    if not dopasowania: return None
+    return max(dopasowania, key=lambda x: x["predkoscSrednia"])
+
+
+def oblicz_czas_przejazdu(edge):
+    if not edge: return 0.0
+    efektywna_predkosc = edge["predkoscSrednia"] * (1.0 - 0.35 * edge["natezenieRuchu"])
+    return max(5.0, (edge["km"] / max(15.0, efektywna_predkosc)) * 60.0)
+
+
+def oblicz_spalanie_trasa(edge, waga_ladunku_kg):
+    if not edge: return 0.0, 0.0
+    if edge["predkoscMax"] >= 120:
+        spalanie_pusty = 10.0;
+        spalanie_pelny = 13.0
+    elif edge["predkoscMax"] >= 90:
+        spalanie_pusty = 7.7;
+        spalanie_pelny = 9.8
+    else:
+        spalanie_pusty = 8.5;
+        spalanie_pelny = 11.0
+
+    stopien_zaladunku = min(1.0, waga_ladunku_kg / LIMIT_WAGI_KG)
+    spalanie_baza = spalanie_pusty + (spalanie_pelny - spalanie_pusty) * stopien_zaladunku
+    spalanie_final_100km = spalanie_baza * (1.0 + 0.15 * edge["natezenieRuchu"])
+    return (spalanie_final_100km / 100.0) * edge["km"], spalanie_final_100km
+
+
+def oblicz_operacje_miejskie(kod_miasta, unikalne_paczkomaty, liczba_paczek, waga_ladunku_kg):
+    info = dane_miast_miejskie[kod_miasta]
+    dystans_km = unikalne_paczkomaty * info["odleglosc_kod_km"]
+    v_miejska = 36.0 * (1.0 - 0.3 * random.uniform(0.4, 0.85))
+    czas_jazdy_min = (dystans_km / v_miejska) * 60.0
+    czas_rozladunku_min = (liczba_paczek * 20) / 60.0
+    return (czas_jazdy_min + czas_rozladunku_min), ((9.0 + (12.0 - 9.0) * min(1.0,
+                                                                              waga_ladunku_kg / LIMIT_WAGI_KG)) / 100.0) * dystans_km, dystans_km
+
+
+def formatuj_godzine(minuty_od_g_8):
+    lacznie_minuty = 8 * 60 + int(minuty_od_g_8)
+    return f"{(lacznie_minuty // 60) % 24:02d}:{lacznie_minuty % 60:02d}"
+
+
+def pobierz_płaską_liste_punktów(zadania_miast):
+    miasta = [m for m in zadania_miast.keys() if len(zadania_miast[m]) > 0]
+    miasta.sort(key=lambda x: pobierz_krawedz("ZG", x)["km"] if pobierz_krawedz("ZG", x) else 0)
+    return miasta
+
+
+# =====================================================================
+# SYSTEM MONITOROWANIA KURIERÓW (ZGODNY Z REALIAMI BAZY)
+# =====================================================================
+
+def buduj_skonsolidowany_harmonogram(zadania_miast):
+    kurierzy = []
+
+    while any(len(zadania_miast[m]) > 0 for m in zadania_miast):
+        id_kuriera = len(kurierzy) + 1
+
+        # Start dokładnie o 08:00
+        obecny_czas_min = 0.0
+        paliwo_suma_l = 0.0
+        dystans_suma_km = 0.0
+        logi = []
+        przerwa_odbyta = False
+
+        logi.append(
+            f"[{formatuj_godzine(obecny_czas_min)}] Przybycie kuriera do bazy. Pobranie gotowego, załadowanego pojazdu (5 min).")
+        obecny_czas_min += 5.0
+
+        aktualna_waga_busa = 0.0
+        aktualna_obj_busa = 0.0
+        paczki_w_pojeździe = 0
+
+        stat_paczki_lacznie = 0
+        stat_waga_lacznie = 0.0
+
+        obecna_pozycja = "ZG"
+        kierowca_pracuje = True
+
+        while kierowca_pracuje:
+            sekwencja_miast = pobierz_płaską_liste_punktów(zadania_miast)
+            if not sekwencja_miast:
+                break
+
+            znaleziono_zadanie = False
+
+            for kod_miasta in sekwencja_miast:
+                krawedz_dojazd = pobierz_krawedz(obecna_pozycja, kod_miasta) if obecna_pozycja != kod_miasta else None
+                czas_dojazdu = oblicz_czas_przejazdu(krawedz_dojazd) if krawedz_dojazd else 0.0
+
+                paczki_do_wyjęcia = []
+                waga_punktu = 0.0
+                obj_punktu = 0.0
+                paczkomaty_punktu = []
+
+                for p_id, p_lista in list(zadania_miast[kod_miasta].items()):
+                    w = sum(float(p['waga_kg']) for p in p_lista)
+                    o = sum(
+                        float(p['wysokosc_cm']) * float(p['szerokosc_cm']) * float(p['dlugosc_cm']) for p in p_lista)
+
+                    if (aktualna_waga_busa + waga_punktu + w <= LIMIT_WAGI_KG) and \
+                            (aktualna_obj_busa + obj_punktu + o <= LIMIT_OBJETOSCI_CM3):
+                        paczki_do_wyjęcia.extend(p_lista)
+                        waga_punktu += w
+                        obj_punktu += o
+                        paczkomaty_punktu.append(p_id)
+
+                # --- POWRÓT REJSOWY NA BAZĘ W TRAKCIE DNIA (KURIER WRACA PO DRUGĄ TURĘ) ---
+                if not paczki_do_wyjęcia:
+                    if obecna_pozycja != "ZG":
+                        krawedz_powrot = pobierz_krawedz(obecna_pozycja, "ZG")
+                        czas_p = oblicz_czas_przejazdu(krawedz_powrot)
+
+                        # Czy starczy czasu na powrót liniowy + zjazd techniczny 10 min + załadunek dnia 20 min?
+                        if obecny_czas_min + czas_p + CZAS_ZJAZDU_MID_MIN + CZAS_ZALADUNKU_MID_MIN <= MAKS_CZAS_ZMIANY_MIN:
+                            start_powrotu = obecny_czas_min
+                            obecny_czas_min += czas_p
+                            logi.append(
+                                f"[{formatuj_godzine(start_powrotu)} - {formatuj_godzine(obecny_czas_min)}] Powrót techniczny z trasy do ZG | Dystans: {krawedz_powrot['km']} km")
+
+                            p_l, _ = oblicz_spalanie_trasa(krawedz_powrot, aktualna_waga_busa)
+                            paliwo_suma_l += p_l
+                            dystans_suma_km += krawedz_powrot["km"]
+
+                            start_zjazdu = obecny_czas_min
+                            obecny_czas_min += CZAS_ZJAZDU_MID_MIN
+                            logi.append(
+                                f"[{formatuj_godzine(start_zjazdu)} - {formatuj_godzine(obecny_czas_min)}] Wjazd pod rampę magazynu (+10 min zjazd)")
+                            obecna_pozycja = "ZG"
+                        else:
+                            kierowca_pracuje = False
+                            break
+                    else:
+                        # Jeśli kończył w ZG i potrzebuje między-załadunku
+                        if obecny_czas_min + CZAS_ZJAZDU_MID_MIN + CZAS_ZALADUNKU_MID_MIN <= MAKS_CZAS_ZMIANY_MIN:
+                            start_zjazdu = obecny_czas_min
+                            obecny_czas_min += CZAS_ZJAZDU_MID_MIN
+                            logi.append(
+                                f"[{formatuj_godzine(start_zjazdu)} - {formatuj_godzine(obecny_czas_min)}] Zjazd z rejonu ZG pod rampę na przeładunek (+10 min zjazd)")
+                        else:
+                            kierowca_pracuje = False
+                            break
+
+                    # Załadunek w środku dnia (wtedy kurier traci 20 minut pracy)
+                    start_zaladunku = obecny_czas_min
+                    logi.append(
+                        f"[{formatuj_godzine(start_zaladunku)}] Oczekiwanie na doładowanie busa w trakcie dnia.")
+
+                    if not przerwa_odbyta and (120.0 <= obecny_czas_min <= 360.0):
+                        logi.append(
+                            f"    * [{formatuj_godzine(obecny_czas_min)}] pracownik wzial 20 min przerwy (w trakcie trwania załadunku)")
+                        przerwa_odbyta = True
+
+                    obecny_czas_min += CZAS_ZALADUNKU_MID_MIN
+
+                    aktualna_waga_busa = 0.0
+                    aktualna_obj_busa = 0.0
+                    paczki_w_pojeździe = 0
+                    znaleziono_zadanie = True
+                    break
+
+                # Kalkulacja czasowa dla obsługi miast
+                czas_operacji, paliwo_m, dystans_m = oblicz_operacje_miejskie(kod_miasta, len(paczkomaty_punktu),
+                                                                              len(paczki_do_wyjęcia),
+                                                                              (aktualna_waga_busa + waga_punktu))
+
+                # Zjazd ostateczny kosztuje na koniec dnia tylko 5 minut zdania dokumentów + ewentualny dolot liniowy
+                czas_zjazdu_koncowego = CZAS_ZDANIA_PAPIEROW_MIN if kod_miasta == "ZG" else (
+                            oblicz_czas_przejazdu(pobierz_krawedz(kod_miasta, "ZG")) + CZAS_ZDANIA_PAPIEROW_MIN)
+
+                czas_potencjalnej_przerwy = CZAS_PRZERWY_MIN if (
+                            not przerwa_odbyta and (120.0 <= (obecny_czas_min + czas_dojazdu) <= 360.0)) else 0.0
+                total_czas_operacji = obecny_czas_min + czas_dojazdu + czas_operacji + czas_potencjalnej_przerwy + czas_zjazdu_koncowego
+
+                if total_czas_operacji <= MAKS_CZAS_ZMIANY_MIN:
+                    if krawedz_dojazd:
+                        start_dojazdu = obecny_czas_min
+                        obecny_czas_min += czas_dojazdu
+                        p_l, _ = oblicz_spalanie_trasa(krawedz_dojazd, aktualna_waga_busa + waga_punktu)
+                        paliwo_suma_l += p_l
+                        dystans_suma_km += krawedz_dojazd["km"]
+                        logi.append(
+                            f"[{formatuj_godzine(start_dojazdu)} - {formatuj_godzine(obecny_czas_min)}] Wyjazd. Dojazd relacji: {obecna_pozycja} -> {kod_miasta} | {krawedz_dojazd['km']} km")
+                    else:
+                        obecny_czas_min += czas_dojazdu
+
+                    # Okno przerwy pracowniczej (10:00 - 14:00)
+                    if not przerwa_odbyta and (120.0 <= obecny_czas_min <= 360.0):
+                        logi.append(f"    * [{formatuj_godzine(obecny_czas_min)}] pracownik wzial 20 min przerwy")
+                        obecny_czas_min += CZAS_PRZERWY_MIN
+                        przerwa_odbyta = True
+
+                    start_dostaw = obecny_czas_min
+                    obecny_czas_min += czas_operacji
+                    logi.append(
+                        f"[{formatuj_godzine(start_dostaw)} - {formatuj_godzine(obecny_czas_min)}] Rozwóz paczek, sektor: {dane_miast_miejskie[kod_miasta]['name']} | Doręczono: {len(paczki_do_wyjęcia)} paczek")
+
+                    paliwo_suma_l += paliwo_m
+                    dystans_suma_km += dystans_m
+
+                    aktualna_waga_busa += waga_punktu
+                    aktualna_obj_busa += obj_punktu
+                    paczki_w_pojeździe += len(paczki_do_wyjęcia)
+
+                    stat_paczki_lacznie += len(paczki_do_wyjęcia)
+                    stat_waga_lacznie += waga_punktu
+
+                    for p_id in paczkomaty_punktu:
+                        del zadania_miast[kod_miasta][p_id]
+                    if len(zadania_miast[kod_miasta]) == 0:
+                        del zadania_miast[kod_miasta]
+
+                    obecna_pozycja = kod_miasta
+                    znaleziono_zadanie = True
+                    break
+                else:
+                    continue
+
+            if not znaleziono_zadanie:
+                kierowca_pracuje = False
+
+        # --- FINAŁ PRACY KURIERA (ZDAJE AUTO I DO DOMU) ---
+        if obecna_pozycja != "ZG":
+            krawedz_powrot = pobierz_krawedz(obecna_pozycja, "ZG")
+            if krawedz_powrot:
+                start_powrotu = obecny_czas_min
+                obecny_czas_min += oblicz_czas_przejazdu(krawedz_powrot)
+                logi.append(
+                    f"[{formatuj_godzine(start_powrotu)} - {formatuj_godzine(obecny_czas_min)}] Powrót liniowy z rejonu końcowego do bazy w Zielonej Górze | Przebieg: {krawedz_powrot['km']} km")
+
+                p_l, _ = oblicz_spalanie_trasa(krawedz_powrot, waga_ladunku_kg=0.0)
+                paliwo_suma_l += p_l
+                dystans_suma_km += krawedz_powrot["km"]
+
+                start_zdania = obecny_czas_min
+                obecny_czas_min += CZAS_ZDANIA_PAPIEROW_MIN
+                logi.append(
+                    f"[{formatuj_godzine(start_zdania)} - {formatuj_godzine(obecny_czas_min)}] Zdanie dokumentacji i pojazdu na bazie (+5 min rozliczenie końcowe). Załadunek nocny robi firma.")
+        else:
+            # Gdy kurier skończył ostatnie paczki w ZG, jedzie wprost zdać dokumenty
+            start_zdania = obecny_czas_min
+            obecny_czas_min += CZAS_ZDANIA_PAPIEROW_MIN
+            logi.append(
+                f"[{formatuj_godzine(start_zdania)} - {formatuj_godzine(obecny_czas_min)}] Zdanie dokumentacji i pojazdu na bazie po rejonie ZG (+5 min rozliczenie końcowe). Załadunek nocny robi firma.")
+
+        # Jeśli jakimś cudem nie wpadła przerwa w ciągu dnia
+        if not przerwa_odbyta:
+            logi.append(f"    * [{formatuj_godzine(obecny_czas_min)}] pracownik wzial 20 min przerwy")
+            obecny_czas_min += CZAS_PRZERWY_MIN
+
+        logi.append(f"[{formatuj_godzine(obecny_czas_min)}] Kurier opuszcza bazę. Koniec zmiany.")
+
+        kurierzy.append({
+            "id": id_kuriera,
+            "paczki": stat_paczki_lacznie,
+            "waga": stat_waga_lacznie,
+            "podsumowanie": {
+                "dystans_km": round(dystans_suma_km, 2),
+                "czas_h": round(obecny_czas_min / 60.0, 2),
+                "koszt_paliwa_pln": round(paliwo_suma_l * CENA_PALIWA_PLN_L, 2),
+                "logi": logi
+            }
+        })
+
+    return kurierzy
+
+
+# =====================================================================
+# MODUŁ KONTROLI I URUCHOMIENIA PLIKU CSV
+# =====================================================================
+
+def uruchom_optymalizacje_kosztowa():
+    root = tk.Tk();
+    root.withdraw()
+    sciezka_csv = filedialog.askopenfilename(
+        title="Wybierz plik CSV", filetypes=[("Pliki CSV", "*.csv")]
+    )
+    if not sciezka_csv: return
+
+    paczki_per_data = defaultdict(list)
+    with open(sciezka_csv, mode='r', encoding='utf-8') as plik:
+        reader = csv.DictReader(plik)
+        for wiersz in reader:
+            paczki_per_data[wiersz['data_dostawy']].append(wiersz)
+
+    for data, paczki in sorted(paczki_per_data.items()):
+        paczki_per_miasto = defaultdict(list)
+        for p in paczki:
+            kod = MAPOWANIE_MIAST.get(p['miasto_docelowe'])
+            if kod: paczki_per_miasto[kod].append(p)
+
+        struktura_zadania = {}
+        for kod, lista in paczki_per_miasto.items():
+            paczkomaty_paczki = defaultdict(list)
+            for p in lista:
+                paczkomaty_paczki[p['id_paczkomatu']].append(p)
+            struktura_zadania[kod] = paczkomaty_paczki
+
+        print(f"\n==========================================================================================")
+        print(f"   REJESTR KARTY DROGOWEJ FLOTY KURIERSKIEJ DLA DNIA: {data}")
+        print(f"==========================================================================================")
+
+        wynikowe_kadry = buduj_skonsolidowany_harmonogram(struktura_zadania)
+
+        for k in wynikowe_kadry:
+            p = k["podsumowanie"]
+            print(f"\n KURIER {k['id']} | Paczki: {k['paczki']} szt. | Masa: {k['waga']:.1f} kg")
+            print(f"   Karta drogowa (Chronologia zmianowa):")
+            for linia in p["logi"]:
+                print(f"        - {linia}")
+            print(
+                f"   WYNIK AUTA: Przebieg {p['dystans_km']} km | Łączny czas pracy kuriera: {p['czas_h']} h / 8.0 h | Paliwo: {p['koszt_paliwa_pln']} PLN")
+            print("-" * 120)
+
+
+if __name__ == "__main__":
+    uruchom_optymalizacje_kosztowa()
