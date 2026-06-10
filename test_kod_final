@@ -21,7 +21,7 @@ CENA_PALIWA_PLN_L = 6.50
 
 # --- PARAMETRY FINANSOWE DECYZJI O NADGODZINACH ---
 STAWKA_NADGODZINA_PLN_H = 60.0  # Ile kosztuje godzina nadgodzin kuriera
-KOSZT_STARTU_KURIERA_PLN = 150.0  # Stały koszt uruchomienia nowego kuriera
+KOSZT_STARTU_KURIERA_PLN = 0.0 # Stały koszt uruchomienia nowego kuriera
 MAKS_NADGODZINY_MIN = 120.0  # Maksymalnie 2h nadgodzin (BHP)
 
 # --- BAZA GEOGRAFICZNA I DROGOWA ---
