@@ -1,5 +1,6 @@
 import csv
 import random
+import sys
 from collections import defaultdict
 import tkinter as tk
 from tkinter import filedialog
@@ -15,12 +16,15 @@ CZAS_PRZERWY_MIN = 20.0
 CZAS_ZALADUNKU_BAZA_MIN = 20.0
 
 # Koszt paliwa (zł/litr)
-CENA_PALIWA_PLN_L = 6.50
+CENA_PALIWA_PLN_L = 4.75
 
 # --- PARAMETRY FINANSOWE DECYZJI O NADGODZINACH ---
-STAWKA_NADGODZINA_PLN_H = 60.0  # Ile kosztuje godzina nadgodzin kuriera
-KOSZT_STARTU_KURIERA_PLN = 60.0  # Stały koszt uruchomienia nowego kuriera
-MAKS_NADGODZINY_MIN = 120.0  # Maksymalnie 2h nadgodzin (BHP)
+STAWKA_GODZINA_PLN = 40.0  # Stawka godzinowa kuriera za regularny czas pracy
+STAWKA_NADGODZINA_PLN_H = 1.5 * STAWKA_GODZINA_PLN  # Stawka za nadgodziny kuriera (60.0 zł/h)
+KOSZT_LEASINGU_DZIEN_PLN = 60.0  # Koszt leasingu jednego pojazdu na dzień
+ROZMIAR_FLOTY = 18  # Rozmiar floty aut na sztywno
+MAKS_NADGODZINY_MIN = 240.0  # Maksymalnie 2h nadgodzin (BHP)
+
 
 # --- BAZA GEOGRAFICZNA I DROGOWA ---
 points = [
@@ -193,10 +197,15 @@ def buduj_harmonogram_globalny(zadania_miast):
             "waga_calkowita": 0.0,
             "objetosc_calkowita": 0.0,
             "paczki_lacznie": 0,
+            "paczki_A": 0,
+            "paczki_B": 0,
+            "paczki_C": 0,
+            "zarobki_brutto": 0.0,
             "harmonogram_odwiedzin": [],
             "kursy": [],
             "nadgodziny_min": 0.0,
-            "koszt_nadgodzin_pln": 0.0
+            "koszt_nadgodzin_pln": 0.0,
+            "koszt_regularny_pln": 0.0
         }
 
         skumulowany_czas_min = 0.0
@@ -225,16 +234,32 @@ def buduj_harmonogram_globalny(zadania_miast):
             miasta_w_kursie = []
             dodano_paczki_w_kursie = False
 
+            # Backup stanu przed symulacją kolejnego kursu
+            state_backup = {
+                "skumulowany_czas_min": skumulowany_czas_min,
+                "przerwa_odbyta": przerwa_odbyta,
+                "logi_etapow": list(logi_etapow),
+                "paliwo_suma_l": paliwo_suma_l,
+                "dystans_suma_km": dystans_suma_km,
+            }
+
             if not pierwszy_kurs:
                 if skumulowany_czas_min + CZAS_ZALADUNKU_BAZA_MIN < MAKS_CZAS_ZMIANY_MIN:
-                    if not przerwa_odbyta and skumulowany_czas_min >= celowany_czas_przerwy:
-                        logi_etapow.append(f"[{formatuj_godzine(skumulowany_czas_min)}] Przerwa ustawowa (20 min) - rozpoczęta w bazie.")
-                        skumulowany_czas_min += CZAS_PRZERWY_MIN
+                    # Sprawdzenie, czy przerwa nakłada się na załadunek w bazie
+                    if not przerwa_odbyta and celowany_czas_przerwy <= skumulowany_czas_min + CZAS_ZALADUNKU_BAZA_MIN:
+                        logi_etapow.append(
+                            f"[{formatuj_godzine(skumulowany_czas_min)}] Powrot do bazy ZG: Zaladunek kolejnej petli (+{CZAS_ZALADUNKU_BAZA_MIN} min) polaczony z przerwa ustawowa (nakladanie sie czasow)")
+                        skumulowany_czas_min += CZAS_ZALADUNKU_BAZA_MIN
                         przerwa_odbyta = True
+                    else:
+                        if not przerwa_odbyta and skumulowany_czas_min >= celowany_czas_przerwy:
+                            logi_etapow.append(f"[{formatuj_godzine(skumulowany_czas_min)}] Przerwa ustawowa (20 min) - rozpoczęta w bazie.")
+                            skumulowany_czas_min += CZAS_PRZERWY_MIN
+                            przerwa_odbyta = True
 
-                    logi_etapow.append(
-                        f"[{formatuj_godzine(skumulowany_czas_min)}] Powrot do bazy ZG: Zaladunek kolejnej petli (+{CZAS_ZALADUNKU_BAZA_MIN} min)")
-                    skumulowany_czas_min += CZAS_ZALADUNKU_BAZA_MIN
+                        logi_etapow.append(
+                            f"[{formatuj_godzine(skumulowany_czas_min)}] Powrot do bazy ZG: Zaladunek kolejnej petli (+{CZAS_ZALADUNKU_BAZA_MIN} min)")
+                        skumulowany_czas_min += CZAS_ZALADUNKU_BAZA_MIN
                 else:
                     break
 
@@ -279,25 +304,40 @@ def buduj_harmonogram_globalny(zadania_miast):
                 elif przyszly_czas <= (MAKS_CZAS_ZMIANY_MIN + MAKS_NADGODZINY_MIN):
                     # --- [OPCJA B] KOREKTA FILTRU NADGODZIN ---
                     # Zablokowaliśmy automatyczną zgodę na nadgodziny dla obecnego kierowcy.
-                    # Zmuszamy algorytm do otwarcia NOWEGO KURIERA (czyli zrobienia pełnego dnia pracy 8h dla kogoś innego),
-                    # zamiast przemęczać obecnego pracownika i tworzyć dysproporcje w postaci "pustych 1.5-godzinnych" końcówek floty.
                     akceptuj_paczke = False
 
                 if akceptuj_paczke:
+                    ile_A = sum(1 for p in paczki_do_zabrania if p.get('gabaryt') == 'A')
+                    ile_B = sum(1 for p in paczki_do_zabrania if p.get('gabaryt') == 'B')
+                    ile_C = sum(1 for p in paczki_do_zabrania if p.get('gabaryt') == 'C')
+                    zarobki_kursu = ile_A * 16.50 + ile_B * 18.50 + ile_C * 20.50
+                    nowy_bus["paczki_A"] += ile_A
+                    nowy_bus["paczki_B"] += ile_B
+                    nowy_bus["paczki_C"] += ile_C
+                    nowy_bus["zarobki_brutto"] += zarobki_kursu
+
                     if krawedz_dojazd:
                         paliwo_dojazd, _ = oblicz_spalanie_trasa(krawedz_dojazd, waga_biezacego_kursu + waga_miasta)
                         paliwo_suma_l += paliwo_dojazd
                         dystans_suma_km += krawedz_dojazd["km"]
 
                         if not przerwa_odbyta and (skumulowany_czas_min + czas_dojazdu) >= celowany_czas_przerwy:
-                            roznica = celowany_czas_przerwy - skumulowany_czas_min
-                            logi_etapow.append(
-                                f"[{formatuj_godzine(skumulowany_czas_min)}] Przejazd regionalny do {kod_miasta}")
-                            skumulowany_czas_min = celowany_czas_przerwy
-                            logi_etapow.append(f"[{formatuj_godzine(skumulowany_czas_min)}] Przerwa ustawowa (20 min).")
-                            skumulowany_czas_min += CZAS_PRZERWY_MIN
-                            przerwa_odbyta = True
-                            skumulowany_czas_min += (czas_dojazdu - roznica)
+                            if celowany_czas_przerwy <= skumulowany_czas_min:
+                                logi_etapow.append(f"[{formatuj_godzine(skumulowany_czas_min)}] Przerwa ustawowa (20 min).")
+                                skumulowany_czas_min += CZAS_PRZERWY_MIN
+                                przerwa_odbyta = True
+                                logi_etapow.append(
+                                    f"[{formatuj_godzine(skumulowany_czas_min)}] Dojazd na sektor: {obecna_pozycja}->{kod_miasta} | {krawedz_dojazd['km']} km")
+                                skumulowany_czas_min += czas_dojazdu
+                            else:
+                                roznica = celowany_czas_przerwy - skumulowany_czas_min
+                                logi_etapow.append(
+                                    f"[{formatuj_godzine(skumulowany_czas_min)}] Przejazd regionalny do {kod_miasta}")
+                                skumulowany_czas_min = celowany_czas_przerwy
+                                logi_etapow.append(f"[{formatuj_godzine(skumulowany_czas_min)}] Przerwa ustawowa (20 min).")
+                                skumulowany_czas_min += CZAS_PRZERWY_MIN
+                                przerwa_odbyta = True
+                                skumulowany_czas_min += (czas_dojazdu - roznica)
                         else:
                             logi_etapow.append(
                                 f"[{formatuj_godzine(skumulowany_czas_min)}] Dojazd na sektor: {obecna_pozycja}->{kod_miasta} | {krawedz_dojazd['km']} km")
@@ -332,9 +372,29 @@ def buduj_harmonogram_globalny(zadania_miast):
                 if krawedz_powrot:
                     paliwo_powrot, _ = oblicz_spalanie_trasa(krawedz_powrot, waga_ladunku_kg=0.0)
                     czas_powrotu = oblicz_czas_przejazdu(krawedz_powrot)
-                    logi_etapow.append(
-                        f"[{formatuj_godzine(skumulowany_czas_min)}] Zjazd do bazy: {obecna_pozycja}->ZG")
-                    skumulowany_czas_min += czas_powrotu
+                    
+                    if not przerwa_odbyta and (skumulowany_czas_min + czas_powrotu) >= celowany_czas_przerwy:
+                        if celowany_czas_przerwy <= skumulowany_czas_min:
+                            logi_etapow.append(f"[{formatuj_godzine(skumulowany_czas_min)}] Przerwa ustawowa (20 min).")
+                            skumulowany_czas_min += CZAS_PRZERWY_MIN
+                            przerwa_odbyta = True
+                            logi_etapow.append(
+                                f"[{formatuj_godzine(skumulowany_czas_min)}] Zjazd do bazy: {obecna_pozycja}->ZG | {krawedz_powrot['km']} km")
+                            skumulowany_czas_min += czas_powrotu
+                        else:
+                            roznica = celowany_czas_przerwy - skumulowany_czas_min
+                            logi_etapow.append(
+                                f"[{formatuj_godzine(skumulowany_czas_min)}] Zjazd do bazy: {obecna_pozycja}->ZG | {krawedz_powrot['km']} km")
+                            skumulowany_czas_min = celowany_czas_przerwy
+                            logi_etapow.append(f"[{formatuj_godzine(skumulowany_czas_min)}] Przerwa ustawowa (20 min).")
+                            skumulowany_czas_min += CZAS_PRZERWY_MIN
+                            przerwa_odbyta = True
+                            skumulowany_czas_min += (czas_powrotu - roznica)
+                    else:
+                        logi_etapow.append(
+                            f"[{formatuj_godzine(skumulowany_czas_min)}] Zjazd do bazy: {obecna_pozycja}->ZG | {krawedz_powrot['km']} km")
+                        skumulowany_czas_min += czas_powrotu
+                        
                     paliwo_suma_l += paliwo_powrot
                     dystans_suma_km += krawedz_powrot["km"]
 
@@ -350,16 +410,39 @@ def buduj_harmonogram_globalny(zadania_miast):
                 nowy_bus["paczki_lacznie"] += paczki_w_kursie
                 pierwszy_kurs = False
             else:
+                # Jeśli nie udało się zrealizować kolejnego kursu, przywracamy stan przed załadunkiem i kończymy zmianę
+                skumulowany_czas_min = state_backup["skumulowany_czas_min"]
+                przerwa_odbyta = state_backup["przerwa_odbyta"]
+                logi_etapow = state_backup["logi_etapow"]
+                paliwo_suma_l = state_backup["paliwo_suma_l"]
+                dystans_suma_km = state_backup["dystans_suma_km"]
                 break
 
         if not kierowca_pobral_towar: break
 
-        if not przerwa_odbyta and skumulowany_czas_min < MAKS_CZAS_ZMIANY_MIN:
-            skumulowany_czas_min += CZAS_PRZERWY_MIN
+        # Sprawdzenie i doliczenie przerwy na koniec, jeśli nie odbyła się w trakcie zmiany
+        if not przerwa_odbyta:
+            if skumulowany_czas_min < 120.0:
+                logi_etapow.append(
+                    f"[{formatuj_godzine(120.0)}] Przerwa ustawowa (20 min) w okienku 10:00-14:00 (oczekiwanie do 10:00).")
+                skumulowany_czas_min = 120.0 + CZAS_PRZERWY_MIN
+                przerwa_odbyta = True
+            elif skumulowany_czas_min <= 360.0:
+                logi_etapow.append(
+                    f"[{formatuj_godzine(skumulowany_czas_min)}] Przerwa ustawowa (20 min) - wzięta na koniec pracy.")
+                skumulowany_czas_min += CZAS_PRZERWY_MIN
+                przerwa_odbyta = True
+            else:
+                logi_etapow.append(
+                    f"[{formatuj_godzine(360.0)}] Przerwa ustawowa (20 min) - wzięta wstecznie o 14:00.")
+                skumulowany_czas_min += CZAS_PRZERWY_MIN
+                przerwa_odbyta = True
 
         if skumulowany_czas_min > MAKS_CZAS_ZMIANY_MIN:
             nowy_bus["nadgodziny_min"] = skumulowany_czas_min - MAKS_CZAS_ZMIANY_MIN
             nowy_bus["koszt_nadgodzin_pln"] = (nowy_bus["nadgodziny_min"] / 60.0) * STAWKA_NADGODZINA_PLN_H
+
+        nowy_bus["koszt_regularny_pln"] = min(skumulowany_czas_min / 60.0, 8.0) * STAWKA_GODZINA_PLN
 
         nowy_bus["podsumowanie_trasy"] = {
             "dystans_km": round(dystans_suma_km, 2),
@@ -390,9 +473,12 @@ def generuj_optymalne_trasy_dnia(paczki_dnia):
 
 
 def wczytaj_i_optymalizuj():
-    root = tk.Tk()
-    root.withdraw()
-    sciezka_csv = filedialog.askopenfilename(title="Wybierz plik CSV", filetypes=[("Pliki CSV", "*.csv")])
+    if len(sys.argv) > 1:
+        sciezka_csv = sys.argv[1]
+    else:
+        root = tk.Tk()
+        root.withdraw()
+        sciezka_csv = filedialog.askopenfilename(title="Wybierz plik CSV", filetypes=[("Pliki CSV", "*.csv")])
     if not sciezka_csv: return
 
     paczki_per_data = defaultdict(list)
@@ -409,25 +495,16 @@ def wczytaj_i_optymalizuj():
 
         koszt_paliwa = sum(a["podsumowanie_trasy"]["koszt_paliwa_pln"] for a in zestawienie_aut)
         koszt_nadgodzin_suma = sum(a["koszt_nadgodzin_pln"] for a in zestawienie_aut)
-        koszt_utrzymania_floty = len(zestawienie_aut) * KOSZT_STARTU_KURIERA_PLN
-        koszt_calkowity_operacji = koszt_paliwa + koszt_nadgodzin_suma + koszt_utrzymania_floty
+        koszt_regularny_suma = sum(a["koszt_regularny_pln"] for a in zestawienie_aut)
+        koszt_leasingu_suma = ROZMIAR_FLOTY * KOSZT_LEASINGU_DZIEN_PLN
+        koszt_calkowity_operacji = koszt_paliwa + koszt_nadgodzin_suma + koszt_regularny_suma + koszt_leasingu_suma
         paczki_calkowite = sum(a["paczki_lacznie"] for a in zestawienie_aut)
-
-        print(f" PODSUMOWANIE FINANSOWO-LOGISTYCZNE DNIA:")
-        print(
-            f"    - Liczba aktywnych kurierow : {len(zestawienie_aut)} (Koszt stały floty: {koszt_utrzymania_floty:.2f} PLN)")
-        print(f"    - Łączny koszt nadgodzin    : {koszt_nadgodzin_suma:.2f} PLN")
-        print(f"    - Koszt samego paliwa       : {koszt_paliwa:.2f} PLN")
-        print(f"    - SUMARYCZNY KOSZT DNIA     : {koszt_calkowity_operacji:.2f} PLN")
-        print(
-            f"    - Efektywny koszt na paczke : {koszt_calkowity_operacji / paczki_calkowite:.2f} PLN/szt." if paczki_calkowite > 0 else "0.00 PLN")
-        print(f"------------------------------------------------------------------------------------------")
 
         for i, auto in enumerate(zestawienie_aut, 1):
             p = auto["podsumowanie_trasy"]
             print(f"\n PROFIL KIEROWCY: KURIER {i} | TYP: {auto['typ']}")
             print(f"   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):")
-            print(f"      - Obsluzone paczki  : {auto['paczki_lacznie']} szt.")
+            print(f"      - Obsluzone paczki  : {auto['paczki_lacznie']} szt. (gab. A: {auto['paczki_A']}, gab. B: {auto['paczki_B']}, gab. C: {auto['paczki_C']})")
             for k_idx, column in enumerate(auto['kursy'], 1):
                 print(f"        -> Wyjazd nr {k_idx} [{', '.join(column['miasta'])}]: {column['paczki']} paczek")
 
@@ -441,10 +518,34 @@ def wczytaj_i_optymalizuj():
             print(f"      - Czas pracy łączny   : {p['czas_h']} godz.")
             print(
                 f"      - W tym nadgodziny    : {auto['nadgodziny_min']:.1f} min (Koszt: {auto['koszt_nadgodzin_pln']:.2f} PLN)")
-            print(f"      - Koszt paliwa        : {p['koszt_paliwa_pln']} PLN")
-            print(
-                f"      - ŁĄCZNY KOSZT AUTA   : {p['koszt_paliwa_pln'] + auto['koszt_nadgodzin_pln'] + KOSZT_STARTU_KURIERA_PLN:.2f} PLN")
+            print(f"      - Wynagrodzenie reg.  : {auto['koszt_regularny_pln']:.2f} PLN")
+            print(f"      - Zużyte paliwo       : {p['paliwo_l']:.3f} L (Koszt: {p['koszt_paliwa_pln']:.2f} PLN)")
+            print(f"      - Koszt leasingu      : {KOSZT_LEASINGU_DZIEN_PLN:.2f} PLN")
+            koszt_auta = p['koszt_paliwa_pln'] + auto['koszt_nadgodzin_pln'] + auto['koszt_regularny_pln'] + KOSZT_LEASINGU_DZIEN_PLN
+            print(f"      - ŁĄCZNY KOSZT AUTA   : {koszt_auta:.2f} PLN")
+            print(f"      - PRZYCHÓD Z PACZEK   : {auto['zarobki_brutto']:.2f} PLN")
+            print(f"      - BILANS AUTA         : {auto['zarobki_brutto'] - koszt_auta:.2f} PLN")
             print(f"   " + "-" * 85)
+
+        zarobki_suma_brutto = sum(a["zarobki_brutto"] for a in zestawienie_aut)
+        paczki_A_suma = sum(a["paczki_A"] for a in zestawienie_aut)
+        paczki_B_suma = sum(a["paczki_B"] for a in zestawienie_aut)
+        paczki_C_suma = sum(a["paczki_C"] for a in zestawienie_aut)
+
+        print(f"\n==========================================================================================")
+        print(f"   PODSUMOWANIE FINANSOWO-LOGISTYCZNE DNIA: {data}")
+        print(f"==========================================================================================")
+        print(f"    - Liczba aktywnych kurierow : {len(zestawienie_aut)}")
+        print(f"    - Łączny koszt wynagrodzeń  : {koszt_regularny_suma + koszt_nadgodzin_suma:.2f} PLN (w tym nadgodziny: {koszt_nadgodzin_suma:.2f} PLN)")
+        print(f"    - Łączny koszt leasingu     : {koszt_leasingu_suma:.2f} PLN")
+        print(f"    - Łączny koszt paliwa       : {koszt_paliwa:.2f} PLN")
+        print(f"    - SUMARYCZNY KOSZT DNIA     : {koszt_calkowity_operacji:.2f} PLN")
+        print(f"    - ŁĄCZNY PRZYCHÓD (BRUTTO)  : {zarobki_suma_brutto:.2f} PLN (A: {paczki_A_suma} szt., B: {paczki_B_suma} szt., C: {paczki_C_suma} szt.)")
+        print(f"    - Liczba paczek całkowita   : {paczki_calkowite} szt.")
+        print(
+            f"    - Efektywny koszt na paczke : {koszt_calkowity_operacji / paczki_calkowite:.2f} PLN/szt." if paczki_calkowite > 0 else "    - Efektywny koszt na paczke : 0.00 PLN")
+        print(f"    - ZAROBEK (ZYSKI - KOSZTY)  : {zarobki_suma_brutto - koszt_calkowity_operacji:.2f} PLN")
+        print(f"==========================================================================================\n")
 
 
 if __name__ == "__main__":
