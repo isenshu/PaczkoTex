@@ -1,0 +1,496 @@
+import csv
+import math
+import os
+import random
+from collections import defaultdict
+import tkinter as tk
+from tkinter import filedialog
+
+# --- KONFIGURACJA LIMITÓW POJAZDU & OPERACJI ---
+LIMIT_WAGI_KG = 1069.0
+LIMIT_OBJETOSCI_CM3 = 8_100_000.0  # 75% z 10.8 m^3
+WAGA_PUSTEGO_KG = 2431.0
+
+# 8 godzin zmiany = 480 minut
+MAKS_CZAS_ZMIANY_MIN = 480.0
+CZAS_PRZERWY_MIN = 20.0
+CZAS_ZALADUNKU_BAZA_MIN = 20.0
+
+# Koszt paliwa (zł/litr)
+CENA_PALIWA_PLN_L = 6.50
+
+# --- PARAMETRY FINANSOWE DECYZJI O NADGODZINACH ---
+STAWKA_NADGODZINA_PLN_H = 60.0  # Ile kosztuje godzina nadgodzin kuriera
+KOSZT_STARTU_KURIERA_PLN = 0.0 # Stały koszt uruchomienia nowego kuriera
+MAKS_NADGODZINY_MIN = 120.0  # Maksymalnie 2h nadgodzin (BHP)
+
+# --- BAZA GEOGRAFICZNA I DROGOWA ---
+points = [
+    {"id": "ZG", "name": "Zielona Gora", "lat": 51.9354800, "lon": 15.5064300},
+    {"id": "NB", "name": "Nowogrod Bobrzanski", "lat": 51.798346, "lon": 15.236140},
+    {"id": "ZR", "name": "Zary", "lat": 51.636, "lon": 15.138},
+    {"id": "ZA", "name": "Zagan", "lat": 51.616591, "lon": 15.317660},
+    {"id": "SZP", "name": "Szprotawa", "lat": 51.567, "lon": 15.538},
+    {"id": "KOZ", "name": "Kozuchow", "lat": 51.745, "lon": 15.595},
+    {"id": "NS", "name": "Nowa Sol", "lat": 51.8011, "lon": 15.7075}
+]
+
+MAPOWANIE_MIAST = {
+    "Zielona Góra": "ZG", "Zielona Gora": "ZG",
+    "Nowogród Bobrzański": "NB", "Nowogrod Bobrzanski": "NB",
+    "Żary": "ZR", "Zary": "ZR",
+    "Żagań": "ZA", "Zagan": "ZA",
+    "Szprotawa": "SZP", "Kożuchów": "KOZ", "Kozuchow": "KOZ", "Nowa Sól": "NS", "Nowa Sol": "NS"
+}
+
+dane_miast_miejskie = {
+    "ZG": {"name": "Zielona Gora", "paczkomaty_w_nawiasie": 40, "odleglosc_kod_km": 3.5},
+    "NB": {"name": "Nowogrod Bobrzanski", "paczkomaty_w_nawiasie": 5, "odleglosc_kod_km": 3.0},
+    "ZR": {"name": "Zary", "paczkomaty_w_nawiasie": 15, "odleglosc_kod_km": 2.5},
+    "ZA": {"name": "Zagan", "paczkomaty_w_nawiasie": 10, "odleglosc_kod_km": 4.0},
+    "SZP": {"name": "Szprotawa", "paczkomaty_w_nawiasie": 4, "odleglosc_kod_km": 2.5},
+    "KOZ": {"name": "Kozuchow", "paczkomaty_w_nawiasie": 2, "odleglosc_kod_km": 3.0},
+    "NS": {"name": "Nowa Sol", "paczkomaty_w_nawiasie": 20, "odleglosc_kod_km": 1.0}
+}
+
+edges = [
+    {"from": "ZG", "to": "ZR", "km": 44.90, "droga": "DK27", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.70},
+    {"from": "ZG", "to": "ZR", "km": 48.70, "droga": "DK32 + DK27", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.70},
+    {"from": "ZG", "to": "ZA", "km": 46.20, "droga": "DK27 + DW295", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.70},
+    {"from": "ZG", "to": "ZA", "km": 58.20, "droga": "S3 + DW296", "predkoscMax": 120, "predkoscSrednia": 87,
+     "natezenieRuchu": 0.80},
+    {"from": "ZG", "to": "SZP", "km": 53.60, "droga": "S3 + DW297", "predkoscMax": 120, "predkoscSrednia": 87,
+     "natezenieRuchu": 0.80},
+    {"from": "ZG", "to": "SZP", "km": 58.10, "droga": "S3", "predkoscMax": 120, "predkoscSrednia": 87,
+     "natezenieRuchu": 0.80},
+    {"from": "ZG", "to": "SZP", "km": 51.60, "droga": "DW283 + DW297", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.60},
+    {"from": "ZG", "to": "KOZ", "km": 32.00, "droga": "S3 + DW297", "predkoscMax": 120, "predkoscSrednia": 87,
+     "natezenieRuchu": 0.80},
+    {"from": "ZG", "to": "KOZ", "km": 36.10, "droga": "S3", "predkoscMax": 120, "predkoscSrednia": 87,
+     "natezenieRuchu": 0.80},
+    {"from": "ZG", "to": "KOZ", "km": 28.20, "droga": "DW283", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.60},
+    {"from": "ZG", "to": "NB", "km": 25.50, "droga": "DW282 + DK27", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.70},
+    {"from": "ZG", "to": "NS", "km": 26.60, "droga": "S3", "predkoscMax": 120, "predkoscSrednia": 87,
+     "natezenieRuchu": 0.90},
+    {"from": "ZG", "to": "NS", "km": 23.20, "droga": "S3 + Zielonogorska", "predkoscMax": 120, "predkoscSrednia": 87,
+     "natezenieRuchu": 0.90},
+    {"from": "NB", "to": "SZP", "km": 40.10, "droga": "DW295 + DK12", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.70},
+    {"from": "NB", "to": "ZR", "km": 19.90, "droga": "DK27", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.70},
+    {"from": "NB", "to": "ZR", "km": 21.60, "droga": "DK27 + Obwodnica", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.70},
+    {"from": "NB", "to": "ZA", "km": 23.10, "droga": "DW295", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.60},
+    {"from": "NB", "to": "ZA", "km": 33.10, "droga": "DK27 + DK12", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.70},
+    {"from": "NB", "to": "KOZ", "km": 31.40, "droga": "DW290", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.60},
+    {"from": "NB", "to": "NS", "km": 39.90, "droga": "DW290", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.60},
+    {"from": "NB", "to": "NS", "km": 54.40, "droga": "DK27 + S3", "predkoscMax": 120, "predkoscSrednia": 87,
+     "natezenieRuchu": 0.80},
+    {"from": "ZR", "to": "ZA", "km": 15.10, "droga": "DK12", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.80},
+    {"from": "ZR", "to": "ZA", "km": 18.30, "droga": "Obwodnica + DK12", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.80},
+    {"from": "ZR", "to": "SZP", "km": 32.20, "droga": "DK12", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.70},
+    {"from": "ZR", "to": "KOZ", "km": 40.70, "droga": "DK12 + DW296", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.70},
+    {"from": "ZR", "to": "NS", "km": 52.40, "droga": "DW296", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.60},
+    {"from": "ZA", "to": "SZP", "km": 17.60, "droga": "DK12", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.70},
+    {"from": "ZA", "to": "KOZ", "km": 26.10, "droga": "DW296", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.60},
+    {"from": "ZA", "to": "NS", "km": 37.90, "droga": "DW296", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.60},
+    {"from": "SZP", "to": "KOZ", "km": 22.60, "droga": "DW297", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.60},
+    {"from": "SZP", "to": "NS", "km": 34.30, "droga": "DW297", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.60},
+    {"from": "KOZ", "to": "NS", "km": 11.70, "droga": "DW297", "predkoscMax": 90, "predkoscSrednia": 65,
+     "natezenieRuchu": 0.70}
+]
+
+
+def pobierz_krawedz(punkt_a, punkt_b):
+    dopasowania = []
+    for e in edges:
+        if (e["from"] == punkt_a and e["to"] == punkt_b) or (e["from"] == punkt_b and e["to"] == punkt_a):
+            dopasowania.append(e)
+    if not dopasowania: return None
+    return max(dopasowania, key=lambda x: x["predkoscSrednia"])
+
+
+def oblicz_czas_przejazdu(edge):
+    if not edge: return 0.0
+    efektywna_predkosc = edge["predkoscSrednia"] * (1.0 - 0.35 * edge["natezenieRuchu"])
+    return max(5.0, (edge["km"] / max(15.0, efektywna_predkosc)) * 60.0)
+
+
+def oblicz_spalanie_trasa(edge, waga_ladunku_kg):
+    if not edge: return 0.0, 0.0
+    if edge["predkoscMax"] >= 120:
+        spalanie_pusty = 10.0;
+        spalanie_pelny = 13.0
+    elif edge["predkoscMax"] >= 90:
+        spalanie_pusty = 7.7;
+        spalanie_pelny = 9.8
+    else:
+        spalanie_pusty = 8.5;
+        spalanie_pelny = 11.0
+    stopien_zaladunku = min(1.0, waga_ladunku_kg / LIMIT_WAGI_KG)
+    spalanie_baza = spalanie_pusty + (spalanie_pelny - spalanie_pusty) * stopien_zaladunku
+    spalanie_final_100km = spalanie_baza * (1.0 + 0.15 * edge["natezenieRuchu"])
+    return (spalanie_final_100km / 100.0) * edge["km"], spalanie_final_100km
+
+
+def oblicz_operacje_miejskie(kod_miasta, unikalne_paczkomaty, liczba_paczek, waga_ladunku_kg):
+    info = dane_miast_miejskie[kod_miasta]
+    dystans_km = unikalne_paczkomaty * info["odleglosc_kod_km"]
+    natezenie_miejskie = random.uniform(0.4, 0.85)
+    v_miejska = 36.0 * (1.0 - 0.3 * natezenie_miejskie)
+    czas_jazdy_min = (dystans_km / v_miejska) * 60.0
+    czas_rozladunku_min = (liczba_paczek * 20) / 60.0
+    laczy_czas_miejski = czas_jazdy_min + czas_rozladunku_min
+    stopien_zaladunku = min(1.0, waga_ladunku_kg / LIMIT_WAGI_KG)
+    spalanie_miejskie_baza = 9.0 + (12.0 - 9.0) * stopien_zaladunku
+    spalanie_miejskie_100km = spalanie_miejskie_baza * (1.0 + 0.15 * natezenie_miejskie)
+    paliwo_litry = (spalanie_miejskie_100km / 100.0) * dystans_km
+    return laczy_czas_miejski, paliwo_litry, dystans_km, spalanie_miejskie_100km
+
+
+def formatuj_godzine(minuty_od_g_8):
+    lacznie_minuty = 8 * 60 + int(minuty_od_g_8)
+    godziny = (lacznie_minuty // 60) % 24
+    minuty = lacznie_minuty % 60
+    return f"{godziny:02d}:{minuty:02d}"
+
+
+def losuj_moment_przerwy():
+    while True:
+        moment = random.gauss(240, 45)
+        if 120 <= moment <= 360: return moment
+
+
+def generuj_porzadek_clarke_wright(zadania_miast):
+    # Dajemy absolutny priorytet Zielonej Górze (miejskiej), a resztę miast układamy oszczędnościowo
+    miasta_z_paczkami = [m for m in zadania_miast.keys() if m != "ZG" and len(zadania_miast[m]) > 0]
+    wynikowy_porzadek = []
+
+    if "ZG" in zadania_miast and len(zadania_miast["ZG"]) > 0:
+        wynikowy_porzadek.append("ZG")
+
+    if not miasta_z_paczkami:
+        return wynikowy_porzadek
+
+    oszczednosci = []
+    for i in range(len(miasta_z_paczkami)):
+        for j in range(i + 1, len(miasta_z_paczkami)):
+            m1 = miasta_z_paczkami[i];
+            m2 = miasta_z_paczkami[j]
+            e_zg_1 = pobierz_krawedz("ZG", m1);
+            e_zg_2 = pobierz_krawedz("ZG", m2);
+            e_1_2 = pobierz_krawedz(m1, m2)
+            if e_zg_1 and e_zg_2 and e_1_2:
+                wzor_s = e_zg_1["km"] + e_zg_2["km"] - e_1_2["km"]
+                oszczednosci.append((wzor_s, m1, m2))
+
+    oszczednosci.sort(key=lambda x: x[0], reverse=True)
+
+    trasa_liniowa = []
+    for _, m1, m2 in oszczednosci:
+        if m1 not in trasa_liniowa: trasa_liniowa.append(m1)
+        if m2 not in trasa_liniowa: trasa_liniowa.append(m2)
+    for m in miasta_z_paczkami:
+        if m not in trasa_liniowa: trasa_liniowa.append(m)
+
+    return wynikowy_porzadek + trasa_liniowa
+
+
+# =====================================================================
+# MODUŁ BUDOWANIA HARMONOGRAMÓW - HYBRYDOWY I MAKSYMALIZUJĄCY EFEKTYWNOŚĆ
+# =====================================================================
+
+def buduj_harmonogram_globalny(zadania_miast):
+    busy_operacyjne = []
+
+    while any(len(zadania_miast[m]) > 0 for m in zadania_miast):
+        porzadek = generuj_porzadek_clarke_wright(zadania_miast)
+        if not porzadek: break
+
+        nowy_bus = {
+            "typ": "HYBRYDOWY (Zintegrowany)",
+            "waga_calkowita": 0.0,
+            "objetosc_calkowita": 0.0,
+            "paczki_lacznie": 0,
+            "harmonogram_odwiedzin": [],
+            "kursy": [],
+            "nadgodziny_min": 0.0,
+            "koszt_nadgodzin_pln": 0.0
+        }
+
+        skumulowany_czas_min = 0.0
+        paliwo_suma_l = 0.0
+        dystans_suma_km = 0.0
+        logi_etapow = []
+
+        celowany_czas_przerwy = losuj_moment_przerwy()
+        przerwa_odbyta = False
+
+        logi_etapow.append(
+            f"[{formatuj_godzine(skumulowany_czas_min)}] Start pracy kuriera. Pierwszy załadunek w bazie ZG.")
+
+        kierowca_pobral_towar = False
+        pierwszy_kurs = True
+
+        while skumulowany_czas_min < (MAKS_CZAS_ZMIANY_MIN + MAKS_NADGODZINY_MIN):
+            sa_jeszcze_paczki = any(len(zadania_miast[m]) > 0 for m in zadania_miast)
+            if not sa_jeszcze_paczki:
+                break
+
+            obecna_pozycja = "ZG"
+            waga_biezacego_kursu = 0.0
+            obj_biezacego_kursu = 0.0
+            paczki_w_kursie = 0
+            miasta_w_kursie = []
+            dodano_paczki_w_kursie = False
+
+            if not pierwszy_kurs:
+                if skumulowany_czas_min + CZAS_ZALADUNKU_BAZA_MIN < MAKS_CZAS_ZMIANY_MIN:
+                    if not przerwa_odbyta and skumulowany_czas_min >= celowany_czas_przerwy:
+                        logi_etapow.append(
+                            f"[{formatuj_godzine(skumulowany_czas_min)}] Przerwa ustawowa (20 min) - rozpoczęta w bazie.")
+                        skumulowany_czas_min += CZAS_PRZERWY_MIN
+                        przerwa_odbyta = True
+
+                    logi_etapow.append(
+                        f"[{formatuj_godzine(skumulowany_czas_min)}] Powrot do bazy ZG: Zaladunek kolejnej petli (+{CZAS_ZALADUNKU_BAZA_MIN} min)")
+                    skumulowany_czas_min += CZAS_ZALADUNKU_BAZA_MIN
+                else:
+                    break
+
+            for kod_miasta in porzadek:
+                if kod_miasta not in zadania_miast or len(zadania_miast[kod_miasta]) == 0:
+                    continue
+
+                krawedz_dojazd = pobierz_krawedz(obecna_pozycja, kod_miasta) if obecna_pozycja != kod_miasta else None
+                czas_dojazdu = oblicz_czas_przejazdu(krawedz_dojazd) if krawedz_dojazd else 0.0
+                krawedz_powrot_baza = pobierz_krawedz(kod_miasta, "ZG") if kod_miasta != "ZG" else None
+                czas_powrotu_baza = oblicz_czas_przejazdu(krawedz_powrot_baza) if krawedz_powrot_baza else 0.0
+
+                paczki_do_zabrania = []
+                waga_miasta = 0.0
+                obj_miasta = 0.0
+                paczkomaty_miasta = set()
+
+                for p_id, p_lista in list(zadania_miast[kod_miasta].items()):
+                    p_waga = sum(float(p['waga_kg']) for p in p_lista)
+                    p_obj = sum(
+                        float(p['wysokosc_cm']) * float(p['szerokosc_cm']) * float(p['dlugosc_cm']) for p in p_lista)
+
+                    if (waga_biezacego_kursu + waga_miasta + p_waga <= LIMIT_WAGI_KG) and \
+                            (obj_biezacego_kursu + obj_miasta + p_obj <= LIMIT_OBJETOSCI_CM3):
+                        paczki_do_zabrania.extend(p_lista)
+                        waga_miasta += p_waga
+                        obj_miasta += p_obj
+                        paczkomaty_miasta.add(p_id)
+
+                if not paczki_do_zabrania: continue
+
+                czas_w_miescie, paliwo_miejskie, dystans_miejski, _ = oblicz_operacje_miejskie(
+                    kod_miasta, len(paczkomaty_miasta), len(paczki_do_zabrania), waga_biezacego_kursu + waga_miasta
+                )
+
+                rezerwa_przerwy = CZAS_PRZERWY_MIN if not przerwa_odbyta else 0.0
+                przyszly_czas = skumulowany_czas_min + czas_dojazdu + czas_w_miescie + czas_powrotu_baza + rezerwa_przerwy
+
+                akceptuj_paczke = False
+                if przyszly_czas <= MAKS_CZAS_ZMIANY_MIN:
+                    akceptuj_paczke = True
+                elif przyszly_czas <= (MAKS_CZAS_ZMIANY_MIN + MAKS_NADGODZINY_MIN):
+                    wygenerowane_nadgodziny_min = przyszly_czas - MAKS_CZAS_ZMIANY_MIN
+                    koszt_nadgodzin = (wygenerowane_nadgodziny_min / 60.0) * STAWKA_NADGODZINA_PLN_H
+
+                    # Decyzja finansowa: Jeśli koszt nadgodzin < koszt nowego kuriera (150 PLN), dowalamy pracę obecnemu kierowcy!
+                    if koszt_nadgodzin < KOSZT_STARTU_KURIERA_PLN:
+                        akceptuj_paczke = True
+                        logi_etapow.append(
+                            f"[STRATEGIA] Rozszerzono rejon o {kod_miasta}. Koszt nadgodzin wynosi {koszt_nadgodzin:.2f} PLN. "
+                            f"Zaoszczędzono {KOSZT_STARTU_KURIERA_PLN - koszt_nadgodzin:.2f} PLN przed powołaniem nowego auta.")
+
+                if akceptuj_paczke:
+                    if krawedz_dojazd:
+                        paliwo_dojazd, _ = oblicz_spalanie_trasa(krawedz_dojazd, waga_biezacego_kursu + waga_miasta)
+                        paliwo_suma_l += paliwo_dojazd
+                        dystans_suma_km += krawedz_dojazd["km"]
+
+                        if not przerwa_odbyta and (skumulowany_czas_min + czas_dojazdu) >= celowany_czas_przerwy:
+                            roznica = celowany_czas_przerwy - skumulowany_czas_min
+                            logi_etapow.append(
+                                f"[{formatuj_godzine(skumulowany_czas_min)}] Przejazd regionalny do {kod_miasta}")
+                            skumulowany_czas_min = celowany_czas_przerwy
+                            logi_etapow.append(f"[{formatuj_godzine(skumulowany_czas_min)}] Przerwa ustawowa (20 min).")
+                            skumulowany_czas_min += CZAS_PRZERWY_MIN
+                            przerwa_odbyta = True
+                            skumulowany_czas_min += (czas_dojazdu - roznica)
+                        else:
+                            logi_etapow.append(
+                                f"[{formatuj_godzine(skumulowany_czas_min)}] Dojazd na sektor: {obecna_pozycja}->{kod_miasta} | {krawedz_dojazd['km']} km")
+                            skumulowany_czas_min += czas_dojazdu
+
+                    logi_etapow.append(
+                        f"[{formatuj_godzine(skumulowany_czas_min)}] Obsługa punktów docelowych: {dane_miast_miejskie[kod_miasta]['name']} | {len(paczki_do_zabrania)} szt.")
+                    paliwo_suma_l += paliwo_miejskie
+                    dystans_suma_km += dystans_miejski
+                    skumulowany_czas_min += czas_w_miescie
+
+                    waga_biezacego_kursu += waga_miasta
+                    obj_biezacego_kursu += obj_miasta
+                    paczki_w_kursie += len(paczki_do_zabrania)
+
+                    nazwa_m = dane_miast_miejskie[kod_miasta]['name']
+                    if nazwa_m not in miasta_w_kursie: miasta_w_kursie.append(nazwa_m)
+                    if nazwa_m not in nowy_bus["harmonogram_odwiedzin"]: nowy_bus["harmonogram_odwiedzin"].append(
+                        nazwa_m)
+
+                    for p_id in paczkomaty_miasta: del zadania_miast[kod_miasta][p_id]
+                    if len(zadania_miast[kod_miasta]) == 0: del zadania_miast[kod_miasta]
+
+                    obecna_pozycja = kod_miasta
+                    dodano_paczki_w_kursie = True
+                    kierowca_pobral_towar = True
+                else:
+                    break
+
+            if obecna_pozycja != "ZG":
+                krawedz_powrot = pobierz_krawedz(obecna_pozycja, "ZG")
+                if krawedz_powrot:
+                    paliwo_powrot, _ = oblicz_spalanie_trasa(krawedz_powrot, waga_ladunku_kg=0.0)
+                    czas_powrotu = oblicz_czas_przejazdu(krawedz_powrot)
+                    logi_etapow.append(
+                        f"[{formatuj_godzine(skumulowany_czas_min)}] Zjazd do bazy: {obecna_pozycja}->ZG")
+                    skumulowany_czas_min += czas_powrotu
+                    paliwo_suma_l += paliwo_powrot
+                    dystans_suma_km += krawedz_powrot["km"]
+
+            if dodano_paczki_w_kursie:
+                nowy_bus["kursy"].append({
+                    "waga": waga_biezacego_kursu,
+                    "objetosc": obj_biezacego_kursu,
+                    "paczki": paczki_w_kursie,
+                    "miasta": miasta_w_kursie
+                })
+                nowy_bus["waga_calkowita"] += waga_biezacego_kursu
+                nowy_bus["objetosc_calkowita"] += obj_biezacego_kursu
+                nowy_bus["paczki_lacznie"] += paczki_w_kursie
+                pierwszy_kurs = False
+            else:
+                break
+
+        if not kierowca_pobral_towar: break
+
+        if not przerwa_odbyta:
+            skumulowany_czas_min += CZAS_PRZERWY_MIN
+
+        if skumulowany_czas_min > MAKS_CZAS_ZMIANY_MIN:
+            nowy_bus["nadgodziny_min"] = skumulowany_czas_min - MAKS_CZAS_ZMIANY_MIN
+            nowy_bus["koszt_nadgodzin_pln"] = (nowy_bus["nadgodziny_min"] / 60.0) * STAWKA_NADGODZINA_PLN_H
+
+        nowy_bus["podsumowanie_trasy"] = {
+            "dystans_km": round(dystans_suma_km, 2),
+            "czas_h": round(skumulowany_czas_min / 60.0, 2),
+            "paliwo_l": round(paliwo_suma_l, 3),
+            "koszt_paliwa_pln": round(paliwo_suma_l * CENA_PALIWA_PLN_L, 2),
+            "sredmie_spalanie": round((paliwo_suma_l / dystans_suma_km) * 100, 2) if dystans_suma_km > 0 else 0.0,
+            "etapy_log": logi_etapow
+        }
+        busy_operacyjne.append(nowy_bus)
+
+    return busy_operacyjne
+
+
+def generuj_optymalne_trasy_dnia(paczki_dnia):
+    paczki_per_miasto = defaultdict(list)
+    for p in paczki_dnia:
+        kod = MAPOWANIE_MIAST.get(p['miasto_docelowe'])
+        if kod: paczki_per_miasto[kod].append(p)
+
+    globalna_baza_zadań = {}
+    for kod, lista in paczki_per_miasto.items():
+        paczkomaty_paczki = defaultdict(list)
+        for p in lista: paczkomaty_paczki[p['id_paczkomatu']].append(p)
+        globalna_baza_zadań[kod] = paczkomaty_paczki
+
+    # Jeden algorytm dla wszystkich miast - brak pustych przebiegów floty!
+    return buduj_harmonogram_globalny(globalna_baza_zadań)
+
+
+def wczytaj_i_optymalizuj():
+    root = tk.Tk();
+    root.withdraw()
+    sciezka_csv = filedialog.askopenfilename(title="Wybierz plik CSV", filetypes=[("Pliki CSV", "*.csv")])
+    if not sciezka_csv: return
+
+    paczki_per_data = defaultdict(list)
+    with open(sciezka_csv, mode='r', encoding='utf-8') as plik:
+        reader = csv.DictReader(plik)
+        for wiersz in reader: paczki_per_data[wiersz['data_dostawy']].append(wiersz)
+
+    for data, paczki in sorted(paczki_per_data.items()):
+        print(f"\n==========================================================================================")
+        print(f"   ZOPTYMALIZOWANY INTEGRALNY DZIEŃ OPERACYJNY: {data}")
+        print(f"==========================================================================================")
+
+        zestawienie_aut = generuj_optymalne_trasy_dnia(paczki)
+
+        koszt_paliwa = sum(a["podsumowanie_trasy"]["koszt_paliwa_pln"] for a in zestawienie_aut)
+        koszt_nadgodzin_suma = sum(a["koszt_nadgodzin_pln"] for a in zestawienie_aut)
+        koszt_utrzymania_floty = len(zestawienie_aut) * KOSZT_STARTU_KURIERA_PLN
+        koszt_calkowity_operacji = koszt_paliwa + koszt_nadgodzin_suma + koszt_utrzymania_floty
+        paczki_calkowite = sum(a["paczki_lacznie"] for a in zestawienie_aut)
+
+        print(f" PODSUMOWANIE FINANSOWO-LOGISTYCZNE DNIA:")
+        print(
+            f"    - Liczba aktywnych kurierow : {len(zestawienie_aut)} (Koszt stały floty: {koszt_utrzymania_floty:.2f} PLN)")
+        print(f"    - Łączny koszt nadgodzin    : {koszt_nadgodzin_suma:.2f} PLN")
+        print(f"    - Koszt samego paliwa       : {koszt_paliwa:.2f} PLN")
+        print(f"    - SUMARYCZNY KOSZT DNIA     : {koszt_calkowity_operacji:.2f} PLN")
+        print(
+            f"    - Efektywny koszt na paczke : {koszt_calkowity_operacji / paczki_calkowite:.2f} PLN/szt." if paczki_calkowite > 0 else "0.00 PLN")
+        print(f"------------------------------------------------------------------------------------------")
+
+        for i, auto in enumerate(zestawienie_aut, 1):
+            p = auto["podsumowanie_trasy"]
+            print(f"\n PROFIL KIEROWCY: KURIER {i} | TYP: {auto['typ']}")
+            print(f"   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):")
+            print(f"      - Obsluzone paczki  : {auto['paczki_lacznie']} szt.")
+            for k_idx, column in enumerate(auto['kursy'], 1):
+                print(f"        -> Wyjazd nr {k_idx} [{', '.join(column['miasta'])}]: {column['paczki']} paczek")
+
+            print(f"\n   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:")
+            for log in p["etapy_log"]:
+                print(f"        - {log}")
+            print(f"      [{formatuj_godzine(p['czas_h'] * 60)}] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG")
+
+            print(f"\n   Modul 3. Ekonomika i Rozliczenie Pojazdu:")
+            print(f"      - Dystans operacyjny  : {p['dystans_km']} km")
+            print(f"      - Czas pracy łączny   : {p['czas_h']} godz.")
+            print(
+                f"      - W tym nadgodziny    : {auto['nadgodziny_min']:.1f} min (Koszt: {auto['koszt_nadgodzin_pln']:.2f} PLN)")
+            print(f"      - Koszt paliwa        : {p['koszt_paliwa_pln']} PLN")
+            print(
+                f"      - ŁĄCZNY KOSZT AUTA   : {p['koszt_paliwa_pln'] + auto['koszt_nadgodzin_pln'] + KOSZT_STARTU_KURIERA_PLN:.2f} PLN")
+            print(f"   " + "-" * 85)
+
+
+if __name__ == "__main__":
+    wczytaj_i_optymalizuj()
