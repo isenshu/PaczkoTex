@@ -1,0 +1,1933 @@
+
+==========================================================================================
+   ZOPTYMALIZOWANY INTEGRALNY DZIEŃ OPERACYJNY: 2026-05-04
+==========================================================================================
+ PODSUMOWANIE FINANSOWO-LOGISTYCZNE DNIA:
+    - Liczba aktywnych kurierow : 13
+    - Łączny koszt wynagrodzeń  : 3316.78 PLN (w tym nadgodziny: 0.00 PLN)
+    - Łączny koszt leasingu     : 1080.00 PLN
+    - Koszt samego paliwa       : 1372.78 PLN
+    - SUMARYCZNY KOSZT DNIA     : 5769.56 PLN
+    - ŁĄCZNY PRZYCHÓD (BRUTTO)  : 115155.50 PLN (A: 3218 szt., B: 2273 szt., C: 976 szt.)
+    - Efektywny koszt na paczke : 0.89 PLN/szt.
+    - ZAROBEK (ZYSKI - KOSZTY)  : 109385.94 PLN
+------------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 1 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 587 szt. (gab. A: 307, gab. B: 192, gab. C: 88)
+        -> Wyjazd nr 1 [Zielona Gora, Nowogrod Bobrzanski]: 300 paczek
+        -> Wyjazd nr 2 [Zielona Gora]: 287 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Obsługa punktów docelowych: Zielona Gora | 276 szt.
+        - [09:53] Dojazd na sektor: ZG->NB | 25.5 km
+        - [10:24] Obsługa punktów docelowych: Nowogrod Bobrzanski | 24 szt.
+        - [10:38] Zjazd do bazy: NB->ZG
+        - [11:09] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [11:29] Obsługa punktów docelowych: Zielona Gora | 287 szt.
+        - [13:26] Przerwa ustawowa (20 min) - rozpoczęta w bazie.
+        - [13:46] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [14:07] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 75.0 km
+      - Czas pracy łączny   : 6.12 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 244.61 PLN
+      - Koszt paliwa        : 51.7 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 356.31 PLN
+      - PRZYCHÓD Z PACZEK   : 10421.50 PLN
+      - BILANS AUTA         : 10065.19 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 2 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 589 szt. (gab. A: 303, gab. B: 200, gab. C: 86)
+        -> Wyjazd nr 1 [Zielona Gora, Zagan]: 336 paczek
+        -> Wyjazd nr 2 [Zielona Gora]: 253 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Obsługa punktów docelowych: Zielona Gora | 273 szt.
+        - [09:54] Dojazd na sektor: ZG->ZA | 58.2 km
+        - [10:49] Obsługa punktów docelowych: Zagan | 63 szt.
+        - [11:18] Zjazd do bazy: ZA->ZG
+        - [12:14] Przerwa ustawowa (20 min) - rozpoczęta w bazie.
+        - [12:34] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [12:54] Obsługa punktów docelowych: Zielona Gora | 253 szt.
+        - [14:40] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [15:00] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 141.4 km
+      - Czas pracy łączny   : 7.0 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 280.08 PLN
+      - Koszt paliwa        : 117.79 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 457.87 PLN
+      - PRZYCHÓD Z PACZEK   : 10462.50 PLN
+      - BILANS AUTA         : 10004.63 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 3 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 648 szt. (gab. A: 309, gab. B: 238, gab. C: 101)
+        -> Wyjazd nr 1 [Zielona Gora, Zagan]: 340 paczek
+        -> Wyjazd nr 2 [Zielona Gora]: 308 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Obsługa punktów docelowych: Zielona Gora | 276 szt.
+        - [09:53] Dojazd na sektor: ZG->ZA | 58.2 km
+        - [10:49] Obsługa punktów docelowych: Zagan | 64 szt.
+        - [11:18] Zjazd do bazy: ZA->ZG
+        - [12:14] Przerwa ustawowa (20 min) - rozpoczęta w bazie.
+        - [12:34] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [12:54] Obsługa punktów docelowych: Zielona Gora | 308 szt.
+        - [15:06] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [15:27] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 144.9 km
+      - Czas pracy łączny   : 7.45 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 297.88 PLN
+      - Koszt paliwa        : 121.37 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 479.25 PLN
+      - PRZYCHÓD Z PACZEK   : 11572.00 PLN
+      - BILANS AUTA         : 11092.75 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 4 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 587 szt. (gab. A: 301, gab. B: 214, gab. C: 72)
+        -> Wyjazd nr 1 [Zielona Gora, Zagan]: 326 paczek
+        -> Wyjazd nr 2 [Zielona Gora]: 261 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Obsługa punktów docelowych: Zielona Gora | 267 szt.
+        - [09:50] Dojazd na sektor: ZG->ZA | 58.2 km
+        - [10:46] Obsługa punktów docelowych: Zagan | 59 szt.
+        - [11:14] Zjazd do bazy: ZA->ZG
+        - [12:10] Przerwa ustawowa (20 min) - rozpoczęta w bazie.
+        - [12:30] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [12:50] Obsługa punktów docelowych: Zielona Gora | 261 szt.
+        - [14:37] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [14:57] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 141.4 km
+      - Czas pracy łączny   : 6.96 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 278.21 PLN
+      - Koszt paliwa        : 117.44 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 455.65 PLN
+      - PRZYCHÓD Z PACZEK   : 10401.50 PLN
+      - BILANS AUTA         : 9945.85 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 5 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 608 szt. (gab. A: 287, gab. B: 223, gab. C: 98)
+        -> Wyjazd nr 1 [Zielona Gora, Zagan]: 314 paczek
+        -> Wyjazd nr 2 [Zielona Gora, Nowogrod Bobrzanski]: 294 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Obsługa punktów docelowych: Zielona Gora | 250 szt.
+        - [09:45] Dojazd na sektor: ZG->ZA | 58.2 km
+        - [10:41] Obsługa punktów docelowych: Zagan | 64 szt.
+        - [11:11] Zjazd do bazy: ZA->ZG
+        - [12:07] Przerwa ustawowa (20 min) - rozpoczęta w bazie.
+        - [12:27] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [12:47] Obsługa punktów docelowych: Zielona Gora | 272 szt.
+        - [14:38] Dojazd na sektor: ZG->NB | 25.5 km
+        - [15:09] Obsługa punktów docelowych: Nowogrod Bobrzanski | 22 szt.
+        - [15:23] Zjazd do bazy: NB->ZG
+      [15:54] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 195.4 km
+      - Czas pracy łączny   : 7.91 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 316.46 PLN
+      - Koszt paliwa        : 152.58 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 529.04 PLN
+      - PRZYCHÓD Z PACZEK   : 10870.00 PLN
+      - BILANS AUTA         : 10340.96 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 6 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 826 szt. (gab. A: 406, gab. B: 301, gab. C: 119)
+        -> Wyjazd nr 1 [Zielona Gora, Nowogrod Bobrzanski]: 317 paczek
+        -> Wyjazd nr 2 [Zielona Gora]: 258 paczek
+        -> Wyjazd nr 3 [Zielona Gora]: 251 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Obsługa punktów docelowych: Zielona Gora | 289 szt.
+        - [09:59] Dojazd na sektor: ZG->NB | 25.5 km
+        - [10:30] Obsługa punktów docelowych: Nowogrod Bobrzanski | 28 szt.
+        - [10:46] Zjazd do bazy: NB->ZG
+        - [11:17] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [11:37] Obsługa punktów docelowych: Zielona Gora | 258 szt.
+        - [13:23] Przerwa ustawowa (20 min) - rozpoczęta w bazie.
+        - [13:43] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [14:03] Obsługa punktów docelowych: Zielona Gora | 251 szt.
+      [15:48] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 85.5 km
+      - Czas pracy łączny   : 7.81 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 312.28 PLN
+      - Koszt paliwa        : 60.21 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 432.49 PLN
+      - PRZYCHÓD Z PACZEK   : 14707.00 PLN
+      - BILANS AUTA         : 14274.51 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 7 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 425 szt. (gab. A: 211, gab. B: 145, gab. C: 69)
+        -> Wyjazd nr 1 [Zagan, Zary]: 303 paczek
+        -> Wyjazd nr 2 [Zagan]: 122 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->ZA | 58.2 km
+        - [08:55] Obsługa punktów docelowych: Zagan | 259 szt.
+        - [10:53] Dojazd na sektor: ZA->ZR | 15.1 km
+        - [11:12] Obsługa punktów docelowych: Zary | 44 szt.
+        - [11:31] Zjazd do bazy: ZR->ZG
+        - [12:26] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [12:46] Przejazd regionalny do ZA
+        - [13:06] Przerwa ustawowa (20 min).
+        - [14:02] Obsługa punktów docelowych: Zagan | 122 szt.
+        - [14:59] Zjazd do bazy: ZA->ZG
+      [15:55] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 261.1 km
+      - Czas pracy łączny   : 7.92 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 316.84 PLN
+      - Koszt paliwa        : 199.63 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 576.47 PLN
+      - PRZYCHÓD Z PACZEK   : 7578.50 PLN
+      - BILANS AUTA         : 7002.03 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 8 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 288 szt. (gab. A: 136, gab. B: 100, gab. C: 52)
+        -> Wyjazd nr 1 [Zary, Kozuchow]: 288 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->ZR | 44.9 km
+        - [08:54] Obsługa punktów docelowych: Zary | 252 szt.
+        - [10:39] Przejazd regionalny do KOZ
+        - [10:55] Przerwa ustawowa (20 min).
+        - [11:48] Obsługa punktów docelowych: Kozuchow | 36 szt.
+        - [12:07] Zjazd do bazy: KOZ->ZG
+        - [12:38] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [12:58] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 130.6 km
+      - Czas pracy łączny   : 4.97 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 198.71 PLN
+      - Koszt paliwa        : 93.33 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 352.04 PLN
+      - PRZYCHÓD Z PACZEK   : 5160.00 PLN
+      - BILANS AUTA         : 4807.96 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 9 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 324 szt. (gab. A: 166, gab. B: 116, gab. C: 42)
+        -> Wyjazd nr 1 [Zary]: 324 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->ZR | 44.9 km
+        - [08:54] Obsługa punktów docelowych: Zary | 324 szt.
+        - [11:06] Zjazd do bazy: ZR->ZG
+        - [12:01] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [12:42] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 102.3 km
+      - Czas pracy łączny   : 4.7 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 187.80 PLN
+      - Koszt paliwa        : 66.58 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 314.38 PLN
+      - PRZYCHÓD Z PACZEK   : 5746.00 PLN
+      - BILANS AUTA         : 5431.62 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 10 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 323 szt. (gab. A: 168, gab. B: 106, gab. C: 49)
+        -> Wyjazd nr 1 [Zary, Nowogrod Bobrzanski]: 323 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->ZR | 44.9 km
+        - [08:54] Obsługa punktów docelowych: Zary | 304 szt.
+        - [11:01] Dojazd na sektor: ZR->NB | 19.9 km
+        - [11:25] Obsługa punktów docelowych: Nowogrod Bobrzanski | 19 szt.
+        - [11:37] Zjazd do bazy: NB->ZG
+        - [12:08] Przerwa ustawowa (20 min) - rozpoczęta w bazie.
+        - [12:28] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [12:48] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 105.8 km
+      - Czas pracy łączny   : 4.81 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 192.49 PLN
+      - Koszt paliwa        : 72.07 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 324.56 PLN
+      - PRZYCHÓD Z PACZEK   : 5737.50 PLN
+      - BILANS AUTA         : 5412.94 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 11 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 611 szt. (gab. A: 307, gab. B: 206, gab. C: 98)
+        -> Wyjazd nr 1 [Szprotawa, Kozuchow]: 305 paczek
+        -> Wyjazd nr 2 [Nowa Sol]: 306 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->SZP | 53.6 km
+        - [08:51] Obsługa punktów docelowych: Szprotawa | 260 szt.
+        - [10:37] Dojazd na sektor: SZP->KOZ | 22.6 km
+        - [11:03] Obsługa punktów docelowych: Kozuchow | 45 szt.
+        - [11:24] Zjazd do bazy: KOZ->ZG
+        - [11:55] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [12:15] Przejazd regionalny do NS
+        - [12:37] Przerwa ustawowa (20 min).
+        - [13:02] Obsługa punktów docelowych: Nowa Sol | 306 szt.
+        - [14:55] Zjazd do bazy: NS->ZG
+        - [15:22] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [15:42] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 180.4 km
+      - Czas pracy łączny   : 7.71 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 308.42 PLN
+      - Koszt paliwa        : 148.24 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 516.66 PLN
+      - PRZYCHÓD Z PACZEK   : 10885.50 PLN
+      - BILANS AUTA         : 10368.84 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 12 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 623 szt. (gab. A: 302, gab. B: 222, gab. C: 99)
+        -> Wyjazd nr 1 [Nowa Sol]: 290 paczek
+        -> Wyjazd nr 2 [Nowa Sol]: 291 paczek
+        -> Wyjazd nr 3 [Nowa Sol]: 42 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->NS | 26.6 km
+        - [08:26] Obsługa punktów docelowych: Nowa Sol | 290 szt.
+        - [10:16] Zjazd do bazy: NS->ZG
+        - [10:43] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [11:03] Dojazd na sektor: ZG->NS | 26.6 km
+        - [11:30] Obsługa punktów docelowych: Nowa Sol | 291 szt.
+        - [13:19] Zjazd do bazy: NS->ZG
+        - [13:46] Przerwa ustawowa (20 min) - rozpoczęta w bazie.
+        - [14:06] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [14:26] Dojazd na sektor: ZG->NS | 26.6 km
+        - [14:53] Obsługa punktów docelowych: Nowa Sol | 42 szt.
+        - [15:09] Zjazd do bazy: NS->ZG
+        - [15:36] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [15:56] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 173.6 km
+      - Czas pracy łączny   : 7.94 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 317.54 PLN
+      - Koszt paliwa        : 141.31 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 518.85 PLN
+      - PRZYCHÓD Z PACZEK   : 11119.50 PLN
+      - BILANS AUTA         : 10600.65 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 13 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 28 szt. (gab. A: 15, gab. B: 10, gab. C: 3)
+        -> Wyjazd nr 1 [Nowogrod Bobrzanski]: 28 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->NB | 25.5 km
+        - [08:31] Obsługa punktów docelowych: Nowogrod Bobrzanski | 28 szt.
+        - [08:46] Zjazd do bazy: NB->ZG
+      [09:38] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 54.0 km
+      - Czas pracy łączny   : 1.64 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 65.45 PLN
+      - Koszt paliwa        : 30.53 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 155.98 PLN
+      - PRZYCHÓD Z PACZEK   : 494.00 PLN
+      - BILANS AUTA         : 338.02 PLN
+   -------------------------------------------------------------------------------------
+
+==========================================================================================
+   ZOPTYMALIZOWANY INTEGRALNY DZIEŃ OPERACYJNY: 2026-05-05
+==========================================================================================
+ PODSUMOWANIE FINANSOWO-LOGISTYCZNE DNIA:
+    - Liczba aktywnych kurierow : 15
+    - Łączny koszt wynagrodzeń  : 3841.64 PLN (w tym nadgodziny: 0.00 PLN)
+    - Łączny koszt leasingu     : 1080.00 PLN
+    - Koszt samego paliwa       : 1381.09 PLN
+    - SUMARYCZNY KOSZT DNIA     : 6302.73 PLN
+    - ŁĄCZNY PRZYCHÓD (BRUTTO)  : 143932.00 PLN (A: 4078 szt., B: 2780 szt., C: 1230 szt.)
+    - Efektywny koszt na paczke : 0.78 PLN/szt.
+    - ZAROBEK (ZYSKI - KOSZTY)  : 137629.27 PLN
+------------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 1 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 885 szt. (gab. A: 444, gab. B: 297, gab. C: 144)
+        -> Wyjazd nr 1 [Zielona Gora]: 318 paczek
+        -> Wyjazd nr 2 [Zielona Gora]: 331 paczek
+        -> Wyjazd nr 3 [Zielona Gora]: 236 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Obsługa punktów docelowych: Zielona Gora | 318 szt.
+        - [10:07] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [10:27] Obsługa punktów docelowych: Zielona Gora | 331 szt.
+        - [12:41] Przerwa ustawowa (20 min) - rozpoczęta w bazie.
+        - [13:01] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [13:21] Obsługa punktów docelowych: Zielona Gora | 236 szt.
+        - [14:54] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [15:13] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 28.0 km
+      - Czas pracy łączny   : 7.23 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 289.39 PLN
+      - Koszt paliwa        : 23.67 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 373.06 PLN
+      - PRZYCHÓD Z PACZEK   : 15772.50 PLN
+      - BILANS AUTA         : 15399.44 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 2 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 660 szt. (gab. A: 328, gab. B: 242, gab. C: 90)
+        -> Wyjazd nr 1 [Zielona Gora, Zagan, Nowogrod Bobrzanski]: 346 paczek
+        -> Wyjazd nr 2 [Zielona Gora]: 314 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Obsługa punktów docelowych: Zielona Gora | 249 szt.
+        - [09:37] Dojazd na sektor: ZG->ZA | 58.2 km
+        - [10:33] Obsługa punktów docelowych: Zagan | 69 szt.
+        - [11:04] Dojazd na sektor: ZA->NB | 23.1 km
+        - [11:31] Obsługa punktów docelowych: Nowogrod Bobrzanski | 28 szt.
+        - [11:47] Zjazd do bazy: NB->ZG
+        - [12:18] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [12:38] Obsługa punktów docelowych: Zielona Gora | 314 szt.
+        - [14:47] Przerwa ustawowa (20 min) - rozpoczęta w bazie.
+        - [15:07] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [15:27] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 131.3 km
+      - Czas pracy łączny   : 7.45 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 298.01 PLN
+      - Koszt paliwa        : 105.06 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 463.07 PLN
+      - PRZYCHÓD Z PACZEK   : 11734.00 PLN
+      - BILANS AUTA         : 11270.93 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 3 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 999 szt. (gab. A: 514, gab. B: 349, gab. C: 136)
+        -> Wyjazd nr 1 [Zielona Gora]: 349 paczek
+        -> Wyjazd nr 2 [Zielona Gora]: 318 paczek
+        -> Wyjazd nr 3 [Zielona Gora]: 332 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Obsługa punktów docelowych: Zielona Gora | 349 szt.
+        - [10:18] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [10:38] Obsługa punktów docelowych: Zielona Gora | 318 szt.
+        - [12:44] Przerwa ustawowa (20 min) - rozpoczęta w bazie.
+        - [13:04] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [13:24] Obsługa punktów docelowych: Zielona Gora | 332 szt.
+        - [15:38] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [15:58] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 31.5 km
+      - Czas pracy łączny   : 7.97 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 318.70 PLN
+      - Koszt paliwa        : 26.79 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 405.49 PLN
+      - PRZYCHÓD Z PACZEK   : 17725.50 PLN
+      - BILANS AUTA         : 17320.01 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 4 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 641 szt. (gab. A: 325, gab. B: 231, gab. C: 85)
+        -> Wyjazd nr 1 [Zielona Gora]: 327 paczek
+        -> Wyjazd nr 2 [Zielona Gora, Zagan]: 314 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Obsługa punktów docelowych: Zielona Gora | 327 szt.
+        - [10:10] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [10:30] Obsługa punktów docelowych: Zielona Gora | 241 szt.
+        - [12:06] Przejazd regionalny do ZA
+        - [11:18] Przerwa ustawowa (20 min).
+        - [13:22] Obsługa punktów docelowych: Zagan | 73 szt.
+        - [13:54] Zjazd do bazy: ZA->ZG
+        - [14:50] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [15:10] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 137.9 km
+      - Czas pracy łączny   : 7.18 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 287.16 PLN
+      - Koszt paliwa        : 115.57 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 462.73 PLN
+      - PRZYCHÓD Z PACZEK   : 11378.50 PLN
+      - BILANS AUTA         : 10915.77 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 5 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 538 szt. (gab. A: 270, gab. B: 185, gab. C: 83)
+        -> Wyjazd nr 1 [Zielona Gora, Zagan]: 293 paczek
+        -> Wyjazd nr 2 [Zielona Gora]: 245 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Obsługa punktów docelowych: Zielona Gora | 213 szt.
+        - [09:24] Dojazd na sektor: ZG->ZA | 58.2 km
+        - [10:20] Obsługa punktów docelowych: Zagan | 80 szt.
+        - [10:55] Zjazd do bazy: ZA->ZG
+        - [11:50] Przerwa ustawowa (20 min) - rozpoczęta w bazie.
+        - [12:10] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [12:30] Obsługa punktów docelowych: Zielona Gora | 245 szt.
+        - [14:08] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [14:28] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 134.4 km
+      - Czas pracy łączny   : 6.47 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 258.67 PLN
+      - Koszt paliwa        : 111.05 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 429.72 PLN
+      - PRZYCHÓD Z PACZEK   : 9579.00 PLN
+      - BILANS AUTA         : 9149.28 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 6 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 641 szt. (gab. A: 317, gab. B: 220, gab. C: 104)
+        -> Wyjazd nr 1 [Zielona Gora]: 334 paczek
+        -> Wyjazd nr 2 [Zielona Gora, Zagan, Nowogrod Bobrzanski]: 307 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Obsługa punktów docelowych: Zielona Gora | 334 szt.
+        - [10:12] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [10:32] Obsługa punktów docelowych: Zielona Gora | 215 szt.
+        - [11:57] Przejazd regionalny do ZA
+        - [11:17] Przerwa ustawowa (20 min).
+        - [13:13] Obsługa punktów docelowych: Zagan | 61 szt.
+        - [13:41] Dojazd na sektor: ZA->NB | 23.1 km
+        - [14:08] Obsługa punktów docelowych: Nowogrod Bobrzanski | 31 szt.
+        - [14:25] Zjazd do bazy: NB->ZG
+        - [14:56] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [15:16] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 131.3 km
+      - Czas pracy łączny   : 7.28 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 291.17 PLN
+      - Koszt paliwa        : 103.95 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 455.12 PLN
+      - PRZYCHÓD Z PACZEK   : 11432.50 PLN
+      - BILANS AUTA         : 10977.38 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 7 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 564 szt. (gab. A: 298, gab. B: 183, gab. C: 83)
+        -> Wyjazd nr 1 [Zielona Gora, Zagan, Nowogrod Bobrzanski]: 327 paczek
+        -> Wyjazd nr 2 [Zielona Gora]: 237 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Obsługa punktów docelowych: Zielona Gora | 234 szt.
+        - [09:33] Dojazd na sektor: ZG->ZA | 58.2 km
+        - [10:29] Obsługa punktów docelowych: Zagan | 64 szt.
+        - [10:58] Dojazd na sektor: ZA->NB | 23.1 km
+        - [11:25] Obsługa punktów docelowych: Nowogrod Bobrzanski | 29 szt.
+        - [11:40] Zjazd do bazy: NB->ZG
+        - [12:11] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [12:31] Obsługa punktów docelowych: Zielona Gora | 237 szt.
+        - [14:04] Przerwa ustawowa (20 min) - rozpoczęta w bazie.
+        - [14:24] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [14:45] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 127.8 km
+      - Czas pracy łączny   : 6.75 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 269.82 PLN
+      - Koszt paliwa        : 100.67 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 430.49 PLN
+      - PRZYCHÓD Z PACZEK   : 10004.00 PLN
+      - BILANS AUTA         : 9573.51 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 8 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 313 szt. (gab. A: 155, gab. B: 109, gab. C: 49)
+        -> Wyjazd nr 1 [Zagan, Zary]: 313 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->ZA | 58.2 km
+        - [08:55] Obsługa punktów docelowych: Zagan | 256 szt.
+        - [10:47] Dojazd na sektor: ZA->ZR | 15.1 km
+        - [11:06] Obsługa punktów docelowych: Zary | 57 szt.
+        - [11:31] Zjazd do bazy: ZR->ZG
+        - [12:25] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [13:06] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 132.7 km
+      - Czas pracy łączny   : 5.1 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 203.99 PLN
+      - Koszt paliwa        : 100.77 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 364.76 PLN
+      - PRZYCHÓD Z PACZEK   : 5578.50 PLN
+      - BILANS AUTA         : 5213.74 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 9 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 322 szt. (gab. A: 165, gab. B: 108, gab. C: 49)
+        -> Wyjazd nr 1 [Zagan, Szprotawa, Nowogrod Bobrzanski]: 322 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->ZA | 58.2 km
+        - [08:55] Obsługa punktów docelowych: Zagan | 156 szt.
+        - [10:03] Dojazd na sektor: ZA->SZP | 17.6 km
+        - [10:24] Obsługa punktów docelowych: Szprotawa | 137 szt.
+        - [11:20] Przejazd regionalny do NB
+        - [11:27] Przerwa ustawowa (20 min).
+        - [12:29] Obsługa punktów docelowych: Nowogrod Bobrzanski | 29 szt.
+        - [12:45] Zjazd do bazy: NB->ZG
+        - [13:16] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [13:37] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 157.4 km
+      - Czas pracy łączny   : 5.62 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 224.61 PLN
+      - Koszt paliwa        : 115.27 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 399.88 PLN
+      - PRZYCHÓD Z PACZEK   : 5725.00 PLN
+      - BILANS AUTA         : 5325.12 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 10 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 310 szt. (gab. A: 160, gab. B: 105, gab. C: 45)
+        -> Wyjazd nr 1 [Zary]: 310 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->ZR | 44.9 km
+        - [08:54] Obsługa punktów docelowych: Zary | 310 szt.
+        - [10:57] Zjazd do bazy: ZR->ZG
+        - [11:52] Przerwa ustawowa (20 min) - rozpoczęta w bazie.
+        - [12:12] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [12:32] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 99.8 km
+      - Czas pracy łączny   : 4.54 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 181.70 PLN
+      - Koszt paliwa        : 64.67 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 306.37 PLN
+      - PRZYCHÓD Z PACZEK   : 5505.00 PLN
+      - BILANS AUTA         : 5198.63 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 11 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 335 szt. (gab. A: 175, gab. B: 117, gab. C: 43)
+        -> Wyjazd nr 1 [Zary, Nowogrod Bobrzanski]: 335 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->ZR | 44.9 km
+        - [08:54] Obsługa punktów docelowych: Zary | 296 szt.
+        - [10:54] Dojazd na sektor: ZR->NB | 19.9 km
+        - [11:18] Obsługa punktów docelowych: Nowogrod Bobrzanski | 39 szt.
+        - [11:37] Zjazd do bazy: NB->ZG
+        - [12:09] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [12:49] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 103.3 km
+      - Czas pracy łączny   : 4.82 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 192.76 PLN
+      - Koszt paliwa        : 69.66 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 322.42 PLN
+      - PRZYCHÓD Z PACZEK   : 5933.50 PLN
+      - BILANS AUTA         : 5611.08 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 12 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 410 szt. (gab. A: 217, gab. B: 145, gab. C: 48)
+        -> Wyjazd nr 1 [Zary]: 274 paczek
+        -> Wyjazd nr 2 [Zary]: 136 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->ZR | 44.9 km
+        - [08:54] Obsługa punktów docelowych: Zary | 274 szt.
+        - [10:47] Zjazd do bazy: ZR->ZG
+        - [11:42] Przerwa ustawowa (20 min) - rozpoczęta w bazie.
+        - [12:02] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [12:22] Dojazd na sektor: ZG->ZR | 44.9 km
+        - [13:17] Obsługa punktów docelowych: Zary | 136 szt.
+        - [14:13] Zjazd do bazy: ZR->ZG
+        - [15:07] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [15:28] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 194.6 km
+      - Czas pracy łączny   : 7.47 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 298.60 PLN
+      - Koszt paliwa        : 119.99 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 478.59 PLN
+      - PRZYCHÓD Z PACZEK   : 7247.00 PLN
+      - BILANS AUTA         : 6768.41 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 13 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 584 szt. (gab. A: 280, gab. B: 189, gab. C: 115)
+        -> Wyjazd nr 1 [Kozuchow, Szprotawa]: 282 paczek
+        -> Wyjazd nr 2 [Nowa Sol]: 302 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->KOZ | 32.0 km
+        - [08:30] Obsługa punktów docelowych: Kozuchow | 111 szt.
+        - [09:20] Dojazd na sektor: KOZ->SZP | 22.6 km
+        - [09:47] Obsługa punktów docelowych: Szprotawa | 171 szt.
+        - [10:54] Zjazd do bazy: SZP->ZG
+        - [11:45] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [12:05] Przejazd regionalny do NS
+        - [12:22] Przerwa ustawowa (20 min).
+        - [12:52] Obsługa punktów docelowych: Nowa Sol | 302 szt.
+        - [14:43] Zjazd do bazy: NS->ZG
+        - [15:10] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [15:30] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 177.4 km
+      - Czas pracy łączny   : 7.51 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 300.51 PLN
+      - Koszt paliwa        : 137.75 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 498.26 PLN
+      - PRZYCHÓD Z PACZEK   : 10474.00 PLN
+      - BILANS AUTA         : 9975.74 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 14 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 533 szt. (gab. A: 257, gab. B: 173, gab. C: 103)
+        -> Wyjazd nr 1 [Nowa Sol]: 262 paczek
+        -> Wyjazd nr 2 [Nowa Sol]: 271 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->NS | 26.6 km
+        - [08:26] Obsługa punktów docelowych: Nowa Sol | 262 szt.
+        - [10:02] Zjazd do bazy: NS->ZG
+        - [10:29] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [10:49] Dojazd na sektor: ZG->NS | 26.6 km
+        - [11:15] Obsługa punktów docelowych: Nowa Sol | 271 szt.
+        - [12:56] Zjazd do bazy: NS->ZG
+        - [13:23] Przerwa ustawowa (20 min) - rozpoczęta w bazie.
+        - [13:43] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [14:03] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 115.4 km
+      - Czas pracy łączny   : 6.05 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 242.01 PLN
+      - Koszt paliwa        : 96.38 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 398.39 PLN
+      - PRZYCHÓD Z PACZEK   : 9552.50 PLN
+      - BILANS AUTA         : 9154.11 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 15 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 353 szt. (gab. A: 173, gab. B: 127, gab. C: 53)
+        -> Wyjazd nr 1 [Nowa Sol]: 301 paczek
+        -> Wyjazd nr 2 [Nowa Sol]: 52 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->NS | 26.6 km
+        - [08:26] Obsługa punktów docelowych: Nowa Sol | 301 szt.
+        - [10:17] Zjazd do bazy: NS->ZG
+        - [10:44] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [11:04] Dojazd na sektor: ZG->NS | 26.6 km
+        - [11:30] Obsługa punktów docelowych: Nowa Sol | 52 szt.
+        - [11:50] Zjazd do bazy: NS->ZG
+      [12:36] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 112.4 km
+      - Czas pracy łączny   : 4.61 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 184.55 PLN
+      - Koszt paliwa        : 89.84 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 334.39 PLN
+      - PRZYCHÓD Z PACZEK   : 6290.50 PLN
+      - BILANS AUTA         : 5956.11 PLN
+   -------------------------------------------------------------------------------------
+
+==========================================================================================
+   ZOPTYMALIZOWANY INTEGRALNY DZIEŃ OPERACYJNY: 2026-05-06
+==========================================================================================
+ PODSUMOWANIE FINANSOWO-LOGISTYCZNE DNIA:
+    - Liczba aktywnych kurierow : 13
+    - Łączny koszt wynagrodzeń  : 3219.47 PLN (w tym nadgodziny: 0.00 PLN)
+    - Łączny koszt leasingu     : 1080.00 PLN
+    - Koszt samego paliwa       : 1251.88 PLN
+    - SUMARYCZNY KOSZT DNIA     : 5551.35 PLN
+    - ŁĄCZNY PRZYCHÓD (BRUTTO)  : 113764.00 PLN (A: 3207 szt., B: 2181 szt., C: 1000 szt.)
+    - Efektywny koszt na paczke : 0.87 PLN/szt.
+    - ZAROBEK (ZYSKI - KOSZTY)  : 108212.65 PLN
+------------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 1 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 606 szt. (gab. A: 297, gab. B: 218, gab. C: 91)
+        -> Wyjazd nr 1 [Zielona Gora, Nowogrod Bobrzanski]: 297 paczek
+        -> Wyjazd nr 2 [Zielona Gora]: 309 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Obsługa punktów docelowych: Zielona Gora | 272 szt.
+        - [09:53] Dojazd na sektor: ZG->NB | 25.5 km
+        - [10:25] Obsługa punktów docelowych: Nowogrod Bobrzanski | 25 szt.
+        - [10:39] Zjazd do bazy: NB->ZG
+        - [11:10] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [11:30] Obsługa punktów docelowych: Zielona Gora | 309 szt.
+        - [13:40] Przerwa ustawowa (20 min) - rozpoczęta w bazie.
+        - [14:00] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [14:21] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 78.5 km
+      - Czas pracy łączny   : 6.35 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 253.87 PLN
+      - Koszt paliwa        : 54.96 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 368.83 PLN
+      - PRZYCHÓD Z PACZEK   : 10799.00 PLN
+      - BILANS AUTA         : 10430.17 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 2 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 913 szt. (gab. A: 466, gab. B: 298, gab. C: 149)
+        -> Wyjazd nr 1 [Zielona Gora]: 325 paczek
+        -> Wyjazd nr 2 [Zielona Gora]: 262 paczek
+        -> Wyjazd nr 3 [Zielona Gora]: 326 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Obsługa punktów docelowych: Zielona Gora | 325 szt.
+        - [10:15] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [10:35] Obsługa punktów docelowych: Zielona Gora | 262 szt.
+        - [12:22] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [12:42] Obsługa punktów docelowych: Zielona Gora | 326 szt.
+        - [15:02] Przerwa ustawowa (20 min) - rozpoczęta w bazie.
+        - [15:22] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [15:42] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 38.5 km
+      - Czas pracy łączny   : 7.7 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 308.19 PLN
+      - Koszt paliwa        : 32.41 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 400.60 PLN
+      - PRZYCHÓD Z PACZEK   : 16256.50 PLN
+      - BILANS AUTA         : 15855.90 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 3 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 630 szt. (gab. A: 313, gab. B: 225, gab. C: 92)
+        -> Wyjazd nr 1 [Zielona Gora, Nowogrod Bobrzanski]: 303 paczek
+        -> Wyjazd nr 2 [Zielona Gora, Szprotawa]: 327 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Obsługa punktów docelowych: Zielona Gora | 278 szt.
+        - [09:54] Dojazd na sektor: ZG->NB | 25.5 km
+        - [10:25] Obsługa punktów docelowych: Nowogrod Bobrzanski | 25 szt.
+        - [10:40] Zjazd do bazy: NB->ZG
+        - [11:11] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [11:31] Obsługa punktów docelowych: Zielona Gora | 265 szt.
+        - [13:23] Przejazd regionalny do SZP
+        - [12:00] Przerwa ustawowa (20 min).
+        - [14:34] Obsługa punktów docelowych: Szprotawa | 62 szt.
+        - [15:00] Zjazd do bazy: SZP->ZG
+      [15:51] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 184.7 km
+      - Czas pracy łączny   : 7.86 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 314.49 PLN
+      - Koszt paliwa        : 143.85 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 518.34 PLN
+      - PRZYCHÓD Z PACZEK   : 11213.00 PLN
+      - BILANS AUTA         : 10694.66 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 4 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 596 szt. (gab. A: 288, gab. B: 222, gab. C: 86)
+        -> Wyjazd nr 1 [Zielona Gora, Zary]: 327 paczek
+        -> Wyjazd nr 2 [Zielona Gora]: 269 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Obsługa punktów docelowych: Zielona Gora | 268 szt.
+        - [09:50] Dojazd na sektor: ZG->ZR | 44.9 km
+        - [10:45] Obsługa punktów docelowych: Zary | 59 szt.
+        - [11:09] Zjazd do bazy: ZR->ZG
+        - [12:04] Przerwa ustawowa (20 min) - rozpoczęta w bazie.
+        - [12:24] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [12:44] Obsługa punktów docelowych: Zielona Gora | 269 szt.
+        - [14:34] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [14:54] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 113.3 km
+      - Czas pracy łączny   : 6.91 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 276.31 PLN
+      - Koszt paliwa        : 75.31 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 411.62 PLN
+      - PRZYCHÓD Z PACZEK   : 10622.00 PLN
+      - BILANS AUTA         : 10210.38 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 5 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 670 szt. (gab. A: 365, gab. B: 209, gab. C: 96)
+        -> Wyjazd nr 1 [Zielona Gora]: 356 paczek
+        -> Wyjazd nr 2 [Zielona Gora, Zagan]: 314 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Obsługa punktów docelowych: Zielona Gora | 356 szt.
+        - [10:25] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [10:45] Obsługa punktów docelowych: Zielona Gora | 254 szt.
+        - [12:32] Przejazd regionalny do ZA
+        - [10:33] Przerwa ustawowa (20 min).
+        - [13:48] Obsługa punktów docelowych: Zagan | 60 szt.
+        - [14:16] Zjazd do bazy: ZA->ZG
+        - [15:11] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [15:31] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 144.9 km
+      - Czas pracy łączny   : 7.53 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 301.29 PLN
+      - Koszt paliwa        : 120.85 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 482.14 PLN
+      - PRZYCHÓD Z PACZEK   : 11857.00 PLN
+      - BILANS AUTA         : 11374.86 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 6 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 438 szt. (gab. A: 214, gab. B: 152, gab. C: 72)
+        -> Wyjazd nr 1 [Zielona Gora, Szprotawa]: 322 paczek
+        -> Wyjazd nr 2 [Szprotawa]: 116 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Obsługa punktów docelowych: Zielona Gora | 248 szt.
+        - [09:45] Dojazd na sektor: ZG->SZP | 53.6 km
+        - [10:36] Obsługa punktów docelowych: Szprotawa | 74 szt.
+        - [11:05] Zjazd do bazy: SZP->ZG
+        - [11:57] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [12:17] Przejazd regionalny do SZP
+        - [12:56] Przerwa ustawowa (20 min).
+        - [13:28] Obsługa punktów docelowych: Szprotawa | 116 szt.
+        - [14:17] Zjazd do bazy: SZP->ZG
+        - [15:08] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [15:28] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 232.4 km
+      - Czas pracy łączny   : 7.48 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 299.18 PLN
+      - Koszt paliwa        : 186.51 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 545.69 PLN
+      - PRZYCHÓD Z PACZEK   : 7819.00 PLN
+      - BILANS AUTA         : 7273.31 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 7 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 312 szt. (gab. A: 156, gab. B: 107, gab. C: 49)
+        -> Wyjazd nr 1 [Zary]: 312 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->ZR | 44.9 km
+        - [08:54] Obsługa punktów docelowych: Zary | 312 szt.
+        - [11:03] Zjazd do bazy: ZR->ZG
+        - [11:58] Przerwa ustawowa (20 min) - rozpoczęta w bazie.
+        - [12:18] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [12:39] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 102.3 km
+      - Czas pracy łączny   : 4.65 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 185.86 PLN
+      - Koszt paliwa        : 66.81 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 312.67 PLN
+      - PRZYCHÓD Z PACZEK   : 5558.00 PLN
+      - BILANS AUTA         : 5245.33 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 8 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 316 szt. (gab. A: 161, gab. B: 112, gab. C: 43)
+        -> Wyjazd nr 1 [Zary]: 316 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->ZR | 44.9 km
+        - [08:54] Obsługa punktów docelowych: Zary | 316 szt.
+        - [11:06] Zjazd do bazy: ZR->ZG
+        - [12:01] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [12:41] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 102.3 km
+      - Czas pracy łączny   : 4.69 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 187.59 PLN
+      - Koszt paliwa        : 66.92 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 314.51 PLN
+      - PRZYCHÓD Z PACZEK   : 5610.00 PLN
+      - BILANS AUTA         : 5295.49 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 9 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 311 szt. (gab. A: 145, gab. B: 118, gab. C: 48)
+        -> Wyjazd nr 1 [Zary, Zagan, Nowogrod Bobrzanski]: 311 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->ZR | 44.9 km
+        - [08:54] Obsługa punktów docelowych: Zary | 230 szt.
+        - [10:30] Dojazd na sektor: ZR->ZA | 15.1 km
+        - [10:49] Obsługa punktów docelowych: Zagan | 55 szt.
+        - [11:15] Przejazd regionalny do NB
+        - [11:37] Przerwa ustawowa (20 min).
+        - [12:02] Obsługa punktów docelowych: Nowogrod Bobrzanski | 26 szt.
+        - [12:17] Zjazd do bazy: NB->ZG
+        - [12:48] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [13:08] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 125.6 km
+      - Czas pracy łączny   : 5.14 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 205.66 PLN
+      - Koszt paliwa        : 83.94 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 349.60 PLN
+      - PRZYCHÓD Z PACZEK   : 5559.50 PLN
+      - BILANS AUTA         : 5209.90 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 10 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 288 szt. (gab. A: 135, gab. B: 99, gab. C: 54)
+        -> Wyjazd nr 1 [Zagan, Nowogrod Bobrzanski]: 288 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->ZA | 58.2 km
+        - [08:55] Obsługa punktów docelowych: Zagan | 256 szt.
+        - [10:51] Przejazd regionalny do NB
+        - [11:05] Przerwa ustawowa (20 min).
+        - [11:38] Obsługa punktów docelowych: Nowogrod Bobrzanski | 32 szt.
+        - [11:55] Zjazd do bazy: NB->ZG
+        - [12:26] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [12:46] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 125.8 km
+      - Czas pracy łączny   : 4.77 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 190.88 PLN
+      - Koszt paliwa        : 98.82 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 349.70 PLN
+      - PRZYCHÓD Z PACZEK   : 5166.00 PLN
+      - BILANS AUTA         : 4816.30 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 11 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 384 szt. (gab. A: 192, gab. B: 135, gab. C: 57)
+        -> Wyjazd nr 1 [Zagan, Kozuchow]: 319 paczek
+        -> Wyjazd nr 2 [Kozuchow, Nowogrod Bobrzanski]: 65 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->ZA | 58.2 km
+        - [08:55] Obsługa punktów docelowych: Zagan | 269 szt.
+        - [10:59] Przejazd regionalny do KOZ
+        - [10:55] Przerwa ustawowa (20 min).
+        - [11:49] Obsługa punktów docelowych: Kozuchow | 50 szt.
+        - [12:12] Zjazd do bazy: KOZ->ZG
+        - [12:43] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [13:03] Dojazd na sektor: ZG->KOZ | 32.0 km
+        - [13:34] Obsługa punktów docelowych: Kozuchow | 41 szt.
+        - [13:54] Dojazd na sektor: KOZ->NB | 31.4 km
+        - [14:31] Obsługa punktów docelowych: Nowogrod Bobrzanski | 24 szt.
+        - [14:45] Zjazd do bazy: NB->ZG
+        - [15:16] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [15:36] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 230.2 km
+      - Czas pracy łączny   : 7.6 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 304.13 PLN
+      - Koszt paliwa        : 170.81 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 534.94 PLN
+      - PRZYCHÓD Z PACZEK   : 6834.00 PLN
+      - BILANS AUTA         : 6299.06 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 12 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 612 szt. (gab. A: 314, gab. B: 192, gab. C: 106)
+        -> Wyjazd nr 1 [Nowa Sol]: 297 paczek
+        -> Wyjazd nr 2 [Nowa Sol]: 315 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->NS | 26.6 km
+        - [08:26] Obsługa punktów docelowych: Nowa Sol | 297 szt.
+        - [10:17] Zjazd do bazy: NS->ZG
+        - [10:44] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [11:04] Dojazd na sektor: ZG->NS | 26.6 km
+        - [11:31] Obsługa punktów docelowych: Nowa Sol | 315 szt.
+        - [13:29] Zjazd do bazy: NS->ZG
+        - [13:56] Przerwa ustawowa (20 min) - rozpoczęta w bazie.
+        - [14:16] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [14:36] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 119.4 km
+      - Czas pracy łączny   : 6.61 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 264.48 PLN
+      - Koszt paliwa        : 100.06 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 424.54 PLN
+      - PRZYCHÓD Z PACZEK   : 10906.00 PLN
+      - BILANS AUTA         : 10481.46 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 13 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 312 szt. (gab. A: 161, gab. B: 94, gab. C: 57)
+        -> Wyjazd nr 1 [Nowa Sol]: 312 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->NS | 26.6 km
+        - [08:26] Obsługa punktów docelowych: Nowa Sol | 312 szt.
+        - [10:24] Zjazd do bazy: NS->ZG
+      [11:11] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 60.2 km
+      - Czas pracy łączny   : 3.19 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 127.54 PLN
+      - Koszt paliwa        : 50.63 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 238.17 PLN
+      - PRZYCHÓD Z PACZEK   : 5564.00 PLN
+      - BILANS AUTA         : 5325.83 PLN
+   -------------------------------------------------------------------------------------
+
+==========================================================================================
+   ZOPTYMALIZOWANY INTEGRALNY DZIEŃ OPERACYJNY: 2026-05-07
+==========================================================================================
+ PODSUMOWANIE FINANSOWO-LOGISTYCZNE DNIA:
+    - Liczba aktywnych kurierow : 11
+    - Łączny koszt wynagrodzeń  : 2977.56 PLN (w tym nadgodziny: 0.00 PLN)
+    - Łączny koszt leasingu     : 1080.00 PLN
+    - Koszt samego paliwa       : 1134.33 PLN
+    - SUMARYCZNY KOSZT DNIA     : 5191.89 PLN
+    - ŁĄCZNY PRZYCHÓD (BRUTTO)  : 104947.50 PLN (A: 2982 szt., B: 2027 szt., C: 890 szt.)
+    - Efektywny koszt na paczke : 0.88 PLN/szt.
+    - ZAROBEK (ZYSKI - KOSZTY)  : 99755.61 PLN
+------------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 1 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 626 szt. (gab. A: 312, gab. B: 218, gab. C: 96)
+        -> Wyjazd nr 1 [Zielona Gora, Nowogrod Bobrzanski]: 338 paczek
+        -> Wyjazd nr 2 [Zielona Gora, Nowogrod Bobrzanski]: 288 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Obsługa punktów docelowych: Zielona Gora | 320 szt.
+        - [10:14] Dojazd na sektor: ZG->NB | 25.5 km
+        - [10:45] Obsługa punktów docelowych: Nowogrod Bobrzanski | 18 szt.
+        - [10:57] Zjazd do bazy: NB->ZG
+        - [11:28] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [11:48] Obsługa punktów docelowych: Zielona Gora | 263 szt.
+        - [13:39] Przejazd regionalny do NB
+        - [11:32] Przerwa ustawowa (20 min).
+        - [14:30] Obsługa punktów docelowych: Nowogrod Bobrzanski | 25 szt.
+        - [14:44] Zjazd do bazy: NB->ZG
+        - [15:15] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [15:35] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 132.5 km
+      - Czas pracy łączny   : 7.59 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 303.61 PLN
+      - Koszt paliwa        : 89.36 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 452.97 PLN
+      - PRZYCHÓD Z PACZEK   : 11149.00 PLN
+      - BILANS AUTA         : 10696.03 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 2 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 632 szt. (gab. A: 327, gab. B: 203, gab. C: 102)
+        -> Wyjazd nr 1 [Zielona Gora]: 307 paczek
+        -> Wyjazd nr 2 [Zielona Gora, Nowogrod Bobrzanski]: 325 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Obsługa punktów docelowych: Zielona Gora | 307 szt.
+        - [10:12] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [10:32] Obsługa punktów docelowych: Zielona Gora | 306 szt.
+        - [12:44] Przejazd regionalny do NB
+        - [11:16] Przerwa ustawowa (20 min).
+        - [13:35] Obsługa punktów docelowych: Nowogrod Bobrzanski | 19 szt.
+        - [13:47] Zjazd do bazy: NB->ZG
+        - [14:19] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [14:39] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 82.0 km
+      - Czas pracy łączny   : 6.65 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 266.08 PLN
+      - Koszt paliwa        : 58.52 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 384.60 PLN
+      - PRZYCHÓD Z PACZEK   : 11242.00 PLN
+      - BILANS AUTA         : 10857.40 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 3 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 650 szt. (gab. A: 344, gab. B: 205, gab. C: 101)
+        -> Wyjazd nr 1 [Zielona Gora]: 340 paczek
+        -> Wyjazd nr 2 [Zielona Gora, Zagan]: 310 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Obsługa punktów docelowych: Zielona Gora | 340 szt.
+        - [10:21] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [10:41] Obsługa punktów docelowych: Zielona Gora | 263 szt.
+        - [12:31] Przejazd regionalny do ZA
+        - [10:54] Przerwa ustawowa (20 min).
+        - [13:46] Obsługa punktów docelowych: Zagan | 47 szt.
+        - [14:10] Zjazd do bazy: ZA->ZG
+        - [15:06] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [15:26] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 144.9 km
+      - Czas pracy łączny   : 7.44 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 297.73 PLN
+      - Koszt paliwa        : 121.22 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 478.95 PLN
+      - PRZYCHÓD Z PACZEK   : 11539.00 PLN
+      - BILANS AUTA         : 11060.05 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 4 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 948 szt. (gab. A: 483, gab. B: 336, gab. C: 129)
+        -> Wyjazd nr 1 [Zielona Gora]: 321 paczek
+        -> Wyjazd nr 2 [Zielona Gora]: 312 paczek
+        -> Wyjazd nr 3 [Zielona Gora]: 315 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Obsługa punktów docelowych: Zielona Gora | 321 szt.
+        - [10:15] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [10:35] Obsługa punktów docelowych: Zielona Gora | 312 szt.
+        - [12:48] Przerwa ustawowa (20 min) - rozpoczęta w bazie.
+        - [13:08] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [13:28] Obsługa punktów docelowych: Zielona Gora | 315 szt.
+      [15:42] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 42.0 km
+      - Czas pracy łączny   : 7.7 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 307.87 PLN
+      - Koszt paliwa        : 35.54 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 403.41 PLN
+      - PRZYCHÓD Z PACZEK   : 16830.00 PLN
+      - BILANS AUTA         : 16426.59 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 5 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 622 szt. (gab. A: 303, gab. B: 216, gab. C: 103)
+        -> Wyjazd nr 1 [Zielona Gora]: 317 paczek
+        -> Wyjazd nr 2 [Zielona Gora, Szprotawa]: 305 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Obsługa punktów docelowych: Zielona Gora | 317 szt.
+        - [10:14] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [10:34] Obsługa punktów docelowych: Zielona Gora | 155 szt.
+        - [11:41] Przejazd regionalny do SZP
+        - [11:15] Przerwa ustawowa (20 min).
+        - [12:53] Obsługa punktów docelowych: Szprotawa | 150 szt.
+        - [13:53] Zjazd do bazy: SZP->ZG
+        - [14:44] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [15:04] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 133.2 km
+      - Czas pracy łączny   : 7.07 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 282.91 PLN
+      - Koszt paliwa        : 110.61 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 453.52 PLN
+      - PRZYCHÓD Z PACZEK   : 11107.00 PLN
+      - BILANS AUTA         : 10653.48 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 6 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 297 szt. (gab. A: 143, gab. B: 114, gab. C: 40)
+        -> Wyjazd nr 1 [Szprotawa, Zagan, Zary]: 297 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->SZP | 53.6 km
+        - [08:51] Obsługa punktów docelowych: Szprotawa | 129 szt.
+        - [09:44] Dojazd na sektor: SZP->ZA | 17.6 km
+        - [10:06] Obsługa punktów docelowych: Zagan | 121 szt.
+        - [11:02] Dojazd na sektor: ZA->ZR | 15.1 km
+        - [11:22] Obsługa punktów docelowych: Zary | 47 szt.
+        - [11:42] Zjazd do bazy: ZR->ZG
+        - [12:37] Przerwa ustawowa (20 min) - rozpoczęta w bazie.
+        - [12:57] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [13:18] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 146.7 km
+      - Czas pracy łączny   : 5.3 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 211.90 PLN
+      - Koszt paliwa        : 103.78 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 375.68 PLN
+      - PRZYCHÓD Z PACZEK   : 5288.50 PLN
+      - BILANS AUTA         : 4912.82 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 7 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 422 szt. (gab. A: 213, gab. B: 142, gab. C: 67)
+        -> Wyjazd nr 1 [Zagan, Nowogrod Bobrzanski]: 313 paczek
+        -> Wyjazd nr 2 [Zagan]: 109 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->ZA | 58.2 km
+        - [08:55] Obsługa punktów docelowych: Zagan | 293 szt.
+        - [11:13] Dojazd na sektor: ZA->NB | 23.1 km
+        - [11:40] Obsługa punktów docelowych: Nowogrod Bobrzanski | 20 szt.
+        - [11:53] Zjazd do bazy: NB->ZG
+        - [12:24] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [12:44] Przejazd regionalny do ZA
+        - [12:28] Przerwa ustawowa (20 min).
+        - [14:00] Obsługa punktów docelowych: Zagan | 109 szt.
+        - [14:53] Zjazd do bazy: ZA->ZG
+      [15:49] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 254.2 km
+      - Czas pracy łączny   : 7.82 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 312.83 PLN
+      - Koszt paliwa        : 197.9 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 570.73 PLN
+      - PRZYCHÓD Z PACZEK   : 7515.00 PLN
+      - BILANS AUTA         : 6944.27 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 8 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 350 szt. (gab. A: 192, gab. B: 116, gab. C: 42)
+        -> Wyjazd nr 1 [Nowogrod Bobrzanski, Zary, Nowa Sol]: 350 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->NB | 25.5 km
+        - [08:31] Obsługa punktów docelowych: Nowogrod Bobrzanski | 23 szt.
+        - [08:45] Dojazd na sektor: NB->ZR | 19.9 km
+        - [09:09] Obsługa punktów docelowych: Zary | 287 szt.
+        - [11:10] Przejazd regionalny do NS
+        - [11:37] Przerwa ustawowa (20 min).
+        - [12:31] Obsługa punktów docelowych: Nowa Sol | 40 szt.
+        - [12:46] Zjazd do bazy: NS->ZG
+        - [13:13] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [13:33] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 140.9 km
+      - Czas pracy łączny   : 5.56 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 222.41 PLN
+      - Koszt paliwa        : 96.89 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 379.30 PLN
+      - PRZYCHÓD Z PACZEK   : 6175.00 PLN
+      - BILANS AUTA         : 5795.70 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 9 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 624 szt. (gab. A: 320, gab. B: 205, gab. C: 99)
+        -> Wyjazd nr 1 [Nowa Sol]: 312 paczek
+        -> Wyjazd nr 2 [Nowa Sol]: 312 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->NS | 26.6 km
+        - [08:26] Obsługa punktów docelowych: Nowa Sol | 312 szt.
+        - [10:24] Zjazd do bazy: NS->ZG
+        - [10:51] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [11:11] Dojazd na sektor: ZG->NS | 26.6 km
+        - [11:38] Obsługa punktów docelowych: Nowa Sol | 312 szt.
+        - [13:39] Zjazd do bazy: NS->ZG
+        - [14:05] Przerwa ustawowa (20 min) - rozpoczęta w bazie.
+        - [14:25] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [14:46] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 121.4 km
+      - Czas pracy łączny   : 6.77 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 270.64 PLN
+      - Koszt paliwa        : 102.4 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 433.04 PLN
+      - PRZYCHÓD Z PACZEK   : 11102.00 PLN
+      - BILANS AUTA         : 10668.96 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 10 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 281 szt. (gab. A: 116, gab. B: 110, gab. C: 55)
+        -> Wyjazd nr 1 [Nowa Sol, Kozuchow, Zary]: 281 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->NS | 26.6 km
+        - [08:26] Obsługa punktów docelowych: Nowa Sol | 151 szt.
+        - [09:24] Dojazd na sektor: NS->KOZ | 11.7 km
+        - [09:39] Obsługa punktów docelowych: Kozuchow | 91 szt.
+        - [10:21] Przejazd regionalny do ZR
+        - [10:58] Przerwa ustawowa (20 min).
+        - [11:30] Obsługa punktów docelowych: Zary | 39 szt.
+        - [11:48] Zjazd do bazy: ZR->ZG
+        - [12:43] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [13:03] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 136.4 km
+      - Czas pracy łączny   : 5.06 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 202.40 PLN
+      - Koszt paliwa        : 93.71 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 356.11 PLN
+      - PRZYCHÓD Z PACZEK   : 5076.50 PLN
+      - BILANS AUTA         : 4720.39 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 11 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 447 szt. (gab. A: 229, gab. B: 162, gab. C: 56)
+        -> Wyjazd nr 1 [Zary]: 319 paczek
+        -> Wyjazd nr 2 [Zary]: 128 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->ZR | 44.9 km
+        - [08:54] Obsługa punktów docelowych: Zary | 319 szt.
+        - [11:11] Zjazd do bazy: ZR->ZG
+        - [12:06] Przerwa ustawowa (20 min) - rozpoczęta w bazie.
+        - [12:26] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [12:46] Dojazd na sektor: ZG->ZR | 44.9 km
+        - [13:41] Obsługa punktów docelowych: Zary | 128 szt.
+        - [14:33] Zjazd do bazy: ZR->ZG
+      [15:28] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 199.6 km
+      - Czas pracy łączny   : 7.48 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 299.17 PLN
+      - Koszt paliwa        : 124.4 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 483.57 PLN
+      - PRZYCHÓD Z PACZEK   : 7923.50 PLN
+      - BILANS AUTA         : 7439.93 PLN
+   -------------------------------------------------------------------------------------
+
+==========================================================================================
+   ZOPTYMALIZOWANY INTEGRALNY DZIEŃ OPERACYJNY: 2026-05-08
+==========================================================================================
+ PODSUMOWANIE FINANSOWO-LOGISTYCZNE DNIA:
+    - Liczba aktywnych kurierow : 10
+    - Łączny koszt wynagrodzeń  : 2750.13 PLN (w tym nadgodziny: 0.00 PLN)
+    - Łączny koszt leasingu     : 1080.00 PLN
+    - Koszt samego paliwa       : 980.94 PLN
+    - SUMARYCZNY KOSZT DNIA     : 4811.07 PLN
+    - ŁĄCZNY PRZYCHÓD (BRUTTO)  : 101017.00 PLN (A: 2804 szt., B: 2042 szt., C: 828 szt.)
+    - Efektywny koszt na paczke : 0.85 PLN/szt.
+    - ZAROBEK (ZYSKI - KOSZTY)  : 96205.93 PLN
+------------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 1 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 982 szt. (gab. A: 501, gab. B: 341, gab. C: 140)
+        -> Wyjazd nr 1 [Zielona Gora]: 338 paczek
+        -> Wyjazd nr 2 [Zielona Gora]: 325 paczek
+        -> Wyjazd nr 3 [Zielona Gora]: 319 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Obsługa punktów docelowych: Zielona Gora | 338 szt.
+        - [10:23] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [10:43] Obsługa punktów docelowych: Zielona Gora | 325 szt.
+        - [12:59] Przerwa ustawowa (20 min) - rozpoczęta w bazie.
+        - [13:19] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [13:39] Obsługa punktów docelowych: Zielona Gora | 319 szt.
+      [15:55] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 42.0 km
+      - Czas pracy łączny   : 7.93 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 317.21 PLN
+      - Koszt paliwa        : 36.09 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 413.30 PLN
+      - PRZYCHÓD Z PACZEK   : 17445.00 PLN
+      - BILANS AUTA         : 17031.70 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 2 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 933 szt. (gab. A: 455, gab. B: 329, gab. C: 149)
+        -> Wyjazd nr 1 [Zielona Gora]: 314 paczek
+        -> Wyjazd nr 2 [Zielona Gora]: 334 paczek
+        -> Wyjazd nr 3 [Zielona Gora]: 285 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Obsługa punktów docelowych: Zielona Gora | 314 szt.
+        - [10:12] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [10:32] Obsługa punktów docelowych: Zielona Gora | 334 szt.
+        - [12:52] Przerwa ustawowa (20 min) - rozpoczęta w bazie.
+        - [13:12] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [13:32] Obsługa punktów docelowych: Zielona Gora | 285 szt.
+        - [15:34] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [15:54] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 42.0 km
+      - Czas pracy łączny   : 7.91 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 316.37 PLN
+      - Koszt paliwa        : 35.14 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 411.51 PLN
+      - PRZYCHÓD Z PACZEK   : 16648.50 PLN
+      - BILANS AUTA         : 16236.99 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 3 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 646 szt. (gab. A: 334, gab. B: 213, gab. C: 99)
+        -> Wyjazd nr 1 [Zielona Gora]: 309 paczek
+        -> Wyjazd nr 2 [Zielona Gora, Zary]: 337 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Obsługa punktów docelowych: Zielona Gora | 309 szt.
+        - [10:10] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [10:30] Obsługa punktów docelowych: Zielona Gora | 302 szt.
+        - [12:40] Przejazd regionalny do ZR
+        - [11:23] Przerwa ustawowa (20 min).
+        - [13:55] Obsługa punktów docelowych: Zary | 35 szt.
+        - [14:12] Zjazd do bazy: ZR->ZG
+        - [15:07] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [15:27] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 120.3 km
+      - Czas pracy łączny   : 7.45 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 298.18 PLN
+      - Koszt paliwa        : 81.89 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 440.07 PLN
+      - PRZYCHÓD Z PACZEK   : 11481.00 PLN
+      - BILANS AUTA         : 11040.93 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 4 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 692 szt. (gab. A: 336, gab. B: 265, gab. C: 91)
+        -> Wyjazd nr 1 [Zielona Gora]: 304 paczek
+        -> Wyjazd nr 2 [Zielona Gora, Zagan, Nowogrod Bobrzanski]: 302 paczek
+        -> Wyjazd nr 3 [Zielona Gora]: 86 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Obsługa punktów docelowych: Zielona Gora | 304 szt.
+        - [10:11] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [10:31] Obsługa punktów docelowych: Zielona Gora | 240 szt.
+        - [12:12] Przejazd regionalny do ZA
+        - [11:33] Przerwa ustawowa (20 min).
+        - [13:27] Obsługa punktów docelowych: Zagan | 49 szt.
+        - [13:52] Dojazd na sektor: ZA->NB | 23.1 km
+        - [14:19] Obsługa punktów docelowych: Nowogrod Bobrzanski | 13 szt.
+        - [14:29] Zjazd do bazy: NB->ZG
+        - [15:00] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [15:20] Obsługa punktów docelowych: Zielona Gora | 86 szt.
+      [15:57] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 141.8 km
+      - Czas pracy łączny   : 7.95 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 317.99 PLN
+      - Koszt paliwa        : 113.65 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 491.64 PLN
+      - PRZYCHÓD Z PACZEK   : 12312.00 PLN
+      - BILANS AUTA         : 11820.36 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 5 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 292 szt. (gab. A: 148, gab. B: 93, gab. C: 51)
+        -> Wyjazd nr 1 [Zagan, Nowogrod Bobrzanski]: 292 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->ZA | 58.2 km
+        - [08:55] Obsługa punktów docelowych: Zagan | 271 szt.
+        - [11:10] Dojazd na sektor: ZA->NB | 23.1 km
+        - [11:37] Obsługa punktów docelowych: Nowogrod Bobrzanski | 21 szt.
+        - [11:50] Zjazd do bazy: NB->ZG
+        - [12:21] Przerwa ustawowa (20 min) - rozpoczęta w bazie.
+        - [12:41] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [13:01] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 129.8 km
+      - Czas pracy łączny   : 5.03 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 201.16 PLN
+      - Koszt paliwa        : 103.29 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 364.45 PLN
+      - PRZYCHÓD Z PACZEK   : 5208.00 PLN
+      - BILANS AUTA         : 4843.55 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 6 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 351 szt. (gab. A: 189, gab. B: 125, gab. C: 37)
+        -> Wyjazd nr 1 [Zagan, Szprotawa, Nowogrod Bobrzanski]: 351 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->ZA | 58.2 km
+        - [08:55] Obsługa punktów docelowych: Zagan | 217 szt.
+        - [10:38] Dojazd na sektor: ZA->SZP | 17.6 km
+        - [11:00] Obsługa punktów docelowych: Szprotawa | 115 szt.
+        - [11:49] Przejazd regionalny do NB
+        - [11:39] Przerwa ustawowa (20 min).
+        - [12:58] Obsługa punktów docelowych: Nowogrod Bobrzanski | 19 szt.
+        - [13:11] Zjazd do bazy: NB->ZG
+        - [13:42] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [14:03] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 165.4 km
+      - Czas pracy łączny   : 6.05 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 241.84 PLN
+      - Koszt paliwa        : 123.37 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 425.21 PLN
+      - PRZYCHÓD Z PACZEK   : 6189.50 PLN
+      - BILANS AUTA         : 5764.29 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 7 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 329 szt. (gab. A: 149, gab. B: 137, gab. C: 43)
+        -> Wyjazd nr 1 [Zary, Nowogrod Bobrzanski]: 329 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->ZR | 44.9 km
+        - [08:54] Obsługa punktów docelowych: Zary | 307 szt.
+        - [11:08] Dojazd na sektor: ZR->NB | 19.9 km
+        - [11:32] Obsługa punktów docelowych: Nowogrod Bobrzanski | 22 szt.
+        - [11:46] Zjazd do bazy: NB->ZG
+        - [12:17] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [12:57] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 108.3 km
+      - Czas pracy łączny   : 4.96 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 198.51 PLN
+      - Koszt paliwa        : 74.3 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 332.81 PLN
+      - PRZYCHÓD Z PACZEK   : 5874.50 PLN
+      - BILANS AUTA         : 5541.69 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 8 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 432 szt. (gab. A: 202, gab. B: 173, gab. C: 57)
+        -> Wyjazd nr 1 [Zary]: 327 paczek
+        -> Wyjazd nr 2 [Zary]: 105 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->ZR | 44.9 km
+        - [08:54] Obsługa punktów docelowych: Zary | 327 szt.
+        - [11:13] Zjazd do bazy: ZR->ZG
+        - [12:08] Przerwa ustawowa (20 min) - rozpoczęta w bazie.
+        - [12:28] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [12:48] Dojazd na sektor: ZG->ZR | 44.9 km
+        - [13:43] Obsługa punktów docelowych: Zary | 105 szt.
+        - [14:28] Zjazd do bazy: ZR->ZG
+        - [15:22] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+      [15:43] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 199.6 km
+      - Czas pracy łączny   : 7.72 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 308.61 PLN
+      - Koszt paliwa        : 124.36 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 492.97 PLN
+      - PRZYCHÓD Z PACZEK   : 7702.00 PLN
+      - BILANS AUTA         : 7209.03 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 9 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 637 szt. (gab. A: 312, gab. B: 230, gab. C: 95)
+        -> Wyjazd nr 1 [Szprotawa, Kozuchow, Nowa Sol]: 319 paczek
+        -> Wyjazd nr 2 [Nowa Sol]: 318 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->SZP | 53.6 km
+        - [08:51] Obsługa punktów docelowych: Szprotawa | 121 szt.
+        - [09:42] Dojazd na sektor: SZP->KOZ | 22.6 km
+        - [10:08] Obsługa punktów docelowych: Kozuchow | 76 szt.
+        - [10:45] Dojazd na sektor: KOZ->NS | 11.7 km
+        - [11:00] Obsługa punktów docelowych: Nowa Sol | 122 szt.
+        - [11:46] Zjazd do bazy: NS->ZG
+        - [12:13] Przerwa ustawowa (20 min) - rozpoczęta w bazie.
+        - [12:33] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [12:53] Dojazd na sektor: ZG->NS | 26.6 km
+        - [13:20] Obsługa punktów docelowych: Nowa Sol | 318 szt.
+        - [15:23] Zjazd do bazy: NS->ZG
+      [15:51] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 189.7 km
+      - Czas pracy łączny   : 7.85 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 313.81 PLN
+      - Koszt paliwa        : 148.31 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 522.12 PLN
+      - PRZYCHÓD Z PACZEK   : 11350.50 PLN
+      - BILANS AUTA         : 10828.38 PLN
+   -------------------------------------------------------------------------------------
+
+ PROFIL KIEROWCY: KURIER 10 | TYP: HYBRYDOWY (Zintegrowany)
+   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):
+      - Obsluzone paczki  : 380 szt. (gab. A: 178, gab. B: 136, gab. C: 66)
+        -> Wyjazd nr 1 [Nowa Sol, Nowogrod Bobrzanski]: 296 paczek
+        -> Wyjazd nr 2 [Nowa Sol]: 84 paczek
+
+   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:
+        - [08:00] Start pracy kuriera. Pierwszy załadunek w bazie ZG.
+        - [08:00] Dojazd na sektor: ZG->NS | 26.6 km
+        - [08:26] Obsługa punktów docelowych: Nowa Sol | 278 szt.
+        - [10:13] Dojazd na sektor: NS->NB | 54.4 km
+        - [11:05] Obsługa punktów docelowych: Nowogrod Bobrzanski | 18 szt.
+        - [11:17] Zjazd do bazy: NB->ZG
+        - [11:48] Powrot do bazy ZG: Zaladunek kolejnej petli (+20.0 min)
+        - [12:08] Przejazd regionalny do NS
+        - [12:04] Przerwa ustawowa (20 min).
+        - [12:55] Obsługa punktów docelowych: Nowa Sol | 84 szt.
+        - [13:27] Zjazd do bazy: NS->ZG
+      [13:54] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG
+
+   Modul 3. Ekonomika i Rozliczenie Pojazdu:
+      - Dystans operacyjny  : 171.7 km
+      - Czas pracy łączny   : 5.91 godz.
+      - W tym nadgodziny    : 0.0 min (Koszt: 0.00 PLN)
+      - Wynagrodzenie reg.  : 236.45 PLN
+      - Koszt paliwa        : 140.54 PLN
+      - Koszt leasingu      : 60.00 PLN
+      - ŁĄCZNY KOSZT AUTA   : 436.99 PLN
+      - PRZYCHÓD Z PACZEK   : 6806.00 PLN
+      - BILANS AUTA         : 6369.01 PLN
+   -------------------------------------------------------------------------------------

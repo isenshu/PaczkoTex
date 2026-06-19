@@ -472,6 +472,25 @@ def generuj_optymalne_trasy_dnia(paczki_dnia):
     return buduj_harmonogram_globalny(globalna_baza_zadań)
 
 
+class Tee:
+    def __init__(self, filepath):
+        self.file = open(filepath, 'w', encoding='utf-8')
+        self.stdout = sys.stdout
+        sys.stdout = self
+
+    def write(self, data):
+        self.file.write(data)
+        self.stdout.write(data)
+
+    def flush(self):
+        self.file.flush()
+        self.stdout.flush()
+
+    def close(self):
+        sys.stdout = self.stdout
+        self.file.close()
+
+
 def wczytaj_i_optymalizuj():
     if len(sys.argv) > 1:
         sciezka_csv = sys.argv[1]
@@ -486,66 +505,75 @@ def wczytaj_i_optymalizuj():
         reader = csv.DictReader(plik)
         for wiersz in reader: paczki_per_data[wiersz['data_dostawy']].append(wiersz)
 
-    for data, paczki in sorted(paczki_per_data.items()):
-        print(f"\n==========================================================================================")
-        print(f"   ZOPTYMALIZOWANY INTEGRALNY DZIEŃ OPERACYJNY: {data}")
-        print(f"==========================================================================================")
+    path_without_ext = sciezka_csv.rsplit('.', 1)[0] if '.' in sciezka_csv else sciezka_csv
+    sciezka_wyjsciowa = f"{path_without_ext}_raport.txt"
 
-        zestawienie_aut = generuj_optymalne_trasy_dnia(paczki)
+    tee = Tee(sciezka_wyjsciowa)
+    try:
+        for data, paczki in sorted(paczki_per_data.items()):
+            print(f"\n==========================================================================================")
+            print(f"   ZOPTYMALIZOWANY INTEGRALNY DZIEŃ OPERACYJNY: {data}")
+            print(f"==========================================================================================")
 
-        koszt_paliwa = sum(a["podsumowanie_trasy"]["koszt_paliwa_pln"] for a in zestawienie_aut)
-        koszt_nadgodzin_suma = sum(a["koszt_nadgodzin_pln"] for a in zestawienie_aut)
-        koszt_regularny_suma = sum(a["koszt_regularny_pln"] for a in zestawienie_aut)
-        koszt_leasingu_suma = ROZMIAR_FLOTY * KOSZT_LEASINGU_DZIEN_PLN
-        koszt_calkowity_operacji = koszt_paliwa + koszt_nadgodzin_suma + koszt_regularny_suma + koszt_leasingu_suma
-        paczki_calkowite = sum(a["paczki_lacznie"] for a in zestawienie_aut)
+            zestawienie_aut = generuj_optymalne_trasy_dnia(paczki)
 
-        for i, auto in enumerate(zestawienie_aut, 1):
-            p = auto["podsumowanie_trasy"]
-            print(f"\n PROFIL KIEROWCY: KURIER {i} | TYP: {auto['typ']}")
-            print(f"   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):")
-            print(f"      - Obsluzone paczki  : {auto['paczki_lacznie']} szt. (gab. A: {auto['paczki_A']}, gab. B: {auto['paczki_B']}, gab. C: {auto['paczki_C']})")
-            for k_idx, column in enumerate(auto['kursy'], 1):
-                print(f"        -> Wyjazd nr {k_idx} [{', '.join(column['miasta'])}]: {column['paczki']} paczek")
+            koszt_paliwa = sum(a["podsumowanie_trasy"]["koszt_paliwa_pln"] for a in zestawienie_aut)
+            koszt_nadgodzin_suma = sum(a["koszt_nadgodzin_pln"] for a in zestawienie_aut)
+            koszt_regularny_suma = sum(a["koszt_regularny_pln"] for a in zestawienie_aut)
+            koszt_leasingu_suma = ROZMIAR_FLOTY * KOSZT_LEASINGU_DZIEN_PLN
+            koszt_calkowity_operacji = koszt_paliwa + koszt_nadgodzin_suma + koszt_regularny_suma + koszt_leasingu_suma
+            paczki_calkowite = sum(a["paczki_lacznie"] for a in zestawienie_aut)
 
-            print(f"\n   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:")
-            for log in p["etapy_log"]:
-                print(f"        - {log}")
-            print(f"      [{formatuj_godzine(p['czas_h'] * 60)}] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG")
+            for i, auto in enumerate(zestawienie_aut, 1):
+                p = auto["podsumowanie_trasy"]
+                print(f"\n PROFIL KIEROWCY: KURIER {i} | TYP: {auto['typ']}")
+                print(f"   Modul 1. Zbiorcze Wskazniki Zaladunku (KPI):")
+                print(f"      - Obsluzone paczki  : {auto['paczki_lacznie']} szt. (gab. A: {auto['paczki_A']}, gab. B: {auto['paczki_B']}, gab. C: {auto['paczki_C']})")
+                for k_idx, column in enumerate(auto['kursy'], 1):
+                    print(f"        -> Wyjazd nr {k_idx} [{', '.join(column['miasta'])}]: {column['paczki']} paczek")
 
-            print(f"\n   Modul 3. Ekonomika i Rozliczenie Pojazdu:")
-            print(f"      - Dystans operacyjny  : {p['dystans_km']} km")
-            print(f"      - Czas pracy łączny   : {p['czas_h']} godz.")
+                print(f"\n   Modul 2. Audytor Przebiegu Trasy i Osi Czasu:")
+                for log in p["etapy_log"]:
+                    print(f"        - {log}")
+                print(f"      [{formatuj_godzine(p['czas_h'] * 60)}] [ZAKONCZENIE PRACY] Zdanie dokumentow w bazie ZG")
+
+                print(f"\n   Modul 3. Ekonomika i Rozliczenie Pojazdu:")
+                print(f"      - Dystans operacyjny  : {p['dystans_km']} km")
+                print(f"      - Czas pracy łączny   : {p['czas_h']} godz.")
+                print(
+                    f"      - W tym nadgodziny    : {auto['nadgodziny_min']:.1f} min (Koszt: {auto['koszt_nadgodzin_pln']:.2f} PLN)")
+                print(f"      - Wynagrodzenie reg.  : {auto['koszt_regularny_pln']:.2f} PLN")
+                print(f"      - Zużyte paliwo       : {p['paliwo_l']:.3f} L (Koszt: {p['koszt_paliwa_pln']:.2f} PLN)")
+                print(f"      - Koszt leasingu      : {KOSZT_LEASINGU_DZIEN_PLN:.2f} PLN")
+                koszt_auta = p['koszt_paliwa_pln'] + auto['koszt_nadgodzin_pln'] + auto['koszt_regularny_pln'] + KOSZT_LEASINGU_DZIEN_PLN
+                print(f"      - ŁĄCZNY KOSZT AUTA   : {koszt_auta:.2f} PLN")
+                print(f"      - PRZYCHÓD Z PACZEK   : {auto['zarobki_brutto']:.2f} PLN")
+                print(f"      - BILANS AUTA         : {auto['zarobki_brutto'] - koszt_auta:.2f} PLN")
+                print(f"   " + "-" * 85)
+
+            zarobki_suma_brutto = sum(a["zarobki_brutto"] for a in zestawienie_aut)
+            paczki_A_suma = sum(a["paczki_A"] for a in zestawienie_aut)
+            paczki_B_suma = sum(a["paczki_B"] for a in zestawienie_aut)
+            paczki_C_suma = sum(a["paczki_C"] for a in zestawienie_aut)
+
+            print(f"\n==========================================================================================")
+            print(f"   PODSUMOWANIE FINANSOWO-LOGISTYCZNE DNIA: {data}")
+            print(f"==========================================================================================")
+            print(f"    - Liczba aktywnych kurierow : {len(zestawienie_aut)}")
+            print(f"    - Łączny koszt wynagrodzeń  : {koszt_regularny_suma + koszt_nadgodzin_suma:.2f} PLN (w tym nadgodziny: {koszt_nadgodzin_suma:.2f} PLN)")
+            print(f"    - Łączny koszt leasingu     : {koszt_leasingu_suma:.2f} PLN")
+            print(f"    - Łączny koszt paliwa       : {koszt_paliwa:.2f} PLN")
+            print(f"    - SUMARYCZNY KOSZT DNIA     : {koszt_calkowity_operacji:.2f} PLN")
+            print(f"    - ŁĄCZNY PRZYCHÓD (BRUTTO)  : {zarobki_suma_brutto:.2f} PLN (A: {paczki_A_suma} szt., B: {paczki_B_suma} szt., C: {paczki_C_suma} szt.)")
+            print(f"    - Liczba paczek całkowita   : {paczki_calkowite} szt.")
             print(
-                f"      - W tym nadgodziny    : {auto['nadgodziny_min']:.1f} min (Koszt: {auto['koszt_nadgodzin_pln']:.2f} PLN)")
-            print(f"      - Wynagrodzenie reg.  : {auto['koszt_regularny_pln']:.2f} PLN")
-            print(f"      - Zużyte paliwo       : {p['paliwo_l']:.3f} L (Koszt: {p['koszt_paliwa_pln']:.2f} PLN)")
-            print(f"      - Koszt leasingu      : {KOSZT_LEASINGU_DZIEN_PLN:.2f} PLN")
-            koszt_auta = p['koszt_paliwa_pln'] + auto['koszt_nadgodzin_pln'] + auto['koszt_regularny_pln'] + KOSZT_LEASINGU_DZIEN_PLN
-            print(f"      - ŁĄCZNY KOSZT AUTA   : {koszt_auta:.2f} PLN")
-            print(f"      - PRZYCHÓD Z PACZEK   : {auto['zarobki_brutto']:.2f} PLN")
-            print(f"      - BILANS AUTA         : {auto['zarobki_brutto'] - koszt_auta:.2f} PLN")
-            print(f"   " + "-" * 85)
+                f"    - Efektywny koszt na paczke : {koszt_calkowity_operacji / paczki_calkowite:.2f} PLN/szt." if paczki_calkowite > 0 else "    - Efektywny koszt na paczke : 0.00 PLN")
+            print(f"    - ZAROBEK (ZYSKI - KOSZTY)  : {zarobki_suma_brutto - koszt_calkowity_operacji:.2f} PLN")
+            print(f"==========================================================================================\n")
+    finally:
+        tee.close()
 
-        zarobki_suma_brutto = sum(a["zarobki_brutto"] for a in zestawienie_aut)
-        paczki_A_suma = sum(a["paczki_A"] for a in zestawienie_aut)
-        paczki_B_suma = sum(a["paczki_B"] for a in zestawienie_aut)
-        paczki_C_suma = sum(a["paczki_C"] for a in zestawienie_aut)
-
-        print(f"\n==========================================================================================")
-        print(f"   PODSUMOWANIE FINANSOWO-LOGISTYCZNE DNIA: {data}")
-        print(f"==========================================================================================")
-        print(f"    - Liczba aktywnych kurierow : {len(zestawienie_aut)}")
-        print(f"    - Łączny koszt wynagrodzeń  : {koszt_regularny_suma + koszt_nadgodzin_suma:.2f} PLN (w tym nadgodziny: {koszt_nadgodzin_suma:.2f} PLN)")
-        print(f"    - Łączny koszt leasingu     : {koszt_leasingu_suma:.2f} PLN")
-        print(f"    - Łączny koszt paliwa       : {koszt_paliwa:.2f} PLN")
-        print(f"    - SUMARYCZNY KOSZT DNIA     : {koszt_calkowity_operacji:.2f} PLN")
-        print(f"    - ŁĄCZNY PRZYCHÓD (BRUTTO)  : {zarobki_suma_brutto:.2f} PLN (A: {paczki_A_suma} szt., B: {paczki_B_suma} szt., C: {paczki_C_suma} szt.)")
-        print(f"    - Liczba paczek całkowita   : {paczki_calkowite} szt.")
-        print(
-            f"    - Efektywny koszt na paczke : {koszt_calkowity_operacji / paczki_calkowite:.2f} PLN/szt." if paczki_calkowite > 0 else "    - Efektywny koszt na paczke : 0.00 PLN")
-        print(f"    - ZAROBEK (ZYSKI - KOSZTY)  : {zarobki_suma_brutto - koszt_calkowity_operacji:.2f} PLN")
-        print(f"==========================================================================================\n")
+    print(f"\n[INFO] Pełny raport został zapisany do pliku: {sciezka_wyjsciowa}")
 
 
 if __name__ == "__main__":
